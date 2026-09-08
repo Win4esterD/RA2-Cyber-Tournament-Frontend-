@@ -1,9 +1,9 @@
 import { StoryObj, Meta } from "@storybook/nextjs-vite";
-import { RegistrationForm } from "./RegistrationForm";
+import { LogInForm } from "./LogInForm";
 
 const meta = {
-  component: RegistrationForm,
-} satisfies Meta<typeof RegistrationForm>;
+  component: LogInForm,
+} satisfies Meta<typeof LogInForm>;
 
 export default meta;
 

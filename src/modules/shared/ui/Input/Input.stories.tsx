@@ -1,6 +1,7 @@
 import { StoryObj, Meta } from "@storybook/nextjs-vite";
 import { Input } from "./Input";
 import { TfiEmail } from "react-icons/tfi";
+import { RiLockPasswordLine } from "react-icons/ri";
 
 const meta = {
   component: Input,
@@ -20,9 +21,17 @@ export const Primary = {
 
 export const WithValue = {
   args: {
-    label: "Primary",
+    label: "With value",
     placeholder: "myemail@yandex.ru",
     Icon: TfiEmail,
-    value: 'some-email@mail.ru'
+    value: "some-email@mail.ru",
+  },
+} satisfies Story;
+
+export const TypePassword = {
+  args: {
+    label: "Password type",
+    type: "password",
+    Icon: RiLockPasswordLine,
   },
 } satisfies Story;
