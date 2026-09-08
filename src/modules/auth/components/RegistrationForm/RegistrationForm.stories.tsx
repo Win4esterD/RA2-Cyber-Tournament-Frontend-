@@ -9,4 +9,14 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary = {} satisfies Story;
+export const Primary = {
+  decorators: [
+    (Story) => {
+      return (
+        <div className="flex justify-center items-center w-full text-white-text-primary">
+          <Story />
+        </div>
+      );
+    },
+  ],
+} satisfies Story;

@@ -3,6 +3,12 @@ import "../src/app/globals.css";
 
 const preview: Preview = {
   parameters: {
+    backgrounds: {
+      options: {
+        light: { name: "Light", value: "#fff" },
+        dark: { name: "Dark", value: "#0a0a0a" },
+      },
+    },
     tags: ["autodocs"],
     controls: {
       matchers: {
