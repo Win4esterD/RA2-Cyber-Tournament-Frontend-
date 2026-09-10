@@ -2,8 +2,9 @@ import { LogInForm } from "@/modules/auth/components/LogInForm/LogInForm";
 import { CiLogin } from "react-icons/ci";
 import { IconBadge } from "@/modules/shared/ui/IconBadge/IconBadge";
 import { TfiCup } from "react-icons/tfi";
+import Link from "next/link";
 
-export default function LogIn() {
+export default function LogInPage() {
   return (
     <div className="w-screen h-screen flex justify-center items-center flex-col">
       <IconBadge Icon={<CiLogin className="w-8 h-8" />} />
@@ -20,6 +21,16 @@ export default function LogIn() {
       <div className="mt-8">
         <LogInForm />
       </div>
+      <p className="text-center text-sm text-slate-500 mt-6">
+        {' '}
+        Don't have an account?{" "}
+        <Link
+          href="/registration/"
+          className="text-red-400 font-medium hover:text-red-300 hover:underline"
+        >
+          Register
+        </Link>
+      </p>
     </div>
   );
 }
