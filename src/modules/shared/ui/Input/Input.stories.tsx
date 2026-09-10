@@ -16,6 +16,7 @@ export const Primary = {
     label: "Primary",
     placeholder: "myemail@yandex.ru",
     Icon: TfiEmail,
+    controllerProps: { name: "" },
   },
 } satisfies Story;
 
@@ -25,6 +26,7 @@ export const WithValue = {
     placeholder: "myemail@yandex.ru",
     Icon: TfiEmail,
     value: "some-email@mail.ru",
+    controllerProps: { name: "" },
   },
 } satisfies Story;
 
@@ -33,5 +35,6 @@ export const TypePassword = {
     label: "Password type",
     type: "password",
     Icon: RiLockPasswordLine,
+    controllerProps: { name: "" },
   },
 } satisfies Story;

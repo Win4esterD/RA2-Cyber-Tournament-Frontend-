@@ -29,7 +29,10 @@ export function Input<T extends FieldValues>({
   return (
     <div className="flex flex-col gap-2">
       {label && (
-        <label className="block text-sm font-medium text-slate-300">
+        <label
+          className="block text-sm font-medium text-slate-300"
+          htmlFor={field.name}
+        >
           {label}
         </label>
       )}
@@ -42,6 +45,7 @@ export function Input<T extends FieldValues>({
           required={required}
           value={value}
           type={type}
+          id={field.name}
         />
       </div>
       {fieldState.error && (
