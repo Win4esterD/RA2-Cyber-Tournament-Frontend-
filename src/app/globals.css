@@ -7,4 +7,5 @@
 
 @theme {
   --color-white-text-primary: #F1F5F9;
+  --breakpoint-xs: 30rem;
 }
