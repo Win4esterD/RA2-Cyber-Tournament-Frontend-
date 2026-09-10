@@ -25,8 +25,7 @@ export function Input<T extends FieldValues>({
   controllerProps,
 }: InputProps<T>) {
   const { field, fieldState } = useController(controllerProps);
-  console.log("field", fieldState);
-  console.log("field state", fieldState);
+
   return (
     <div className="flex flex-col gap-2">
       {label && (
