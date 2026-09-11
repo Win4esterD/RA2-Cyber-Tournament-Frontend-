@@ -9,7 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import {
   RegistrationSchema,
   RegistrationType,
-} from '@/modules/schemas/RegistrationSchema';
+} from '@/modules/auth/schemas/RegistrationSchema';
 
 export function RegistrationForm() {
   const { control, handleSubmit } = useForm({

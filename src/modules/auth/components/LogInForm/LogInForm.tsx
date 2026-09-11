@@ -4,10 +4,10 @@ import { TfiEmail } from 'react-icons/tfi';
 import { Input } from '@/modules/shared/ui/Input/Input';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { LogInAndRegisterButton } from '@/modules/shared/ui/LogInAndRegisterButton/LogInAndRegisterButton';
-import { LogInSchema } from '@/modules/schemas/LogInSchema';
+import { LogInSchema } from '@/modules/auth/schemas/LogInSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import type { LogInType } from '@/modules/schemas/LogInSchema';
+import type { LogInType } from '@/modules/auth/schemas/LogInSchema';
 import Link from 'next/link';
 
 export function LogInForm() {
