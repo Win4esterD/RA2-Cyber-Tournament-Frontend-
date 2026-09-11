@@ -9,7 +9,7 @@ export default function LogInPage() {
     <div className="w-screen h-screen flex justify-center items-center flex-col">
       <IconBadge Icon={<CiLogin className="w-8 h-8" />} />
       <div className="text-red-400 flex">
-        <TfiCup className="text-red-400" />
+        <TfiCup className="text-red-400 pr-1" />
         <h1 className="text-[11px] uppercase tracking-[0.3em] text-red-400 font-bold">
           RA2 Arena
         </h1>
@@ -22,7 +22,7 @@ export default function LogInPage() {
         <LogInForm />
       </div>
       <p className="text-center text-sm text-slate-500 mt-6">
-        {' '}
+        {" "}
         Don't have an account?{" "}
         <Link
           href="/registration/"
