@@ -1,4 +1,4 @@
-import { RegistrationForm } from '@/modules/auth/components/RegistrationForm/RegistrationForm';
+import { RegistrationForm } from '@/modules/auth/';
 import { IconBadge } from '@/modules/shared/ui/IconBadge/IconBadge';
 import { FiUserPlus } from 'react-icons/fi';
 import { TfiCup } from 'react-icons/tfi';

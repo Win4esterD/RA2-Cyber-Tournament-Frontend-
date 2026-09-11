@@ -1,4 +1,4 @@
-import { LogInForm } from '@/modules/auth/components/LogInForm/LogInForm';
+import { LogInForm } from '@/modules/auth/';
 import { CiLogin } from 'react-icons/ci';
 import { IconBadge } from '@/modules/shared/ui/IconBadge/IconBadge';
 import { TfiCup } from 'react-icons/tfi';

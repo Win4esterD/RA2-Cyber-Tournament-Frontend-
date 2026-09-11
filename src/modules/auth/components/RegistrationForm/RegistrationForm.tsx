@@ -6,10 +6,8 @@ import { TfiEmail } from 'react-icons/tfi';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  RegistrationSchema,
-  RegistrationType,
-} from '@/modules/auth/schemas/RegistrationSchema';
+import { RegistrationSchema } from '@/modules/auth/schemas/RegistrationSchema';
+import type { RegistrationType } from '@/modules/auth/schemas/RegistrationSchema';
 
 export function RegistrationForm() {
   const { control, handleSubmit } = useForm({
