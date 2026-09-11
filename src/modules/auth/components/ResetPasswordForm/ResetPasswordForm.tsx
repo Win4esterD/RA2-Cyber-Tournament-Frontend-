@@ -1,3 +1,4 @@
+'use client';
 import { Input } from '@/modules/shared/ui/Input/Input';
 import { ResetPasswordSchema } from '../../schemas/ResetPasswordSchema';
 import { useForm } from 'react-hook-form';
