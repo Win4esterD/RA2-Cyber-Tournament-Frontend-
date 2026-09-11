@@ -1,6 +1,6 @@
-import { StoryObj, Meta } from "@storybook/nextjs-vite";
-import { IconBadge } from "./IconBadge";
-import { CiLogin } from "react-icons/ci";
+import { StoryObj, Meta } from '@storybook/nextjs-vite';
+import { IconBadge } from './IconBadge';
+import { CiLogin } from 'react-icons/ci';
 
 const meta = {
   component: IconBadge,

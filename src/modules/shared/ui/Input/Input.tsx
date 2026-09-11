@@ -1,9 +1,5 @@
-import { IconType } from "react-icons";
-import {
-  useController,
-  UseControllerProps,
-  FieldValues,
-} from "react-hook-form";
+import { IconType } from 'react-icons';
+import { useController, UseControllerProps, FieldValues } from 'react-hook-form';
 
 type InputProps<T extends FieldValues> = {
   Icon?: IconType;
@@ -29,10 +25,7 @@ export function Input<T extends FieldValues>({
   return (
     <div className="flex flex-col gap-2">
       {label && (
-        <label
-          className="block text-sm font-medium text-slate-300"
-          htmlFor={field.name}
-        >
+        <label className="block text-sm font-medium text-slate-300" htmlFor={field.name}>
           {label}
         </label>
       )}

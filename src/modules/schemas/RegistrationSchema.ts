@@ -1,5 +1,4 @@
-import * as z from "zod";
-
+import * as z from 'zod';
 
 export const RegistrationSchema = z
   .object({
@@ -7,17 +6,15 @@ export const RegistrationSchema = z
       .string()
       .trim()
       .toLowerCase()
-      .pipe(z.string().email({ message: "Incorrect email" })), // Обратите внимание на z.string().email() внутри pipe
+      .pipe(z.string().email({ message: 'Incorrect email' })), // Обратите внимание на z.string().email() внутри pipe
 
-    password: z
-      .string()
-      .min(8, { message: "Password must be not less than 8 symbols" }),
+    password: z.string().min(8, { message: 'Password must be not less than 8 symbols' }),
 
     repeatPassword: z.string(),
   })
   .refine((data) => data.password === data.repeatPassword, {
     message: "Passwords don't match",
-    path: ["repeatPassword"],
+    path: ['repeatPassword'],
   });
 
 export type RegistrationType = z.infer<typeof RegistrationSchema>;

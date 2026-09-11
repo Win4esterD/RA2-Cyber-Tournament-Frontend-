@@ -1,20 +1,20 @@
-"use client";
-import { FcGoogle } from "react-icons/fc";
-import { TfiEmail } from "react-icons/tfi";
-import { Input } from "@/modules/shared/ui/Input/Input";
-import { RiLockPasswordLine } from "react-icons/ri";
-import { LogInAndRegisterButton } from "@/modules/shared/ui/LogInAndRegisterButton/LogInAndRegisterButton";
-import { LogInSchema } from "@/modules/schemas/LogInSchema";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import type { LogInType } from "@/modules/schemas/LogInSchema";
-import Link from "next/link";
+'use client';
+import { FcGoogle } from 'react-icons/fc';
+import { TfiEmail } from 'react-icons/tfi';
+import { Input } from '@/modules/shared/ui/Input/Input';
+import { RiLockPasswordLine } from 'react-icons/ri';
+import { LogInAndRegisterButton } from '@/modules/shared/ui/LogInAndRegisterButton/LogInAndRegisterButton';
+import { LogInSchema } from '@/modules/schemas/LogInSchema';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import type { LogInType } from '@/modules/schemas/LogInSchema';
+import Link from 'next/link';
 
 export function LogInForm() {
   const { control, handleSubmit } = useForm({
     defaultValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
     resolver: zodResolver(LogInSchema),
   });
@@ -38,14 +38,14 @@ export function LogInForm() {
           label="Email"
           placeholder="commander@ra2.arena"
           Icon={TfiEmail}
-          controllerProps={{ name: "email", control }}
+          controllerProps={{ name: 'email', control }}
         />
         <Input
           label="Password"
           placeholder="••••••••"
           type="password"
           Icon={RiLockPasswordLine}
-          controllerProps={{ name: "password", control }}
+          controllerProps={{ name: 'password', control }}
         />
       </div>
       <LogInAndRegisterButton className="mt-5" type="submit">

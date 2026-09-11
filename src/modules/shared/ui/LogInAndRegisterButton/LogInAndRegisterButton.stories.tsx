@@ -1,5 +1,5 @@
-import { StoryObj, Meta } from "@storybook/nextjs-vite";
-import { LogInAndRegisterButton } from "./LogInAndRegisterButton";
+import { StoryObj, Meta } from '@storybook/nextjs-vite';
+import { LogInAndRegisterButton } from './LogInAndRegisterButton';
 
 const meta = {
   component: LogInAndRegisterButton,
@@ -11,13 +11,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary = {
   args: {
-    children: "Log In",
+    children: 'Log In',
   },
 } satisfies Story;
 
 export const WithClickHandler = {
   args: {
-    children: "Register",
-    onClick: () => console.log("Click handled"),
+    children: 'Register',
+    onClick: () => console.log('Click handled'),
   },
 } satisfies Story;

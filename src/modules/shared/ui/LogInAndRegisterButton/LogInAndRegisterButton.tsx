@@ -1,10 +1,10 @@
-import { ReactNode, SyntheticEvent } from "react";
+import { ReactNode, SyntheticEvent } from 'react';
 
 type LogInAndRegisterButtonProps = {
   children?: ReactNode;
   onClick?: (value: SyntheticEvent) => void;
   className?: string;
-  type?: "submit" | "reset" | "button";
+  type?: 'submit' | 'reset' | 'button';
 };
 
 export function LogInAndRegisterButton({

@@ -1,8 +1,8 @@
-import { LogInForm } from "@/modules/auth/components/LogInForm/LogInForm";
-import { CiLogin } from "react-icons/ci";
-import { IconBadge } from "@/modules/shared/ui/IconBadge/IconBadge";
-import { TfiCup } from "react-icons/tfi";
-import Link from "next/link";
+import { LogInForm } from '@/modules/auth/components/LogInForm/LogInForm';
+import { CiLogin } from 'react-icons/ci';
+import { IconBadge } from '@/modules/shared/ui/IconBadge/IconBadge';
+import { TfiCup } from 'react-icons/tfi';
+import Link from 'next/link';
 
 export default function LogInPage() {
   return (
@@ -22,8 +22,8 @@ export default function LogInPage() {
         <LogInForm />
       </div>
       <p className="text-center text-sm text-slate-500 mt-6">
-        {" "}
-        Don't have an account?{" "}
+        {' '}
+        Don't have an account?{' '}
         <Link
           href="/registration/"
           className="text-red-400 font-medium hover:text-red-300 hover:underline"

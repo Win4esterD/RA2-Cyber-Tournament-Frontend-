@@ -1,8 +1,8 @@
-import { RegistrationForm } from "@/modules/auth/components/RegistrationForm/RegistrationForm";
-import { IconBadge } from "@/modules/shared/ui/IconBadge/IconBadge";
-import { FiUserPlus } from "react-icons/fi";
-import { TfiCup } from "react-icons/tfi";
-import Link from "next/link";
+import { RegistrationForm } from '@/modules/auth/components/RegistrationForm/RegistrationForm';
+import { IconBadge } from '@/modules/shared/ui/IconBadge/IconBadge';
+import { FiUserPlus } from 'react-icons/fi';
+import { TfiCup } from 'react-icons/tfi';
+import Link from 'next/link';
 
 export default function RegistrationPage() {
   return (
@@ -17,15 +17,13 @@ export default function RegistrationPage() {
       <p className="text-2xl font-bold tracking-tight mt-1.5 max-xs:text-lg">
         Create account
       </p>
-      <p className="text-slate-500 text-sm mt-1.5">
-        Join the arena of commanders
-      </p>
+      <p className="text-slate-500 text-sm mt-1.5">Join the arena of commanders</p>
       <div className="mt-8">
         <RegistrationForm />
       </div>
       <p className="text-center text-sm text-slate-500 mt-6">
-        {" "}
-        Already have an account?{" "}
+        {' '}
+        Already have an account?{' '}
         <Link
           href="/login/"
           className="text-red-400 font-medium hover:text-red-300 hover:underline"

@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* * {
   margin: 0;
@@ -6,6 +6,6 @@
 } */
 
 @theme {
-  --color-white-text-primary: #F1F5F9;
+  --color-white-text-primary: #f1f5f9;
   --breakpoint-xs: 30rem;
 }

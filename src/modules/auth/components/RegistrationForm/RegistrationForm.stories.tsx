@@ -1,5 +1,5 @@
-import { StoryObj, Meta } from "@storybook/nextjs-vite";
-import { RegistrationForm } from "./RegistrationForm";
+import { StoryObj, Meta } from '@storybook/nextjs-vite';
+import { RegistrationForm } from './RegistrationForm';
 
 const meta = {
   component: RegistrationForm,
@@ -22,11 +22,10 @@ export const Primary = {} satisfies Story;
 
 export const ErrorState = {
   play: async ({ canvas, userEvent }) => {
-    await userEvent.type(canvas.getByLabelText("Email"), "email@provider");
+    await userEvent.type(canvas.getByLabelText('Email'), 'email@provider');
 
-    await userEvent.type(canvas.getByLabelText("Password"), "a-r");
+    await userEvent.type(canvas.getByLabelText('Password'), 'a-r');
 
-    await userEvent.click(canvas.getByText("Register"));
-
+    await userEvent.click(canvas.getByText('Register'));
   },
 } satisfies Story;

@@ -1,22 +1,22 @@
-"use client";
-import { FcGoogle } from "react-icons/fc";
-import { Input } from "@/modules/shared/ui/Input/Input";
-import { LogInAndRegisterButton } from "@/modules/shared/ui/LogInAndRegisterButton/LogInAndRegisterButton";
-import { TfiEmail } from "react-icons/tfi";
-import { RiLockPasswordLine } from "react-icons/ri";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+'use client';
+import { FcGoogle } from 'react-icons/fc';
+import { Input } from '@/modules/shared/ui/Input/Input';
+import { LogInAndRegisterButton } from '@/modules/shared/ui/LogInAndRegisterButton/LogInAndRegisterButton';
+import { TfiEmail } from 'react-icons/tfi';
+import { RiLockPasswordLine } from 'react-icons/ri';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   RegistrationSchema,
   RegistrationType,
-} from "@/modules/schemas/RegistrationSchema";
+} from '@/modules/schemas/RegistrationSchema';
 
 export function RegistrationForm() {
   const { control, handleSubmit } = useForm({
     defaultValues: {
-      email: "",
-      password: "",
-      repeatPassword: "",
+      email: '',
+      password: '',
+      repeatPassword: '',
     },
     resolver: zodResolver(RegistrationSchema),
   });
@@ -40,21 +40,21 @@ export function RegistrationForm() {
           label="Email"
           placeholder="commander@ra2.arena"
           Icon={TfiEmail}
-          controllerProps={{ name: "email", control }}
+          controllerProps={{ name: 'email', control }}
         />
         <Input
           label="Password"
           placeholder="••••••••"
           type="password"
           Icon={RiLockPasswordLine}
-          controllerProps={{ name: "password", control }}
+          controllerProps={{ name: 'password', control }}
         />
         <Input
           label="Repeat pasword"
           placeholder="••••••••"
           type="password"
           Icon={RiLockPasswordLine}
-          controllerProps={{ name: "repeatPassword", control }}
+          controllerProps={{ name: 'repeatPassword', control }}
         />
       </div>
       <LogInAndRegisterButton className="mt-5" type="submit">

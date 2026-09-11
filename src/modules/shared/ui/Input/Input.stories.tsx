@@ -1,7 +1,7 @@
-import { StoryObj, Meta } from "@storybook/nextjs-vite";
-import { Input } from "./Input";
-import { TfiEmail } from "react-icons/tfi";
-import { RiLockPasswordLine } from "react-icons/ri";
+import { StoryObj, Meta } from '@storybook/nextjs-vite';
+import { Input } from './Input';
+import { TfiEmail } from 'react-icons/tfi';
+import { RiLockPasswordLine } from 'react-icons/ri';
 
 const meta = {
   component: Input,
@@ -13,28 +13,28 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary = {
   args: {
-    label: "Primary",
-    placeholder: "myemail@yandex.ru",
+    label: 'Primary',
+    placeholder: 'myemail@yandex.ru',
     Icon: TfiEmail,
-    controllerProps: { name: "" },
+    controllerProps: { name: '' },
   },
 } satisfies Story;
 
 export const WithValue = {
   args: {
-    label: "With value",
-    placeholder: "myemail@yandex.ru",
+    label: 'With value',
+    placeholder: 'myemail@yandex.ru',
     Icon: TfiEmail,
-    value: "some-email@mail.ru",
-    controllerProps: { name: "" },
+    value: 'some-email@mail.ru',
+    controllerProps: { name: '' },
   },
 } satisfies Story;
 
 export const TypePassword = {
   args: {
-    label: "Password type",
-    type: "password",
+    label: 'Password type',
+    type: 'password',
     Icon: RiLockPasswordLine,
-    controllerProps: { name: "" },
+    controllerProps: { name: '' },
   },
 } satisfies Story;

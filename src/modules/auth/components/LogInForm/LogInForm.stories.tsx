@@ -1,5 +1,5 @@
-import { StoryObj, Meta } from "@storybook/nextjs-vite";
-import { LogInForm } from "./LogInForm";
+import { StoryObj, Meta } from '@storybook/nextjs-vite';
+import { LogInForm } from './LogInForm';
 
 const meta = {
   component: LogInForm,
@@ -20,14 +20,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary = {} satisfies Story;
 
-
 export const ErrorState = {
   play: async ({ canvas, userEvent }) => {
-    await userEvent.type(canvas.getByLabelText("Email"), "email@provider");
+    await userEvent.type(canvas.getByLabelText('Email'), 'email@provider');
 
-    await userEvent.type(canvas.getByLabelText("Password"), "a-r");
+    await userEvent.type(canvas.getByLabelText('Password'), 'a-r');
 
-    await userEvent.click(canvas.getByText("Log In"));
-
+    await userEvent.click(canvas.getByText('Log In'));
   },
 } satisfies Story;
