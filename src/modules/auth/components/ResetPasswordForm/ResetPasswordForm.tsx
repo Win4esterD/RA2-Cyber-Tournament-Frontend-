@@ -2,7 +2,7 @@ import { Input } from '@/modules/shared/ui/Input/Input';
 import { ResetPasswordSchema } from '../../schemas/ResetPasswordSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ResetPasswordType } from '../../schemas/ResetPasswordSchema';
+import type { ResetPasswordType } from '../../schemas/ResetPasswordSchema';
 import { TfiEmail } from 'react-icons/tfi';
 import { LogInAndRegisterButton } from '@/modules/shared/ui/LogInAndRegisterButton/LogInAndRegisterButton';
 

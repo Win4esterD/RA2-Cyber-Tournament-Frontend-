@@ -1,5 +1,6 @@
-import { IconType } from 'react-icons';
-import { useController, UseControllerProps, FieldValues } from 'react-hook-form';
+import type { IconType } from 'react-icons';
+import type { UseControllerProps, FieldValues } from 'react-hook-form';
+import { useController } from 'react-hook-form';
 
 type InputProps<T extends FieldValues> = {
   Icon?: IconType;

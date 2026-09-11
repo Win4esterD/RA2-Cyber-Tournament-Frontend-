@@ -1,4 +1,4 @@
-import { StoryObj, Meta } from '@storybook/nextjs-vite';
+import type { StoryObj, Meta } from '@storybook/nextjs-vite';
 import { IconBadge } from './IconBadge';
 import { CiLogin } from 'react-icons/ci';
 

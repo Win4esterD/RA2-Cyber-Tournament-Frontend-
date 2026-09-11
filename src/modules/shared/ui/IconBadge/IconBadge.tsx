@@ -1,5 +1,4 @@
-import { ReactNode } from 'react';
-import { IconType } from 'react-icons';
+import type { ReactNode } from 'react';
 
 type IconBadgeProps = {
   Icon?: ReactNode;

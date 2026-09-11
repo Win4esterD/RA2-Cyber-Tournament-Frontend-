@@ -23,7 +23,7 @@ export default function LogInPage() {
       </div>
       <p className="text-center text-sm text-slate-500 mt-6">
         {' '}
-        Don't have an account?{' '}
+        Don`&apos;t have an account?{' '}
         <Link
           href="/registration/"
           className="text-red-400 font-medium hover:text-red-300 hover:underline"

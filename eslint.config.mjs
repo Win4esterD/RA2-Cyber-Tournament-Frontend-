@@ -17,6 +17,18 @@ const eslintConfig = defineConfig([
     'next-env.d.ts',
   ]),
   ...storybook.configs['flat/recommended'],
+  {
+    rules: {
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        {
+          prefer: 'type-imports',
+          fixStyle: 'separate-type-imports',
+          disallowTypeAnnotations: true,
+        },
+      ],
+    },
+  },
 ]);
 
 export default eslintConfig;

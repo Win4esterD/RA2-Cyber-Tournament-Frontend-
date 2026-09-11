@@ -1,4 +1,4 @@
-import { ReactNode, SyntheticEvent } from 'react';
+import type { ReactNode, SyntheticEvent } from 'react';
 
 type LogInAndRegisterButtonProps = {
   children?: ReactNode;
