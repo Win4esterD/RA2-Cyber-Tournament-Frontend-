@@ -1,0 +1,44 @@
+# Папки зависимостей и сборки
+node_modules/
+dist/
+build/
+.next/
+.nuxt/
+out/
+
+# Системные файлы и папки редакторов
+.idea/
+.vscode/
+.sass-cache/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Логи и кэш
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.eslintcache
+.stylelintcache
+
+# Файлы окружения и конфигурации, которые не стоит трогать
+.env
+.env.*
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Медиафайлы (изображения, шрифты)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+*.woff
+*.woff2
+*.eot
+*.ttf
