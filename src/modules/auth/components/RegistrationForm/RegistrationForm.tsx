@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { RegistrationSchema } from '@/modules/auth/schemas/RegistrationSchema';
 import type { RegistrationType } from '@/modules/auth/schemas/RegistrationSchema';
+import { authService } from '../../services/authService';
 
 export function RegistrationForm() {
   const { control, handleSubmit } = useForm({
@@ -19,7 +20,14 @@ export function RegistrationForm() {
     resolver: zodResolver(RegistrationSchema),
   });
 
-  const onSubmit = (data: RegistrationType) => console.log(data);
+  const onSubmit = (data: RegistrationType) => {
+    authService.register({
+      email: data.email,
+      password: data.password,
+    });
+  };
+
+  console.log(process.env.NEXT_PUBLIC_BASE_URL);
 
   return (
     <form
