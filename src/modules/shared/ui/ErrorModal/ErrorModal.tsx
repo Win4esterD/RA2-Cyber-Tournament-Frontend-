@@ -3,14 +3,14 @@ import { IoCloseSharp } from 'react-icons/io5';
 
 type ErrorModalProps = {
   error: ErrorResponseType;
-  closeHandler: (value: boolean) => void;
+  closeHandler: () => void;
 };
 
 export function ErrorModal({ error, closeHandler }: ErrorModalProps) {
   return (
     <div className="w-lg h-2xl max-w-full bg-[#0d1219] rounded-2xl border border-[#1e2733]">
       <IoCloseSharp
-        onClick={() => closeHandler(false)}
+        onClick={closeHandler}
         className="text-red-700 size-7 cursor-pointer absolute right-3 top-3"
       />
       <div className="p-8 shadow-2xl">

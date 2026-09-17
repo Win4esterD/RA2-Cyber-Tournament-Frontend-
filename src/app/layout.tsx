@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { TanStackProvider } from '@/providers/TansTackProvider';
+import { ErrorLayout } from '@/modules/shared/layouts/ErrorLayout';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -25,7 +26,9 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col text-white-text-primary bg-[#0a0e14]">
-        <TanStackProvider>{children}</TanStackProvider>
+        <ErrorLayout>
+          <TanStackProvider>{children}</TanStackProvider>
+        </ErrorLayout>
       </body>
     </html>
   );

@@ -54,7 +54,7 @@ export const WithCloseHandler = {
             Open window
           </LogInAndRegisterButton>
         )}
-        {isOpen && <ErrorModal {...args} closeHandler={setIsOpen} />}
+        {isOpen && <ErrorModal {...args} closeHandler={() => setIsOpen(false)} />}
       </div>
     );
   },

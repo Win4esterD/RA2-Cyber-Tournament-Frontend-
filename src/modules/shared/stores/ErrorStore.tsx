@@ -5,6 +5,7 @@ import type { ErrorResponseType } from '../global_types/ErrorResponseType';
 type ErrorStoreType = {
   error: ErrorResponseType | null;
   setError: (error: ErrorResponseType) => void;
+  clearError: () => void;
 };
 
 export const useErrorStore = create<ErrorStoreType>()(
