@@ -9,15 +9,12 @@ type ErrorStoreType = {
 
 export const useErrorStore = create<ErrorStoreType>()(
   devtools((set) => ({
-    // bears: 0,
-    // addBear: () =>
-    //   set((state) => ({ bears: state.bears + 1 }), undefined, 'jungle/addBear'),
-    // fishes: 0,
-    // addFish: () =>
-    //   set((state) => ({ fishes: state.fishes + 1 }), undefined, 'jungle/addFish'),
     error: null,
     setError: (error: ErrorResponseType) => {
-      set(() => ({ error }), undefined, 'error/setError');
+      set(() => ({ error }), false, 'error/setError');
+    },
+    clearError: () => {
+      set(() => ({ error: null }), false, 'error/clearError');
     },
   })),
 );
