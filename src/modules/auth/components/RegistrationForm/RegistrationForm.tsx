@@ -10,7 +10,7 @@ import { RegistrationSchema } from '@/modules/auth/schemas/RegistrationSchema';
 import type { RegistrationType } from '@/modules/auth/schemas/RegistrationSchema';
 import { authService } from '../../services/authService';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import type { ErrorResponseType } from '@/global_types/ErrorResponseType';
+import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorResponseType';
 
 export function RegistrationForm() {
   const { control, handleSubmit, setError } = useForm({

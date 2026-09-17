@@ -1,4 +1,4 @@
-import type { UserRoleTypeEnum } from '@/global_types/UserTypes';
+import type { UserRoleTypeEnum } from '@/modules/shared/global_types/UserTypes';
 
 export type UserCreatedResponseType = {
   email: string;
