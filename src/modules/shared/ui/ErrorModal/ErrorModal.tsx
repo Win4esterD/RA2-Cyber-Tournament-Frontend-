@@ -8,7 +8,7 @@ type ErrorModalProps = {
 
 export function ErrorModal({ error, closeHandler }: ErrorModalProps) {
   return (
-    <div className="w-lg h-2xl max-w-full absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-[#0d1219] rounded-2xl border border-[#1e2733]">
+    <div className="w-lg h-2xl max-w-full bg-[#0d1219] rounded-2xl border border-[#1e2733]">
       <IoCloseSharp
         onClick={() => closeHandler(false)}
         className="text-red-700 size-7 cursor-pointer absolute right-3 top-3"
