@@ -49,8 +49,6 @@ export function RegistrationForm() {
     },
   });
 
-  const loginMutation = useMutation({ mutationFn: authService.logIn });
-
   const onSubmit = async (data: RegistrationType) => {
     const { email, password } = data;
     try {
