@@ -8,7 +8,7 @@ const onSuccess = function (response: AxiosResponse) {
 };
 
 const onError = function (error: AxiosError) {
-  throw Promise.reject(error.response?.data ?? error);
+  return Promise.reject(error.response?.data ?? error);
 };
 
 export const apiClient = axios.create({

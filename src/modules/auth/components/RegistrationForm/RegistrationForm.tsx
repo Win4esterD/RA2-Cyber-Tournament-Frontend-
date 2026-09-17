@@ -9,9 +9,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { RegistrationSchema } from '@/modules/auth/schemas/RegistrationSchema';
 import type { RegistrationType } from '@/modules/auth/schemas/RegistrationSchema';
 import { authService } from '../../services/authService';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import type { ErrorResponseType } from '@/global_types/ErrorResponseType';
 
 export function RegistrationForm() {
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit, setError } = useForm({
     defaultValues: {
       email: '',
       password: '',
@@ -20,14 +22,50 @@ export function RegistrationForm() {
     resolver: zodResolver(RegistrationSchema),
   });
 
-  const onSubmit = (data: RegistrationType) => {
-    authService.register({
-      email: data.email,
-      password: data.password,
-    });
-  };
+  const queryClient = useQueryClient();
 
-  console.log(process.env.NEXT_PUBLIC_BASE_URL);
+  const authMutation = useMutation({
+    mutationFn: async ({ email, password }: Omit<RegistrationType, 'repeatPassword'>) => {
+      const registrationResponse = await authService.register({ email, password });
+      if (registrationResponse.status === 201) {
+        const loginResponse = await authService.logIn({ email, password });
+        return loginResponse.data;
+      }
+    },
+    onError(error: ErrorResponseType) {
+      if (error.message === 'User exists') {
+        setError('email', {
+          type: 'server',
+          message: error.message,
+        });
+      }
+
+      if (error.message === 'Password must be at least 8 characters long') {
+        setError('password', {
+          type: 'server',
+          message: error.message,
+        });
+      }
+    },
+  });
+
+  const loginMutation = useMutation({ mutationFn: authService.logIn });
+
+  const onSubmit = async (data: RegistrationType) => {
+    const { email, password } = data;
+    try {
+      const authResponse = await authMutation.mutateAsync({ email, password });
+      const token = authResponse?.access_token;
+
+      if (token) {
+        localStorage.setItem('Ra2Arena:token', token);
+        queryClient.setQueryData(['auth', 'token'], token);
+        queryClient.setQueryData(['auth', 'user'], data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <form

@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { LogInType } from '@/modules/auth/schemas/LogInSchema';
 import Link from 'next/link';
+import { useMutation } from '@tanstack/react-query';
 
 export function LogInForm() {
   const { control, handleSubmit } = useForm({

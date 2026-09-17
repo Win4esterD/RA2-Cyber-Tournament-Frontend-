@@ -1,8 +1,22 @@
 import { apiClient } from '@/global variables/apiClient';
+import type {
+  UserCreatedResponseType,
+  RegistrationAndLogInParamsType,
+  AccessTokenResponseType,
+} from '../types/AuthTypes';
 
 export const authService = {
-  async register({ email, password }: { email: string; password: string }) {
-    const response = apiClient.post('/auth/signup', {
+  async register({ email, password }: RegistrationAndLogInParamsType) {
+    const response = await apiClient.post<UserCreatedResponseType>('/auth/signup', {
+      email,
+      password,
+    });
+
+    return response;
+  },
+
+  async logIn({ email, password }: RegistrationAndLogInParamsType) {
+    const response = await apiClient.post<AccessTokenResponseType>('/auth/login', {
       email,
       password,
     });
