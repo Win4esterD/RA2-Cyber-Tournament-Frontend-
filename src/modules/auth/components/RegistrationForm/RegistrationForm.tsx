@@ -33,6 +33,8 @@ export function RegistrationForm() {
       if (registrationResponse.status === 201) {
         const loginResponse = await authService.logIn({ email, password });
         return loginResponse.data;
+      } else {
+        throw registrationResponse;
       }
     },
     onSuccess(data) {

@@ -10,9 +10,13 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import type { LogInType } from '@/modules/auth/schemas/LogInSchema';
 import Link from 'next/link';
 import { useMutation } from '@tanstack/react-query';
+import { authService } from '../../services/authService';
+import { useErrorStore } from '@/modules/shared/stores/ErrorStore';
+import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorResponseType';
+import { useRouter } from 'next/navigation';
 
 export function LogInForm() {
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit, setError } = useForm({
     defaultValues: {
       email: '',
       password: '',
@@ -20,7 +24,44 @@ export function LogInForm() {
     resolver: zodResolver(LogInSchema),
   });
 
-  const onSubmit = (data: LogInType) => console.log(data);
+  const router = useRouter();
+
+  const setGlobalError = useErrorStore((state) => state.setError);
+
+  const logInMutation = useMutation({
+    mutationFn: async (credentials: LogInType) => {
+      const loginResponse = await authService.logIn(credentials);
+      const token = loginResponse.data.access_token;
+
+      const validateResponse = await authService.validateToken(token);
+      if (!validateResponse.data.email) {
+        throw validateResponse;
+      }
+
+      return { token };
+    },
+    onSuccess: (data) => {
+      localStorage.setItem('Ra2Arena:token', data.token);
+    },
+    onError: (error: ErrorResponseType) => {
+      if (error.message === "The user wasn't found") {
+        setError('email', {
+          message: error.message,
+        });
+      } else if (error.message === 'Invalid password') {
+        setError('password', {
+          message: error.message,
+        });
+      } else {
+        setGlobalError(error);
+      }
+    },
+  });
+
+  const onSubmit = (data: LogInType) => {
+    logInMutation.mutate(data);
+    router.push('/');
+  };
 
   return (
     <form

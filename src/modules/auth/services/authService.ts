@@ -4,6 +4,7 @@ import type {
   RegistrationAndLogInParamsType,
   AccessTokenResponseType,
 } from '../types/AuthTypes';
+import type { UserType } from '@/modules/shared/global_types/UserTypes';
 
 export const authService = {
   async register({ email, password }: RegistrationAndLogInParamsType) {
@@ -21,6 +22,11 @@ export const authService = {
       password,
     });
 
+    return response;
+  },
+
+  async validateToken(token: string) {
+    const response = await apiClient.post<UserType>('/auth/validate-token', { token });
     return response;
   },
 };
