@@ -42,6 +42,7 @@ export function LogInForm() {
     },
     onSuccess: (data) => {
       localStorage.setItem('Ra2Arena:token', data.token);
+      router.push('/');
     },
     onError: (error: ErrorResponseType) => {
       if (error.message === "The user wasn't found") {
@@ -60,7 +61,6 @@ export function LogInForm() {
 
   const onSubmit = (data: LogInType) => {
     logInMutation.mutate(data);
-    router.push('/');
   };
 
   return (
