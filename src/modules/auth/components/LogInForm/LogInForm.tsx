@@ -51,10 +51,12 @@ export function LogInForm() {
     onError: (error: ErrorResponseType) => {
       if (error.message === "The user wasn't found") {
         setError('email', {
+          type: 'server',
           message: error.message,
         });
       } else if (error.message === 'Invalid password') {
         setError('password', {
+          type: 'server',
           message: error.message,
         });
       } else {
