@@ -8,9 +8,13 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { RegistrationSchema } from '@/modules/auth/schemas/RegistrationSchema';
 import type { RegistrationType } from '@/modules/auth/schemas/RegistrationSchema';
+import { authService } from '../../services/authService';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorResponseType';
+import { useErrorStore } from '@/modules/shared/stores/ErrorStore';
 
 export function RegistrationForm() {
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit, setError } = useForm({
     defaultValues: {
       email: '',
       password: '',
@@ -19,7 +23,48 @@ export function RegistrationForm() {
     resolver: zodResolver(RegistrationSchema),
   });
 
-  const onSubmit = (data: RegistrationType) => console.log(data);
+  const queryClient = useQueryClient();
+
+  const setGlobalError = useErrorStore((state) => state.setError);
+
+  const authMutation = useMutation({
+    mutationFn: async ({ email, password }: Omit<RegistrationType, 'repeatPassword'>) => {
+      const registrationResponse = await authService.register({ email, password });
+      if (registrationResponse.status === 201) {
+        const loginResponse = await authService.logIn({ email, password });
+        return loginResponse.data;
+      } else {
+        throw registrationResponse;
+      }
+    },
+    onSuccess(data) {
+      const token = data?.access_token;
+      if (token) {
+        localStorage.setItem('Ra2Arena:token', token);
+        queryClient.setQueryData(['auth', 'token'], token);
+      }
+    },
+    onError(error: ErrorResponseType) {
+      if (error.message === 'User exists') {
+        setError('email', {
+          type: 'server',
+          message: error.message,
+        });
+      } else if (error.message === 'Password must be at least 8 characters long') {
+        setError('password', {
+          type: 'server',
+          message: error.message,
+        });
+      } else {
+        setGlobalError(error);
+      }
+    },
+  });
+
+  const onSubmit = async (data: RegistrationType) => {
+    const { email, password } = data;
+    authMutation.mutate({ email, password });
+  };
 
   return (
     <form
