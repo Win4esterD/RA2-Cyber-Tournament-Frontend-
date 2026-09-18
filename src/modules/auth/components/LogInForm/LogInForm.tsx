@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { LogInType } from '@/modules/auth/schemas/LogInSchema';
 import Link from 'next/link';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { authService } from '../../services/authService';
 import { useErrorStore } from '@/modules/shared/stores/ErrorStore';
 import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorResponseType';
@@ -28,6 +28,8 @@ export function LogInForm() {
 
   const setGlobalError = useErrorStore((state) => state.setError);
 
+  const queryClient = useQueryClient();
+
   const logInMutation = useMutation({
     mutationFn: async (credentials: LogInType) => {
       const loginResponse = await authService.logIn(credentials);
@@ -37,6 +39,8 @@ export function LogInForm() {
       if (!validateResponse.data.email) {
         throw validateResponse;
       }
+
+      queryClient.setQueryData(['auth', 'user'], validateResponse.data);
 
       return { token };
     },
