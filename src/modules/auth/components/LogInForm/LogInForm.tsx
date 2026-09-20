@@ -14,6 +14,7 @@ import { authService } from '../../services/authService';
 import { useErrorStore } from '@/modules/shared/stores/ErrorStore';
 import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorResponseType';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 export function LogInForm() {
   const { control, handleSubmit, setError } = useForm({
@@ -23,6 +24,8 @@ export function LogInForm() {
     },
     resolver: zodResolver(LogInSchema),
   });
+
+  const t = useTranslations('Auth.login');
 
   const router = useRouter();
 
@@ -76,20 +79,20 @@ export function LogInForm() {
     >
       <button className="w-full flex items-center justify-center gap-2 bg-[#0a0e14] border border-[#1e2733] hover:border-slate-600 text-slate-200 px-4 py-3 rounded-lg text-sm font-medium transition-colors mb-6 cursor-pointer">
         <FcGoogle />
-        <span className="text-white-text-primary">Log In via Google</span>
+        <span className="text-white-text-primary">{t('googleButton')}</span>
       </button>
       <div className="relative flex justify-center text-[10px] uppercase tracking-widest">
         <span className="bg-[#0d1219] px-3 text-slate-600">or</span>
       </div>
       <div className="mt-4 flex flex-col gap-4">
         <Input
-          label="Email"
+          label={t('email')}
           placeholder="commander@ra2.arena"
           Icon={TfiEmail}
           controllerProps={{ name: 'email', control }}
         />
         <Input
-          label="Password"
+          label={t('password')}
           placeholder="••••••••"
           type="password"
           Icon={RiLockPasswordLine}
@@ -97,13 +100,13 @@ export function LogInForm() {
         />
       </div>
       <LogInAndRegisterButton className="mt-5" type="submit">
-        Log In
+        {t('logIn')}
       </LogInAndRegisterButton>
       <Link
-        href="/forgot-password"
+        href="/reset-password"
         className="text-xs text-slate-500 hover:text-red-400 transition-colors hover:cursor-pointer inline-block mt-5"
       >
-        Forgot password?
+        {t('forgotPasswordLink')}
       </Link>
     </form>
   );

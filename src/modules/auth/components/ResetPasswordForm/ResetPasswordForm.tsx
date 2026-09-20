@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import type { ResetPasswordType } from '../../schemas/ResetPasswordSchema';
 import { TfiEmail } from 'react-icons/tfi';
 import { LogInAndRegisterButton } from '@/modules/shared/ui/LogInAndRegisterButton/LogInAndRegisterButton';
+import { useTranslations } from 'next-intl';
 
 export function ResetPasswordForm() {
   const { control, handleSubmit } = useForm({
@@ -17,6 +18,7 @@ export function ResetPasswordForm() {
 
   const onSubmit = (data: ResetPasswordType) => console.log(data);
 
+  const t = useTranslations('Auth.resetPassword');
   return (
     <form
       className="w-md max-w-full bg-[#0d1219] rounded-2xl border border-[#1e2733] p-8 shadow-2xl max-xs:w-full"
@@ -24,12 +26,12 @@ export function ResetPasswordForm() {
     >
       <Input
         controllerProps={{ name: 'email', control }}
-        label="Email address"
+        label={t('email')}
         Icon={TfiEmail}
         placeholder="you.example.com"
       />
       <LogInAndRegisterButton type="submit" className="mt-4">
-        Send reset link
+        {t('sendResetLink')}
       </LogInAndRegisterButton>
     </form>
   );

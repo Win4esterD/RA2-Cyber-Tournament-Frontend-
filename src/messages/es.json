@@ -6,9 +6,9 @@
       "googleButton": "Iniciar sesión con Google",
       "email": "Correo electrónico",
       "password": "Contraseña",
-      "submit": "Iniciar sesión",
+      "logIn": "Iniciar sesión",
       "noAccount": "¿No tienes una cuenta?",
-      "registerLink": "Registrarse"
+      "forgotPasswordLink": "¿Olvidaste tu contraseña?"
     },
     "register": {
       "title": "Crear cuenta",
@@ -25,7 +25,7 @@
       "title": "Restablecer contraseña",
       "subtitle": "Te enviaremos un enlace de restablecimiento",
       "email": "Dirección de correo electrónico",
-      "submit": "Enviar enlace de restablecimiento"
+      "sendResetLink": "Enviar enlace de restablecimiento"
     },
     "errors": {
       "userExists": "El usuario ya existe",
