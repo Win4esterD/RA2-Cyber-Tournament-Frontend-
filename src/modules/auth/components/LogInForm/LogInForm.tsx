@@ -26,6 +26,7 @@ export function LogInForm() {
   });
 
   const t = useTranslations('Auth.login');
+  const errorDict = useTranslations('Auth.errors');
 
   const router = useRouter();
 
@@ -55,12 +56,12 @@ export function LogInForm() {
       if (error.message === "The user wasn't found") {
         setError('email', {
           type: 'server',
-          message: error.message,
+          message: errorDict('userNotFound'),
         });
       } else if (error.message === 'Invalid password') {
         setError('password', {
           type: 'server',
-          message: error.message,
+          message: errorDict('invalidPassword'),
         });
       } else {
         setGlobalError(error);
@@ -82,7 +83,7 @@ export function LogInForm() {
         <span className="text-white-text-primary">{t('googleButton')}</span>
       </button>
       <div className="relative flex justify-center text-[10px] uppercase tracking-widest">
-        <span className="bg-[#0d1219] px-3 text-slate-600">or</span>
+        <span className="bg-[#0d1219] px-3 text-slate-600">{t('or')}</span>
       </div>
       <div className="mt-4 flex flex-col gap-4">
         <Input

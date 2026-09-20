@@ -79,7 +79,7 @@ export function RegistrationForm() {
         <span className="text-white-text-primary">{t('googleButton')}</span>
       </button>
       <div className="relative flex justify-center text-[10px] uppercase tracking-widest">
-        <span className="bg-[#0d1219] px-3 text-slate-600">or</span>
+        <span className="bg-[#0d1219] px-3 text-slate-600">{t('or')}</span>
       </div>
       <div className="mt-4 flex flex-col gap-4">
         <Input
