@@ -1,20 +1,26 @@
 import * as z from 'zod';
+import { useTranslations } from 'next-intl';
 
-export const RegistrationSchema = z
-  .object({
-    email: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .pipe(z.string().email({ message: 'Incorrect email' })), // Обратите внимание на z.string().email() внутри pipe
+export function useRegistrationSchema() {
+  const t = useTranslations('errors');
+  return z
+    .object({
+      email: z
+        .string()
+        .trim()
+        .toLowerCase()
+        .pipe(z.string().email({ message: t('incorrectEmail') })),
 
-    password: z.string().min(8, { message: 'Password must be not less than 8 symbols' }),
+      password: z
+        .string()
+        .min(8, { message: t('passwordTooShort', { min: 8 }) }),
 
-    repeatPassword: z.string(),
-  })
-  .refine((data) => data.password === data.repeatPassword, {
-    message: "Passwords don't match",
-    path: ['repeatPassword'],
-  });
+      repeatPassword: z.string(),
+    })
+    .refine((data) => data.password === data.repeatPassword, {
+      message: t('passwordsDontMatch'),
+      path: ['repeatPassword'],
+    });
+}
 
-export type RegistrationType = z.infer<typeof RegistrationSchema>;
+export type RegistrationType = z.infer<ReturnType<typeof useRegistrationSchema>>;

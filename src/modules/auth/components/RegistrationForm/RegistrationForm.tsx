@@ -6,7 +6,7 @@ import { TfiEmail } from 'react-icons/tfi';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { RegistrationSchema } from '@/modules/auth/schemas/RegistrationSchema';
+import { useRegistrationSchema } from '@/modules/auth/schemas/RegistrationSchema';
 import type { RegistrationType } from '@/modules/auth/schemas/RegistrationSchema';
 import { authService } from '../../services/authService';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -15,13 +15,14 @@ import { useErrorStore } from '@/modules/shared/stores/ErrorStore';
 import { useTranslations } from 'next-intl';
 
 export function RegistrationForm() {
+  const registrationSchema = useRegistrationSchema();
   const { control, handleSubmit, setError } = useForm({
     defaultValues: {
       email: '',
       password: '',
       repeatPassword: '',
     },
-    resolver: zodResolver(RegistrationSchema),
+    resolver: zodResolver(registrationSchema),
   });
 
   const t = useTranslations('Auth.register');

@@ -1,6 +1,6 @@
 'use client';
 import { Input } from '@/modules/shared/ui/Input/Input';
-import { ResetPasswordSchema } from '../../schemas/ResetPasswordSchema';
+import { useResetPasswordSchema } from '../../schemas/ResetPasswordSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { ResetPasswordType } from '../../schemas/ResetPasswordSchema';
@@ -9,11 +9,12 @@ import { LogInAndRegisterButton } from '@/modules/shared/ui/LogInAndRegisterButt
 import { useTranslations } from 'next-intl';
 
 export function ResetPasswordForm() {
+  const resetPasswordSchema = useResetPasswordSchema();
   const { control, handleSubmit } = useForm({
     defaultValues: {
       email: '',
     },
-    resolver: zodResolver(ResetPasswordSchema),
+    resolver: zodResolver(resetPasswordSchema),
   });
 
   const onSubmit = (data: ResetPasswordType) => console.log(data);

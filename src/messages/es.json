@@ -28,12 +28,14 @@
       "subtitle": "Te enviaremos un enlace de restablecimiento",
       "email": "Dirección de correo electrónico",
       "sendResetLink": "Enviar enlace de restablecimiento"
-    },
-    "errors": {
-      "userExists": "El usuario ya existe",
-      "passwordTooShort": "La contraseña debe tener al menos 8 caracteres",
-      "userNotFound": "No se encontró el usuario",
-      "invalidPassword": "Contraseña inválida"
     }
+  },
+  "errors": {
+    "userExists": "El usuario ya existe",
+    "passwordTooShort": "La contraseña debe tener al menos {min} caracteres",
+    "userNotFound": "No se encontró el usuario",
+    "invalidPassword": "Contraseña inválida",
+    "incorrectEmail": "Correo electrónico incorrecto",
+    "passwordsDontMatch": "Las contraseñas no coinciden"
   }
 }

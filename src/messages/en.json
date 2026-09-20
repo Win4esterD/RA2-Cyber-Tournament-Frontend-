@@ -28,12 +28,14 @@
       "subtitle": "We will send you reset link",
       "email": "Email address",
       "sendResetLink": "Send reset link"
-    },
-    "errors": {
-      "userExists": "User exists",
-      "passwordTooShort": "Password must be at least 8 characters long",
-      "userNotFound": "The user wasn't found",
-      "invalidPassword": "Invalid password"
     }
+  },
+  "errors": {
+    "userExists": "User exists",
+    "passwordTooShort": "Password must be at least {min} characters long",
+    "userNotFound": "The user wasn't found",
+    "invalidPassword": "Invalid password",
+    "incorrectEmail": "Incorrect email",
+    "passwordsDontMatch": "Passwords don't match"
   }
 }

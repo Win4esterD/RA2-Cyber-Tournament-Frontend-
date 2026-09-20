@@ -4,7 +4,7 @@ import { TfiEmail } from 'react-icons/tfi';
 import { Input } from '@/modules/shared/ui/Input/Input';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { LogInAndRegisterButton } from '@/modules/shared/ui/LogInAndRegisterButton/LogInAndRegisterButton';
-import { LogInSchema } from '@/modules/auth/schemas/LogInSchema';
+import { useLogInSchema } from '@/modules/auth/schemas/LogInSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { LogInType } from '@/modules/auth/schemas/LogInSchema';
@@ -17,6 +17,7 @@ import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
 export function LogInForm() {
+  const LogInSchema = useLogInSchema();
   const { control, handleSubmit, setError } = useForm({
     defaultValues: {
       email: '',
