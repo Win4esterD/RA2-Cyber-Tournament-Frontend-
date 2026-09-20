@@ -37,5 +37,11 @@
     "invalidPassword": "Contraseña inválida",
     "incorrectEmail": "Correo electrónico incorrecto",
     "passwordsDontMatch": "Las contraseñas no coinciden"
+  },
+  "errorModal": {
+    "errorOccured": "Ocurrió un error",
+    "message": "Mensaje",
+    "error": "Error",
+    "code": "Código"
   }
 }

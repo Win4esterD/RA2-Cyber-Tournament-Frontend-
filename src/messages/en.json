@@ -37,5 +37,11 @@
     "invalidPassword": "Invalid password",
     "incorrectEmail": "Incorrect email",
     "passwordsDontMatch": "Passwords don't match"
+  },
+  "errorModal": {
+    "errorOccured": "Error occured",
+    "message": "Message",
+    "error": "Error",
+    "code": "Code"
   }
 }

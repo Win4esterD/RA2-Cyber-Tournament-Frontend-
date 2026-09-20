@@ -37,5 +37,11 @@
     "invalidPassword": "Неверный пароль",
     "incorrectEmail": "Неверный адрес электронной почты",
     "passwordsDontMatch": "Пароли не совпадают"
+  },
+  "errorModal": {
+    "errorOccured": "Произошла ошибка",
+    "message": "Сообщение",
+    "error": "Ошибка",
+    "code": "Код"
   }
 }
