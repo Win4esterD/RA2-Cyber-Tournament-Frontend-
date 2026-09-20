@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import { TanStackProvider } from '@/providers/TansTackProvider';
-import { ErrorLayout } from '@/modules/shared/layouts/ErrorLayout';
+import { getLocale } from 'next-intl/server';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -19,16 +18,20 @@ export const metadata: Metadata = {
   description: 'The place where Red Alert 2 tournaments are held.',
 };
 
-export default function RootLayout({ children }: LayoutProps<'/'>) {
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const locale = await getLocale();
   return (
     <html
-      lang="en"
+      lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col text-white-text-primary bg-[#0a0e14]">
-        <ErrorLayout>
-          <TanStackProvider>{children}</TanStackProvider>
-        </ErrorLayout>
+        {children}
       </body>
     </html>
   );

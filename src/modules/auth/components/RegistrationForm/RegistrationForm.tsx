@@ -12,6 +12,7 @@ import { authService } from '../../services/authService';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorResponseType';
 import { useErrorStore } from '@/modules/shared/stores/ErrorStore';
+import { useTranslations } from 'next-intl';
 
 export function RegistrationForm() {
   const { control, handleSubmit, setError } = useForm({
@@ -22,6 +23,8 @@ export function RegistrationForm() {
     },
     resolver: zodResolver(RegistrationSchema),
   });
+
+  const t = useTranslations('Auth.register');
 
   const queryClient = useQueryClient();
 
@@ -73,27 +76,27 @@ export function RegistrationForm() {
     >
       <button className="w-full flex items-center justify-center gap-2 bg-[#0a0e14] border border-[#1e2733] hover:border-slate-600 text-slate-200 px-4 py-3 rounded-lg text-sm font-medium transition-colors mb-6 cursor-pointer">
         <FcGoogle />
-        <span className="text-white-text-primary">Register via Google</span>
+        <span className="text-white-text-primary">{t('googleButton')}</span>
       </button>
       <div className="relative flex justify-center text-[10px] uppercase tracking-widest">
         <span className="bg-[#0d1219] px-3 text-slate-600">or</span>
       </div>
       <div className="mt-4 flex flex-col gap-4">
         <Input
-          label="Email"
+          label={t('email')}
           placeholder="commander@ra2.arena"
           Icon={TfiEmail}
           controllerProps={{ name: 'email', control }}
         />
         <Input
-          label="Password"
+          label={t('password')}
           placeholder="••••••••"
           type="password"
           Icon={RiLockPasswordLine}
           controllerProps={{ name: 'password', control }}
         />
         <Input
-          label="Repeat pasword"
+          label={t('repeatPassword')}
           placeholder="••••••••"
           type="password"
           Icon={RiLockPasswordLine}
@@ -101,7 +104,7 @@ export function RegistrationForm() {
         />
       </div>
       <LogInAndRegisterButton className="mt-5" type="submit">
-        Register
+        {t('register')}
       </LogInAndRegisterButton>
     </form>
   );
