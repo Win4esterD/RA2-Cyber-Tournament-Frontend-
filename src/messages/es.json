@@ -1,0 +1,37 @@
+{
+  "Auth": {
+    "login": {
+      "title": "Bienvenido de nuevo comandante",
+      "subtitle": "Entra al centro de mando",
+      "googleButton": "Iniciar sesión con Google",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "submit": "Iniciar sesión",
+      "noAccount": "¿No tienes una cuenta?",
+      "registerLink": "Registrarse"
+    },
+    "register": {
+      "title": "Crear cuenta",
+      "subtitle": "Únete a la arena de comandantes",
+      "googleButton": "Registrarse con Google",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "repeatPassword": "Repetir contraseña",
+      "register": "Registrarse",
+      "hasAccount": "¿Ya tienes una cuenta?",
+      "loginLink": "Iniciar sesión"
+    },
+    "resetPassword": {
+      "title": "Restablecer contraseña",
+      "subtitle": "Te enviaremos un enlace de restablecimiento",
+      "email": "Dirección de correo electrónico",
+      "submit": "Enviar enlace de restablecimiento"
+    },
+    "errors": {
+      "userExists": "El usuario ya existe",
+      "passwordTooShort": "La contraseña debe tener al menos 8 caracteres",
+      "userNotFound": "No se encontró el usuario",
+      "invalidPassword": "Contraseña inválida"
+    }
+  }
+}

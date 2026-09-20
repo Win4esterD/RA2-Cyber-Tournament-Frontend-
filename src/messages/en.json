@@ -1,0 +1,37 @@
+{
+  "Auth": {
+    "login": {
+      "title": "Welcome back commander",
+      "subtitle": "Enter the command center",
+      "googleButton": "Log In via Google",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Log In",
+      "noAccount": "Don't have an account?",
+      "registerLink": "Register"
+    },
+    "register": {
+      "title": "Create account",
+      "subtitle": "Join the arena of commanders",
+      "googleButton": "Register via Google",
+      "email": "Email",
+      "password": "Password",
+      "repeatPassword": "Repeat password",
+      "register": "Register",
+      "hasAccount": "Already have an account?",
+      "loginLink": "Log In"
+    },
+    "resetPassword": {
+      "title": "Reset password",
+      "subtitle": "We will send you reset link",
+      "email": "Email address",
+      "submit": "Send reset link"
+    },
+    "errors": {
+      "userExists": "User exists",
+      "passwordTooShort": "Password must be at least 8 characters long",
+      "userNotFound": "The user wasn't found",
+      "invalidPassword": "Invalid password"
+    }
+  }
+}
