@@ -1,8 +1,16 @@
 import type { Preview } from '@storybook/nextjs-vite';
+import { NextIntlClientProvider } from 'next-intl';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import messages from '../src/messages/en.json';
 import '../src/app/globals.css';
+
+const queryClient = new QueryClient();
 
 const preview: Preview = {
   parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
     backgrounds: {
       options: {
         light: { name: 'Light', value: '#fff' },
@@ -24,6 +32,18 @@ const preview: Preview = {
       test: 'todo',
     },
   },
+
+  decorators: [
+    (Story) => {
+      return (
+        <QueryClientProvider client={queryClient}>
+          <NextIntlClientProvider locale="en" messages={messages}>
+            <Story />
+          </NextIntlClientProvider>
+        </QueryClientProvider>
+      );
+    },
+  ],
 };
 
 export default preview;
