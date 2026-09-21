@@ -1,12 +1,33 @@
 import type { Preview } from '@storybook/nextjs-vite';
 import { NextIntlClientProvider } from 'next-intl';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import messages from '../src/messages/en.json';
+import enMessages from '../src/messages/en.json';
+import ruMessages from '../src/messages/ru.json';
+import esMessages from '../src/messages/es.json';
 import '../src/app/globals.css';
 
 const queryClient = new QueryClient();
 
+const messages = { en: enMessages, ru: ruMessages, es: esMessages };
+
 const preview: Preview = {
+  globalTypes: {
+    locale: {
+      description: 'Internationalization locale',
+      toolbar: {
+        icon: 'globe',
+        items: [
+          { value: 'en', title: 'English' },
+          { value: 'ru', title: 'Русский' },
+          { value: 'es', title: 'Español' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
+  initialGlobals: {
+    locale: 'en',
+  },
   parameters: {
     nextjs: {
       appDirectory: true,
@@ -34,10 +55,11 @@ const preview: Preview = {
   },
 
   decorators: [
-    (Story) => {
+    (Story, { globals }) => {
+      const locale = (globals.locale as 'en' | 'ru' | 'es') ?? 'en';
       return (
         <QueryClientProvider client={queryClient}>
-          <NextIntlClientProvider locale="en" messages={messages}>
+          <NextIntlClientProvider locale={locale} messages={messages[locale]}>
             <Story />
           </NextIntlClientProvider>
         </QueryClientProvider>
