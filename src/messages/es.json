@@ -1,0 +1,47 @@
+{
+  "Auth": {
+    "login": {
+      "title": "Bienvenido de nuevo comandante",
+      "subtitle": "Entra al centro de mando",
+      "googleButton": "Iniciar sesión con Google",
+      "or": "o",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "logIn": "Iniciar sesión",
+      "noAccount": "¿No tienes una cuenta?",
+      "forgotPasswordLink": "¿Olvidaste tu contraseña?"
+    },
+    "register": {
+      "title": "Crear cuenta",
+      "subtitle": "Únete a la arena de comandantes",
+      "googleButton": "Registrarse con Google",
+      "or": "o",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "repeatPassword": "Repetir contraseña",
+      "register": "Registrarse",
+      "hasAccount": "¿Ya tienes una cuenta?",
+      "loginLink": "Iniciar sesión"
+    },
+    "resetPassword": {
+      "title": "Restablecer contraseña",
+      "subtitle": "Te enviaremos un enlace de restablecimiento",
+      "email": "Dirección de correo electrónico",
+      "sendResetLink": "Enviar enlace de restablecimiento"
+    }
+  },
+  "errors": {
+    "userExists": "El usuario ya existe",
+    "passwordTooShort": "La contraseña debe tener al menos {min} caracteres",
+    "userNotFound": "No se encontró el usuario",
+    "invalidPassword": "Contraseña inválida",
+    "incorrectEmail": "Correo electrónico incorrecto",
+    "passwordsDontMatch": "Las contraseñas no coinciden"
+  },
+  "errorModal": {
+    "errorOccured": "Ocurrió un error",
+    "message": "Mensaje",
+    "error": "Error",
+    "code": "Código"
+  }
+}

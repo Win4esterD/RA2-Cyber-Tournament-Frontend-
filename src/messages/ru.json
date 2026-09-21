@@ -1,0 +1,47 @@
+{
+  "Auth": {
+    "login": {
+      "title": "С возвращением, командир",
+      "subtitle": "Войдите в командный центр",
+      "googleButton": "Войти через Google",
+      "or": "или",
+      "email": "Электронная почта",
+      "password": "Пароль",
+      "logIn": "Войти",
+      "noAccount": "Нет аккаунта?",
+      "forgotPasswordLink": "Забыли пароль?"
+    },
+    "register": {
+      "title": "Создать аккаунт",
+      "subtitle": "Присоединяйтесь к арене командиров",
+      "googleButton": "Зарегистрироваться через Google",
+      "or": "или",
+      "email": "Электронная почта",
+      "password": "Пароль",
+      "repeatPassword": "Повторите пароль",
+      "register": "Зарегистрироваться",
+      "hasAccount": "Уже есть аккаунт?",
+      "loginLink": "Войти"
+    },
+    "resetPassword": {
+      "title": "Сбросить пароль",
+      "subtitle": "Мы отправим вам ссылку для сброса",
+      "email": "Адрес электронной почты",
+      "sendResetLink": "Отправить ссылку для сброса"
+    }
+  },
+  "errors": {
+    "userExists": "Пользователь уже существует",
+    "passwordTooShort": "Пароль должен содержать не менее {min} символов",
+    "userNotFound": "Пользователь не найден",
+    "invalidPassword": "Неверный пароль",
+    "incorrectEmail": "Неверный адрес электронной почты",
+    "passwordsDontMatch": "Пароли не совпадают"
+  },
+  "errorModal": {
+    "errorOccured": "Произошла ошибка",
+    "message": "Сообщение",
+    "error": "Ошибка",
+    "code": "Код"
+  }
+}

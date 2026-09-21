@@ -4,7 +4,7 @@ import { TfiEmail } from 'react-icons/tfi';
 import { Input } from '@/modules/shared/ui/Input/Input';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { LogInAndRegisterButton } from '@/modules/shared/ui/LogInAndRegisterButton/LogInAndRegisterButton';
-import { LogInSchema } from '@/modules/auth/schemas/LogInSchema';
+import { useLogInSchema } from '@/modules/auth/schemas/LogInSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { LogInType } from '@/modules/auth/schemas/LogInSchema';
@@ -14,8 +14,10 @@ import { authService } from '../../services/authService';
 import { useErrorStore } from '@/modules/shared/stores/ErrorStore';
 import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorResponseType';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 export function LogInForm() {
+  const LogInSchema = useLogInSchema();
   const { control, handleSubmit, setError } = useForm({
     defaultValues: {
       email: '',
@@ -23,6 +25,9 @@ export function LogInForm() {
     },
     resolver: zodResolver(LogInSchema),
   });
+
+  const t = useTranslations('Auth.login');
+  const errorDict = useTranslations('Auth.errors');
 
   const router = useRouter();
 
@@ -52,12 +57,12 @@ export function LogInForm() {
       if (error.message === "The user wasn't found") {
         setError('email', {
           type: 'server',
-          message: error.message,
+          message: errorDict('userNotFound'),
         });
       } else if (error.message === 'Invalid password') {
         setError('password', {
           type: 'server',
-          message: error.message,
+          message: errorDict('invalidPassword'),
         });
       } else {
         setGlobalError(error);
@@ -76,20 +81,20 @@ export function LogInForm() {
     >
       <button className="w-full flex items-center justify-center gap-2 bg-[#0a0e14] border border-[#1e2733] hover:border-slate-600 text-slate-200 px-4 py-3 rounded-lg text-sm font-medium transition-colors mb-6 cursor-pointer">
         <FcGoogle />
-        <span className="text-white-text-primary">Log In via Google</span>
+        <span className="text-white-text-primary">{t('googleButton')}</span>
       </button>
       <div className="relative flex justify-center text-[10px] uppercase tracking-widest">
-        <span className="bg-[#0d1219] px-3 text-slate-600">or</span>
+        <span className="bg-[#0d1219] px-3 text-slate-600">{t('or')}</span>
       </div>
       <div className="mt-4 flex flex-col gap-4">
         <Input
-          label="Email"
+          label={t('email')}
           placeholder="commander@ra2.arena"
           Icon={TfiEmail}
           controllerProps={{ name: 'email', control }}
         />
         <Input
-          label="Password"
+          label={t('password')}
           placeholder="••••••••"
           type="password"
           Icon={RiLockPasswordLine}
@@ -97,13 +102,13 @@ export function LogInForm() {
         />
       </div>
       <LogInAndRegisterButton className="mt-5" type="submit">
-        Log In
+        {t('logIn')}
       </LogInAndRegisterButton>
       <Link
-        href="/forgot-password"
+        href="/reset-password"
         className="text-xs text-slate-500 hover:text-red-400 transition-colors hover:cursor-pointer inline-block mt-5"
       >
-        Forgot password?
+        {t('forgotPasswordLink')}
       </Link>
     </form>
   );

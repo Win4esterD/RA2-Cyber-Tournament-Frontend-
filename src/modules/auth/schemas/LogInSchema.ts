@@ -1,13 +1,20 @@
 import * as z from 'zod';
+import { useTranslations } from 'next-intl';
 
-export const LogInSchema = z.object({
-  email: z
-    .string()
-    .trim()
-    .toLowerCase()
-    .pipe(z.email({ message: 'Incorrect email' })),
+export function useLogInSchema() {
+  const t = useTranslations('errors');
 
-  password: z.string().min(8, { message: 'Password must be not less than 8 symbols' }),
-});
+  const LogInSchema = z.object({
+    email: z
+      .string()
+      .trim()
+      .toLowerCase()
+      .pipe(z.email({ message: t('incorrectEmail') })),
 
-export type LogInType = z.infer<typeof LogInSchema>;
+    password: z.string().min(8, { message: t('passwordTooShort', { min: 8 }) }),
+  });
+
+  return LogInSchema;
+}
+
+export type LogInType = z.infer<ReturnType<typeof useLogInSchema>>;

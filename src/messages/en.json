@@ -1,0 +1,47 @@
+{
+  "Auth": {
+    "login": {
+      "title": "Welcome back commander",
+      "subtitle": "Enter the command center",
+      "googleButton": "Log In via Google",
+      "or": "or",
+      "email": "Email",
+      "password": "Password",
+      "logIn": "Log In",
+      "noAccount": "Don't have an account?",
+      "forgotPasswordLink": "Forgot password?"
+    },
+    "register": {
+      "title": "Create account",
+      "subtitle": "Join the arena of commanders",
+      "googleButton": "Register via Google",
+      "or": "or",
+      "email": "Email",
+      "password": "Password",
+      "repeatPassword": "Repeat password",
+      "register": "Register",
+      "hasAccount": "Already have an account?",
+      "loginLink": "Log In"
+    },
+    "resetPassword": {
+      "title": "Reset password",
+      "subtitle": "We will send you reset link",
+      "email": "Email address",
+      "sendResetLink": "Send reset link"
+    }
+  },
+  "errors": {
+    "userExists": "User exists",
+    "passwordTooShort": "Password must be at least {min} characters long",
+    "userNotFound": "The user wasn't found",
+    "invalidPassword": "Invalid password",
+    "incorrectEmail": "Incorrect email",
+    "passwordsDontMatch": "Passwords don't match"
+  },
+  "errorModal": {
+    "errorOccured": "Error occured",
+    "message": "Message",
+    "error": "Error",
+    "code": "Code"
+  }
+}

@@ -1,11 +1,16 @@
 import * as z from 'zod';
+import { useTranslations } from 'next-intl';
 
-export const ResetPasswordSchema = z.object({
-  email: z
-    .string()
-    .trim()
-    .toLowerCase()
-    .pipe(z.email({ message: 'Incorrect email' })),
-});
+export function useResetPasswordSchema() {
+  const t = useTranslations('errors');
 
-export type ResetPasswordType = z.infer<typeof ResetPasswordSchema>;
+  return z.object({
+    email: z
+      .string()
+      .trim()
+      .toLowerCase()
+      .pipe(z.email({ message: t('incorrectEmail') })),
+  });
+}
+
+export type ResetPasswordType = z.infer<ReturnType<typeof useResetPasswordSchema>>;

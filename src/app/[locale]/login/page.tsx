@@ -1,13 +1,15 @@
-import { RegistrationForm } from '@/modules/auth/';
+import { LogInForm } from '@/modules/auth/';
+import { CiLogin } from 'react-icons/ci';
 import { IconBadge } from '@/modules/shared/ui/IconBadge/IconBadge';
-import { FiUserPlus } from 'react-icons/fi';
 import { TfiCup } from 'react-icons/tfi';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
-export default function RegistrationPage() {
+export default function LogInPage() {
+  const t = useTranslations('Auth.login');
   return (
     <div className="w-screen h-screen flex justify-center items-center flex-col">
-      <IconBadge Icon={<FiUserPlus className="w-8 h-8" />} />
+      <IconBadge Icon={<CiLogin className="w-8 h-8" />} />
       <div className="text-red-400 flex">
         <TfiCup className="text-red-400 pr-1" />
         <h1 className="text-[11px] uppercase tracking-[0.3em] text-red-400 font-bold">
@@ -15,20 +17,20 @@ export default function RegistrationPage() {
         </h1>
       </div>
       <p className="text-2xl font-bold tracking-tight mt-1.5 max-xs:text-lg">
-        Create account
+        {t('title')}
       </p>
-      <p className="text-slate-500 text-sm mt-1.5">Join the arena of commanders</p>
+      <p className="text-slate-500 text-sm mt-1.5">{t('subtitle')}</p>
       <div className="mt-8">
-        <RegistrationForm />
+        <LogInForm />
       </div>
       <p className="text-center text-sm text-slate-500 mt-6">
         {' '}
-        Already have an account?{' '}
+        {t('noAccount')}{' '}
         <Link
-          href="/login/"
+          href="/registration/"
           className="text-red-400 font-medium hover:text-red-300 hover:underline"
         >
-          Log In
+          {t('noAccount')}
         </Link>
       </p>
     </div>
