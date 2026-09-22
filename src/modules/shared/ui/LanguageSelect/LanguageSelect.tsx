@@ -4,9 +4,10 @@ import type { Locale } from '@/i18n/routing';
 
 type LanguageSelectProps = {
   defaultLocale: Locale;
+  onLocaleChange: (locale: Locale) => void;
 };
 
-export function LanguageSelect({ defaultLocale }: LanguageSelectProps) {
+export function LanguageSelect({ defaultLocale, onLocaleChange }: LanguageSelectProps) {
   const [isOpened, setIsOpened] = useState(false);
   const [selectedLocale, setSelectedLocale] = useState(defaultLocale);
 
@@ -16,6 +17,7 @@ export function LanguageSelect({ defaultLocale }: LanguageSelectProps) {
 
   const localeChangeHandler = (locale: Locale) => {
     setSelectedLocale(locale);
+    onLocaleChange(locale);
     handleClose();
   };
 
@@ -25,12 +27,7 @@ export function LanguageSelect({ defaultLocale }: LanguageSelectProps) {
   }, [handleClose]);
 
   return (
-    <div
-      className="relative"
-      onClick={(e) => {
-        e.stopPropagation();
-      }}
-    >
+    <div className="relative w-fit" onClick={(e) => e.stopPropagation()}>
       <button
         onClick={() => setIsOpened(!isOpened)}
         className="flex items-center gap-1.5 px-2 py-2 rounded-lg hover:bg-[#161d28] text-slate-400 hover:text-slate-200 transition-colors cursor-pointer"
