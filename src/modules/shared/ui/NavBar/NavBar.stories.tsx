@@ -3,6 +3,13 @@ import { NavBar } from './NavBar';
 
 const meta = {
   component: NavBar,
+  decorators: [
+    (Story) => (
+      <div className="w-64">
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof NavBar>;
 
 export default meta;
