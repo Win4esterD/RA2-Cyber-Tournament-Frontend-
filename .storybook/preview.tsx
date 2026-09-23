@@ -60,7 +60,9 @@ const preview: Preview = {
       return (
         <QueryClientProvider client={queryClient}>
           <NextIntlClientProvider locale={locale} messages={messages[locale]}>
-            <Story />
+            <div className="text-white-text-primary">
+              <Story />
+            </div>
           </NextIntlClientProvider>
         </QueryClientProvider>
       );
