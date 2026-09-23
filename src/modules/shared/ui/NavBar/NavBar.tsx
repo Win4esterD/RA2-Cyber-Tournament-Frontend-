@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { LuHouse, LuTable2, LuUser, LuPlus } from 'react-icons/lu';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 const notSelectedUtilityClassSet =
   'flex items-center gap-3 px-4 py-3 rounded-lg text-sm transition-all text-slate-400 hover:bg-[#161d28] hover:text-slate-200';
@@ -16,6 +17,7 @@ type NavBarProps = {
 
 export function NavBar({ currentLink }: NavBarProps) {
   const [selectedLink, setSelectedLink] = useState(currentLink);
+  const t = useTranslations('navBar');
 
   const handleSetUtilityClassSet = (link: NavLinkType) => {
     return selectedLink === link ? selectesUtilityClassSet : notSelectedUtilityClassSet;
@@ -29,7 +31,7 @@ export function NavBar({ currentLink }: NavBarProps) {
         className={handleSetUtilityClassSet('/')}
       >
         <LuHouse className="w-4 h-4" />
-        Tournaments
+        {t('tournaments')}
       </Link>
       <Link
         href="/tournaments"
@@ -37,7 +39,7 @@ export function NavBar({ currentLink }: NavBarProps) {
         className={handleSetUtilityClassSet('/tournaments')}
       >
         <LuTable2 className="w-4 h-4" />
-        Tournaments
+        {t('tournamentsTable')}
       </Link>
       <Link
         href="/profile"
@@ -45,7 +47,7 @@ export function NavBar({ currentLink }: NavBarProps) {
         className={handleSetUtilityClassSet('/profile')}
       >
         <LuUser className="w-4 h-4" />
-        Profile
+        {t('profile')}
       </Link>
       <Link
         href="create-tournament"
@@ -53,7 +55,7 @@ export function NavBar({ currentLink }: NavBarProps) {
         className={handleSetUtilityClassSet('/create-tournament')}
       >
         <LuPlus className="w-4 h-4" />
-        Create Tournament
+        {t('createTournament')}
       </Link>
     </nav>
   );
