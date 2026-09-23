@@ -2,12 +2,12 @@ import { TbWorld } from 'react-icons/tb';
 import { useState, useEffect, useCallback } from 'react';
 import type { Locale } from '@/i18n/routing';
 
-type LanguageSelectProps = {
+type LanguageSelectPropsType = {
   defaultLocale: Locale;
   onLocaleChange: (locale: Locale) => void;
 };
 
-export function LanguageSelect({ defaultLocale, onLocaleChange }: LanguageSelectProps) {
+export function LanguageSelect({ defaultLocale, onLocaleChange }: LanguageSelectPropsType) {
   const [isOpened, setIsOpened] = useState(false);
   const [selectedLocale, setSelectedLocale] = useState(defaultLocale);
 

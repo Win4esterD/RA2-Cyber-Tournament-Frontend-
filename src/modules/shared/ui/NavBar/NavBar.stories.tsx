@@ -24,7 +24,7 @@ export const Primary = {
 
 export const TournamentsSelected = {
   args: {
-    currentLink: '/tournaments',
+    currentLink: '/tournaments-table',
   },
 } satisfies Story;
 

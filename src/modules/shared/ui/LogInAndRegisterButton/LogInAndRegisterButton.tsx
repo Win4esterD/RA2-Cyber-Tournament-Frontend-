@@ -1,6 +1,6 @@
 import type { ReactNode, SyntheticEvent } from 'react';
 
-type LogInAndRegisterButtonProps = {
+type LogInAndRegisterButtonPropsType = {
   children?: ReactNode;
   onClick?: (value: SyntheticEvent) => void;
   className?: string;
@@ -12,7 +12,7 @@ export function LogInAndRegisterButton({
   onClick,
   className,
   type,
-}: LogInAndRegisterButtonProps) {
+}: LogInAndRegisterButtonPropsType) {
   return (
     <button
       className={`w-full bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white py-3 rounded-lg text-sm font-medium flex items-center justify-center gap-2 transition-colors cursor-pointer ${className}`}

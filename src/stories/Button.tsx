@@ -1,6 +1,6 @@
 import './button.css';
 
-export interface ButtonProps {
+export interface ButtonPropsType {
   /** Is this the principal call to action on the page? */
   primary?: boolean;
   /** What background color to use */
@@ -20,7 +20,7 @@ export const Button = ({
   backgroundColor,
   label,
   ...props
-}: ButtonProps) => {
+}: ButtonPropsType) => {
   const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
   return (
     <button

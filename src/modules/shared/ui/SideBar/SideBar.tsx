@@ -1,8 +1,14 @@
 import { IconBadge } from '../IconBadge/IconBadge';
 import { GoTrophy } from 'react-icons/go';
 import Link from 'next/link';
+import { NavBar } from '../NavBar/NavBar';
+import type { NavLinkType } from '../../global_types/NavLinkType';
 
-export function SideBar() {
+type SideBarPropsType = {
+  link: NavLinkType;
+};
+
+export function SideBar({ link }: SideBarPropsType) {
   return (
     <aside className="fixed lg:static z-40 w-64 h-screen bg-[#0d1219] border-r border-[#1e2733] flex-col transition-transform duration-300 flex -translate-x-full lg:translate-x-0">
       <Link href="/">
@@ -18,6 +24,7 @@ export function SideBar() {
           </div>
         </div>
       </Link>
+      <NavBar currentLink={link} />
     </aside>
   );
 }

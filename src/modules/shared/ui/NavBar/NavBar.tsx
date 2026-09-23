@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { LuHouse, LuTable2, LuUser, LuPlus } from 'react-icons/lu';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import type { NavLinkType } from '../../global_types/NavLinkType';
 
 const notSelectedUtilityClassSet =
   'flex items-center gap-3 px-4 py-3 rounded-lg text-sm transition-all text-slate-400 hover:bg-[#161d28] hover:text-slate-200';
@@ -9,13 +10,11 @@ const notSelectedUtilityClassSet =
 const selectesUtilityClassSet =
   'flex items-center gap-3 px-4 py-3 rounded-lg text-sm transition-all bg-red-600/15 text-red-400 border border-red-600/30';
 
-type NavLinkType = '/' | '/tournaments' | '/profile' | '/create-tournament';
-
-type NavBarProps = {
+type NavBarPropsType = {
   currentLink: NavLinkType;
 };
 
-export function NavBar({ currentLink }: NavBarProps) {
+export function NavBar({ currentLink }: NavBarPropsType) {
   const [selectedLink, setSelectedLink] = useState(currentLink);
   const t = useTranslations('navBar');
 
@@ -35,8 +34,8 @@ export function NavBar({ currentLink }: NavBarProps) {
       </Link>
       <Link
         href="/tournaments"
-        onClick={() => setSelectedLink('/tournaments')}
-        className={handleSetUtilityClassSet('/tournaments')}
+        onClick={() => setSelectedLink('/tournaments-table')}
+        className={handleSetUtilityClassSet('/tournaments-table')}
       >
         <LuTable2 className="w-4 h-4" />
         {t('tournamentsTable')}

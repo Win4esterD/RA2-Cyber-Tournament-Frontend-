@@ -8,4 +8,26 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary = {} satisfies Story;
+export const Primary = {
+  args: {
+    link: '/',
+  },
+} satisfies Story;
+
+export const TournamentsTableSelected = {
+  args: {
+    link: '/tournaments-table',
+  },
+} satisfies Story;
+
+export const ProfileSelected = {
+  args: {
+    link: '/profile',
+  },
+} satisfies Story;
+
+export const CreateTournamentSelected = {
+  args: {
+    link: '/create-tournament',
+  },
+} satisfies Story;

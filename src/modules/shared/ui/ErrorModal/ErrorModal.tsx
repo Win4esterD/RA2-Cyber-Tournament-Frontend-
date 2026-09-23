@@ -2,12 +2,12 @@ import type { ErrorResponseType } from '../../global_types/ErrorResponseType';
 import { IoCloseSharp } from 'react-icons/io5';
 import { useTranslations } from 'next-intl';
 
-type ErrorModalProps = {
+type ErrorModalPropsType = {
   error: ErrorResponseType;
   closeHandler: () => void;
 };
 
-export function ErrorModal({ error, closeHandler }: ErrorModalProps) {
+export function ErrorModal({ error, closeHandler }: ErrorModalPropsType) {
   const t = useTranslations('errorModal');
 
   return (
@@ -18,7 +18,9 @@ export function ErrorModal({ error, closeHandler }: ErrorModalProps) {
       />
       <div className="p-8 shadow-2xl">
         <div>
-          <p className="text-red-700 text-2xl font-bold text-center">{t('errorOccured')}</p>
+          <p className="text-red-700 text-2xl font-bold text-center">
+            {t('errorOccured')}
+          </p>
           <div className="mt-2 flex gap-2 flex-wrap">
             <p className="text-red-700 text-xl font-bold">{t('message')}:</p>
             <p className="text-red-700 text-xl ">{error.message}</p>

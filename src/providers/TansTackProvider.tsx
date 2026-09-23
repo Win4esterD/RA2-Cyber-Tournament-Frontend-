@@ -5,11 +5,11 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const queryClient = new QueryClient();
 
-type TanStackProviderProps = {
+type TanStackProviderPropsType = {
   children: ReactNode;
 };
 
-export function TanStackProvider({ children }: TanStackProviderProps) {
+export function TanStackProvider({ children }: TanStackProviderPropsType) {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
