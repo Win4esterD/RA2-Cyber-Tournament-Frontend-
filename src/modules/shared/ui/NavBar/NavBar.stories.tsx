@@ -16,4 +16,26 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary = {} satisfies Story;
+export const Primary = {
+  args: {
+    currentLink: '/',
+  },
+} satisfies Story;
+
+export const TournamentsSelected = {
+  args: {
+    currentLink: '/tournaments',
+  },
+} satisfies Story;
+
+export const ProfileSelected = {
+  args: {
+    currentLink: '/profile',
+  },
+} satisfies Story;
+
+export const CreateTournamentSelected = {
+  args: {
+    currentLink: '/create-tournament',
+  },
+} satisfies Story;
