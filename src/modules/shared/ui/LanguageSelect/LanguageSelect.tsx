@@ -1,5 +1,5 @@
 import { TbWorld } from 'react-icons/tb';
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { Locale } from '@/i18n/routing';
 import { LocaleTypeEnum } from '@/i18n/types/LocaleTypeEnum';
 

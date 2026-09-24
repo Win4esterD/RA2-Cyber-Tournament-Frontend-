@@ -4,12 +4,15 @@ import Link from 'next/link';
 import { NavBar } from '../NavBar/NavBar';
 import type { NavLinkType } from '../../global_types/NavLinkType';
 import { LuLogOut } from 'react-icons/lu';
+import { useTranslations } from 'next-intl';
 
 type SideBarPropsType = {
   link: NavLinkType;
 };
 
 export function SideBar({ link }: SideBarPropsType) {
+  const t = useTranslations('sideBar');
+
   return (
     <aside className="fixed lg:static z-40 w-64 h-screen bg-[#0d1219] border-r border-[#1e2733] flex-col transition-transform duration-300 flex -translate-x-full lg:translate-x-0">
       <Link href="/">
@@ -20,7 +23,7 @@ export function SideBar({ link }: SideBarPropsType) {
           <div className="pt-3">
             <p className="font-bold text-sm tracking-wid">RA2 ARENA</p>
             <p className="text-[10px] text-slate-500 uppercase tracking-widest">
-              TOURNAMENT HUB
+              {t('tournamentHub')}
             </p>
           </div>
         </div>
@@ -38,7 +41,7 @@ export function SideBar({ link }: SideBarPropsType) {
         </div>
         <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-slate-400 hover:bg-[#161d28] hover:text-red-400 transition-colors cursor-pointer">
           <LuLogOut />
-          Log Out
+          {t('logOut')}
         </button>
       </div>
     </aside>

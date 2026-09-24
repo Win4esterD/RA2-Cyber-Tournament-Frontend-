@@ -49,5 +49,9 @@
     "tournamentsTable": "Tournaments table",
     "profile": "Profile",
     "createTournament": "Create Tournament"
+  },
+  "sideBar": {
+    "tournamentHub": "Tournament Hub",
+    "logOut": "Log Out"
   }
 }
