@@ -1,9 +1,11 @@
 // src/i18n/routing.ts
 import { defineRouting } from 'next-intl/routing';
 
+export const localesList = ['ru', 'en', 'es'];
+
 export const routing = defineRouting({
   // Список всех поддерживаемых локалей
-  locales: ['ru', 'en', 'es'],
+  locales: localesList,
 
   // Локаль по умолчанию, если ни одна не подошла
   defaultLocale: 'en',
