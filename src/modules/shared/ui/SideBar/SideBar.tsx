@@ -38,7 +38,7 @@ export function SideBar({ link }: SideBarPropsType) {
         </div>
         <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-slate-400 hover:bg-[#161d28] hover:text-red-400 transition-colors cursor-pointer">
           <LuLogOut />
-          Exit
+          Log Out
         </button>
       </div>
     </aside>
