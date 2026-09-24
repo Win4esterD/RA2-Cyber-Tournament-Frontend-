@@ -3,11 +3,7 @@ import type { ReactNode } from 'react';
 import { ErrorModal } from '../ui/ErrorModal/ErrorModal';
 import { useErrorStore } from '../stores/ErrorStore';
 
-type GlobalErrorHandlerProps = {
-  children: ReactNode;
-};
-
-export function GlobalErrorHandler({ children }: GlobalErrorHandlerProps) {
+export function GlobalErrorHandler() {
   const error = useErrorStore((state) => state.error);
   const clearError = useErrorStore((state) => state.clearError);
 
@@ -18,7 +14,6 @@ export function GlobalErrorHandler({ children }: GlobalErrorHandlerProps) {
           <ErrorModal closeHandler={clearError} error={error} />
         </div>
       )}
-      {children}
     </>
   );
 }

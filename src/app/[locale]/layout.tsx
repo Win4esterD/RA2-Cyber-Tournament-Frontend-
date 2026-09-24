@@ -25,11 +25,10 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <GlobalErrorHandler>
-        <TanStackProvider>
-          <MainAppLayout>{children}</MainAppLayout>
-        </TanStackProvider>
-      </GlobalErrorHandler>
+      <GlobalErrorHandler />
+      <TanStackProvider>
+        <MainAppLayout>{children}</MainAppLayout>
+      </TanStackProvider>
     </NextIntlClientProvider>
   );
 }
