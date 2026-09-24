@@ -16,9 +16,11 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const forPath = (pathname: string) => ({
-  parameters: { nextjs: { navigation: { pathname } } },
-});
+const forPath = (pathname: string) => {
+  return {
+    parameters: { nextjs: { navigation: { pathname } } },
+  };
+};
 
 export const Primary = {
   ...forPath('/'),
