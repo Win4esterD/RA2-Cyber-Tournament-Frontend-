@@ -34,8 +34,8 @@ const preview: Preview = {
     },
     backgrounds: {
       options: {
-        light: { name: 'Light', value: '#fff' },
         dark: { name: 'Dark', value: '#0a0a0a' },
+        light: { name: 'Light', value: '#fff' },
       },
     },
     tags: ['autodocs'],
