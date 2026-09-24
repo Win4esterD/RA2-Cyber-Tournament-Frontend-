@@ -3,8 +3,7 @@ import { Header } from '@/modules/shared/ui/Header/Header';
 import { SideBar } from '@/modules/shared/ui/SideBar/SideBar';
 import type { ReactNode } from 'react';
 import { usePathname } from '@/i18n/navigation';
-import { useRouter } from 'next/navigation';
-import { useParams } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import { LocaleTypeEnum } from '@/i18n/types/LocaleTypeEnum';
 
 const routesWithoutMainLayout = ['/login', '/registration', '/reset-password'];

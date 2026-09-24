@@ -1,5 +1,4 @@
 'use client';
-import type { ReactNode } from 'react';
 import { ErrorModal } from '../ui/ErrorModal/ErrorModal';
 import { useErrorStore } from '../stores/ErrorStore';
 
