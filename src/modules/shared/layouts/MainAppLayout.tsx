@@ -16,8 +16,13 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
         <main className="flex-1 overflow-y-auto">{children}</main>
       </div> */}
 
-      <Header onLocaleChange={() => console.log('Locale changed')} />
-      <SideBar link="/" />
+      <div className="flex min-h-screen">
+        <SideBar link="/" />
+        <div className="flex flex-1 flex-col">
+          <Header onLocaleChange={() => console.log('Locale changed')} />
+          <main className="flex-1">{children}</main>
+        </div>
+      </div>
     </>
   );
 }
