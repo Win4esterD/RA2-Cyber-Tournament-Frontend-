@@ -16,26 +16,22 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const forPath = (pathname: string) => ({
+  parameters: { nextjs: { navigation: { pathname } } },
+});
+
 export const Primary = {
-  args: {
-    currentLink: '/',
-  },
+  ...forPath('/'),
 } satisfies Story;
 
 export const TournamentsSelected = {
-  args: {
-    currentLink: '/tournaments-table',
-  },
+  ...forPath('/tournaments-table'),
 } satisfies Story;
 
 export const ProfileSelected = {
-  args: {
-    currentLink: '/profile',
-  },
+  ...forPath('/profile'),
 } satisfies Story;
 
 export const CreateTournamentSelected = {
-  args: {
-    currentLink: '/create-tournament',
-  },
+  ...forPath('/create-tournament'),
 } satisfies Story;

@@ -20,7 +20,7 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
 
   return showMainLayout ? (
     <div className="flex min-h-screen">
-      <SideBar link="/" />
+      <SideBar />
       <div className="flex flex-1 flex-col">
         <Header
           locale={locale ? locale?.toString() : LocaleTypeEnum.EN}

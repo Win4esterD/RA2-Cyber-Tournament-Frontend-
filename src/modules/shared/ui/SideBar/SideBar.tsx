@@ -2,15 +2,10 @@ import { IconBadge } from '../IconBadge/IconBadge';
 import { GoTrophy } from 'react-icons/go';
 import Link from 'next/link';
 import { NavBar } from '../NavBar/NavBar';
-import type { NavLinkType } from '../../global_types/NavLinkType';
 import { LuLogOut } from 'react-icons/lu';
 import { useTranslations } from 'next-intl';
 
-type SideBarPropsType = {
-  link: NavLinkType;
-};
-
-export function SideBar({ link }: SideBarPropsType) {
+export function SideBar() {
   const t = useTranslations('sideBar');
 
   return (
@@ -28,7 +23,7 @@ export function SideBar({ link }: SideBarPropsType) {
           </div>
         </div>
       </Link>
-      <NavBar currentLink={link} />
+      <NavBar />
       <div className="p-4 border-t border-[#1e2733]">
         <div className="flex items-center gap-3 px-2 mb-3">
           <div className="w-9 h-9 rounded-full bg-linear-to-br from-slate-600 to-slate-800 flex items-center justify-center text-sm font-bold">
