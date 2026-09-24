@@ -43,5 +43,15 @@
     "message": "Mensaje",
     "error": "Error",
     "code": "Código"
+  },
+  "navBar": {
+    "tournaments": "Torneos",
+    "tournamentsTable": "Tabla de torneos",
+    "profile": "Perfil",
+    "createTournament": "Crear torneo"
+  },
+  "sideBar": {
+    "tournamentHub": "Centro de torneos",
+    "logOut": "Cerrar sesión"
   }
 }

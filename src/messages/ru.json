@@ -43,5 +43,15 @@
     "message": "Сообщение",
     "error": "Ошибка",
     "code": "Код"
+  },
+  "navBar": {
+    "tournaments": "Турниры",
+    "tournamentsTable": "Таблица турниров",
+    "profile": "Профиль",
+    "createTournament": "Создать турнир"
+  },
+  "sideBar": {
+    "tournamentHub": "Турнирный хаб",
+    "logOut": "Выйти"
   }
 }

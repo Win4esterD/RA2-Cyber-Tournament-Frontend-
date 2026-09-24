@@ -2,7 +2,7 @@ import type { IconType } from 'react-icons';
 import type { UseControllerProps, FieldValues } from 'react-hook-form';
 import { useController } from 'react-hook-form';
 
-type InputProps<T extends FieldValues> = {
+type InputPropsType<T extends FieldValues> = {
   Icon?: IconType;
   label?: string;
   placeholder?: string;
@@ -20,7 +20,7 @@ export function Input<T extends FieldValues>({
   required,
   type,
   controllerProps,
-}: InputProps<T>) {
+}: InputPropsType<T>) {
   const { field, fieldState } = useController(controllerProps);
 
   return (

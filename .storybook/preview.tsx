@@ -34,8 +34,8 @@ const preview: Preview = {
     },
     backgrounds: {
       options: {
-        light: { name: 'Light', value: '#fff' },
         dark: { name: 'Dark', value: '#0a0a0a' },
+        light: { name: 'Light', value: '#fff' },
       },
     },
     tags: ['autodocs'],
@@ -60,7 +60,9 @@ const preview: Preview = {
       return (
         <QueryClientProvider client={queryClient}>
           <NextIntlClientProvider locale={locale} messages={messages[locale]}>
-            <Story />
+            <div className="text-white-text-primary">
+              <Story />
+            </div>
           </NextIntlClientProvider>
         </QueryClientProvider>
       );

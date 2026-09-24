@@ -1,13 +1,8 @@
 'use client';
-import type { ReactNode } from 'react';
 import { ErrorModal } from '../ui/ErrorModal/ErrorModal';
 import { useErrorStore } from '../stores/ErrorStore';
 
-type ErrorLayoutProps = {
-  children: ReactNode;
-};
-
-export function ErrorLayout({ children }: ErrorLayoutProps) {
+export function GlobalErrorHandler() {
   const error = useErrorStore((state) => state.error);
   const clearError = useErrorStore((state) => state.clearError);
 
@@ -18,7 +13,6 @@ export function ErrorLayout({ children }: ErrorLayoutProps) {
           <ErrorModal closeHandler={clearError} error={error} />
         </div>
       )}
-      {children}
     </>
   );
 }

@@ -18,11 +18,7 @@ export const metadata: Metadata = {
   description: 'The place where Red Alert 2 tournaments are held.',
 };
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const locale = await getLocale();
   return (
     <html
