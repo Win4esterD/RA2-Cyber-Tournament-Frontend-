@@ -14,7 +14,7 @@ export const useAuthStore = create<AuthStoreType>()(
       set(() => ({ token, isAuth: true }), false, 'auth/setAuth');
     },
     removeAuth() {
-      set(() => ({ token: null, isAuth: null }));
+      set(() => ({ token: null, isAuth: null }), false, 'auth/removeAuth');
     },
   })),
 );
