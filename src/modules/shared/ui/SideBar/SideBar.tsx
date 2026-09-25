@@ -5,8 +5,9 @@ import { NavBar } from '../NavBar/NavBar';
 import { LuLogOut } from 'react-icons/lu';
 import { useTranslations } from 'next-intl';
 import { useAuthStore } from '@/modules/auth';
-import { useRouter } from 'next/navigation';
+import { useRouter } from '@/i18n/navigation';
 import { tokenName } from '@/modules/auth/consts';
+import { useQueryClient } from '@tanstack/react-query';
 
 export function SideBar() {
   const t = useTranslations('sideBar');
@@ -14,12 +15,14 @@ export function SideBar() {
   const removeAuth = useAuthStore((state) => state.removeAuth);
   const isAuth = useAuthStore((state) => state.isAuth);
   const { push } = useRouter();
+  const queryClient = useQueryClient();
 
   const removeAuthHandler = () => {
     if (isAuth) {
       removeAuth();
-      push('/login');
       localStorage.removeItem(tokenName);
+      queryClient.clear();
+      push('/login');
       return;
     }
 

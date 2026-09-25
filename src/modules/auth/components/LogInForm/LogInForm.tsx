@@ -31,7 +31,7 @@ export function LogInForm() {
   const setAuth = useAuthStore((state) => state.setAuth);
 
   const t = useTranslations('Auth.login');
-  const errorDict = useTranslations('Auth.errors');
+  const errorDict = useTranslations('errors');
 
   const router = useRouter();
 
