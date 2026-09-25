@@ -40,7 +40,10 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
       }
     },
     onError: (error: ErrorResponseType) => {
-      setError(error);
+      if (error.message !== 'Invalid or expired token') {
+        setError(error);
+      }
+      localStorage.removeItem(tokenName);
     },
   });
 
