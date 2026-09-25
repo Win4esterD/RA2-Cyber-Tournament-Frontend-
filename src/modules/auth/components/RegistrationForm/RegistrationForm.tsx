@@ -14,6 +14,8 @@ import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorRespo
 import { useErrorStore } from '@/modules/shared/stores/ErrorStore';
 import { useTranslations } from 'next-intl';
 import { tokenName } from '../../consts';
+import { useAuthStore } from '../../AuthStore';
+import { useRouter } from '@/i18n/navigation';
 
 export function RegistrationForm() {
   const registrationSchema = useRegistrationSchema();
@@ -26,27 +28,28 @@ export function RegistrationForm() {
     resolver: zodResolver(registrationSchema),
   });
 
+  const setAuth = useAuthStore((state) => state.setAuth);
+
   const t = useTranslations('Auth.register');
 
   const queryClient = useQueryClient();
 
   const setGlobalError = useErrorStore((state) => state.setError);
 
+  const { push } = useRouter();
+
   const authMutation = useMutation({
     mutationFn: async ({ email, password }: Omit<RegistrationType, 'repeatPassword'>) => {
       const registrationResponse = await authService.register({ email, password });
-      if (registrationResponse.status === 201) {
-        const logInResponse = await authService.logIn({ email, password });
-        return logInResponse.data;
-      } else {
-        throw registrationResponse;
-      }
+      return registrationResponse;
     },
-    onSuccess(data) {
-      const token = data?.access_token;
+    onSuccess({ data }) {
+      const token = data.access_token;
       if (token) {
         localStorage.setItem(tokenName, token);
-        queryClient.setQueryData(['auth', 'token'], token);
+        queryClient.setQueryData(['auth', 'token'], data);
+        setAuth(token);
+        push('/');
       }
     },
     onError(error: ErrorResponseType) {

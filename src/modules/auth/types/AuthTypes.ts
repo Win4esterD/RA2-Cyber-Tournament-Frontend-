@@ -12,17 +12,13 @@ export type UserType = {
   createdAt: string;
 };
 
-export type UserCreatedResponseType = {
-  email: string;
-  role: UserRoleTypeEnum;
-};
 
 export type RegistrationAndLogInParamsType = {
   email: string;
   password: string;
 };
 
-export type LogInResponseType = {
+export type AuthResponseType = {
   access_token: string;
   user: UserType;
 };
