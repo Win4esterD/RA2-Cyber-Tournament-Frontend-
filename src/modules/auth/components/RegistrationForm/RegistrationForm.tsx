@@ -31,6 +31,7 @@ export function RegistrationForm() {
   const setAuth = useAuthStore((state) => state.setAuth);
 
   const t = useTranslations('Auth.register');
+  const errorDict = useTranslations('errors');
 
   const queryClient = useQueryClient();
 
@@ -56,12 +57,12 @@ export function RegistrationForm() {
       if (error.message === 'User exists') {
         setError('email', {
           type: 'server',
-          message: error.message,
+          message: errorDict('userExists'),
         });
       } else if (error.message === 'Password must be at least 8 characters long') {
         setError('password', {
           type: 'server',
-          message: error.message,
+          message: errorDict('passwordTooShort', { min: 8 }),
         });
       } else {
         setGlobalError(error);
