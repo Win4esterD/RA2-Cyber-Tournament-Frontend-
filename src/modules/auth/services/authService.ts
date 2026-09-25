@@ -4,7 +4,7 @@ import type {
   RegistrationAndLogInParamsType,
   LogInResponseType,
 } from '../types/AuthTypes';
-import type { UserType, } from '../types/AuthTypes';
+import type { UserType } from '../types/AuthTypes';
 
 export const authService = {
   async register({ email, password }: RegistrationAndLogInParamsType) {
@@ -25,8 +25,10 @@ export const authService = {
     return response;
   },
 
-  async validateToken(token: string) {
-    const response = await apiClient.post<UserType>('/auth/validate-token', { token });
+  async getUserDataByToken(token: string) {
+    const response = await apiClient.post<UserType>('/auth/get-user-data-by-token', {
+      token,
+    });
     return response;
   },
 };

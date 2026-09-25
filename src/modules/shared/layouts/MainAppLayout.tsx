@@ -32,7 +32,7 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
 
   const { mutate } = useMutation({
     mutationFn: async (token: string) => {
-      const response = await authService.validateToken(token);
+      const response = await authService.getUserDataByToken(token);
       if (response) {
         queryClient.setQueryData(['auth', 'user'], response.data);
         setAuth(token);
