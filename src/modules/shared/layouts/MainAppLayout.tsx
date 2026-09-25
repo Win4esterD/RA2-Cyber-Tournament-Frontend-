@@ -30,7 +30,7 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
   // handle authorization
   const queryClient = useQueryClient();
 
-  const mutation = useMutation({
+  const { mutate } = useMutation({
     mutationFn: async (token: string) => {
       const response = await authService.validateToken(token);
       if (response) {
@@ -50,9 +50,9 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
   useEffect(() => {
     const token = localStorage.getItem(tokenName);
     if (token) {
-      mutation.mutate(token);
+      mutate(token);
     }
-  }, []);
+  }, [mutate]);
 
   return showMainLayout ? (
     <div className="flex min-h-screen">
