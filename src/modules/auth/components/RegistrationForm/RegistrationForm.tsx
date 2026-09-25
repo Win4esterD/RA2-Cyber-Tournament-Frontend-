@@ -13,6 +13,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorResponseType';
 import { useErrorStore } from '@/modules/shared/stores/ErrorStore';
 import { useTranslations } from 'next-intl';
+import { tokenName } from '../../consts';
 
 export function RegistrationForm() {
   const registrationSchema = useRegistrationSchema();
@@ -44,7 +45,7 @@ export function RegistrationForm() {
     onSuccess(data) {
       const token = data?.access_token;
       if (token) {
-        localStorage.setItem('Ra2Arena:token', token);
+        localStorage.setItem(tokenName, token);
         queryClient.setQueryData(['auth', 'token'], token);
       }
     },

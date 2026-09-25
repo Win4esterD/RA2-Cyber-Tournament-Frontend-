@@ -4,9 +4,27 @@ import Link from 'next/link';
 import { NavBar } from '../NavBar/NavBar';
 import { LuLogOut } from 'react-icons/lu';
 import { useTranslations } from 'next-intl';
+import { useAuthStore } from '@/modules/auth';
+import { useRouter } from 'next/navigation';
+import { tokenName } from '@/modules/auth/consts';
 
 export function SideBar() {
   const t = useTranslations('sideBar');
+  const authTranslator = useTranslations('Auth');
+  const removeAuth = useAuthStore((state) => state.removeAuth);
+  const isAuth = useAuthStore((state) => state.isAuth);
+  const { push } = useRouter();
+
+  const removeAuthHandler = () => {
+    if (isAuth) {
+      removeAuth();
+      push('/login');
+      localStorage.removeItem(tokenName);
+      return;
+    }
+
+    push('/login');
+  };
 
   return (
     <aside className="fixed lg:static z-40 w-64 h-screen bg-[#0d1219] border-r border-[#1e2733] flex-col transition-transform duration-300 flex -translate-x-full lg:translate-x-0">
@@ -34,9 +52,12 @@ export function SideBar() {
             <div className="text-[10px] text-slate-500">Commander</div>
           </div>
         </div>
-        <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-slate-400 hover:bg-[#161d28] hover:text-red-400 transition-colors cursor-pointer">
+        <button
+          onClick={removeAuthHandler}
+          className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-slate-400 hover:bg-[#161d28] hover:text-red-400 transition-colors cursor-pointer"
+        >
           <LuLogOut />
-          {t('logOut')}
+          {isAuth ? t('logOut') : authTranslator('login.logIn')}
         </button>
       </div>
     </aside>
