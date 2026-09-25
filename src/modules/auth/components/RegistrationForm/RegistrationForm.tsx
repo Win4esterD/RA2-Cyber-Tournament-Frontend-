@@ -36,8 +36,8 @@ export function RegistrationForm() {
     mutationFn: async ({ email, password }: Omit<RegistrationType, 'repeatPassword'>) => {
       const registrationResponse = await authService.register({ email, password });
       if (registrationResponse.status === 201) {
-        const loginResponse = await authService.logIn({ email, password });
-        return loginResponse.data;
+        const logInResponse = await authService.logIn({ email, password });
+        return logInResponse.data;
       } else {
         throw registrationResponse;
       }

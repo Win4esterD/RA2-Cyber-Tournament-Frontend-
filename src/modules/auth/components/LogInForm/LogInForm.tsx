@@ -43,13 +43,7 @@ export function LogInForm() {
     mutationFn: async (credentials: LogInType) => {
       const loginResponse = await authService.logIn(credentials);
       const token = loginResponse.data.access_token;
-
-      const validateResponse = await authService.validateToken(token);
-      if (!validateResponse.data.email) {
-        throw validateResponse;
-      }
-
-      queryClient.setQueryData(['auth', 'user'], validateResponse.data);
+      queryClient.setQueryData(['auth', 'user'], loginResponse);
 
       return { token };
     },
