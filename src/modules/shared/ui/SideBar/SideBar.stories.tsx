@@ -41,3 +41,14 @@ export const CreateTournamentSelected = {
   },
   ...forPath('/create-tournament'),
 } satisfies Story;
+
+export const WithUserData = {
+  args: {
+    isSidebarOpenedOnMobile: false,
+    user: {
+      name: 'Comandante',
+      id: 1,
+      email: 'comandante@mail.ru',
+    },
+  },
+};
