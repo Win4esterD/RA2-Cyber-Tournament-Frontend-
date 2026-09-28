@@ -46,12 +46,10 @@ export function RegistrationForm() {
     },
     onSuccess({ data }) {
       const token = data.access_token;
-      if (token) {
-        localStorage.setItem(tokenName, token);
-        queryClient.setQueryData(['auth', 'token'], data);
-        setAuth(token);
-        push('/');
-      }
+      localStorage.setItem(tokenName, token);
+      queryClient.setQueryData(['auth', 'token'], data);
+      setAuth(token);
+      push('/');
     },
     onError(error: ErrorResponseType) {
       if (error.message === 'User exists') {

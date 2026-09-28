@@ -13,7 +13,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { authService } from '../../services/authService';
 import { useErrorStore } from '@/modules/shared/stores/ErrorStore';
 import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorResponseType';
-import { useRouter } from 'next/navigation';
+import { useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { useAuthStore } from '../../AuthStore';
 import { tokenName } from '../../consts';
@@ -42,12 +42,12 @@ export function LogInForm() {
   const logInMutation = useMutation({
     mutationFn: async (credentials: LogInType) => {
       const loginResponse = await authService.logIn(credentials);
-      const token = loginResponse.data.access_token;
-      queryClient.setQueryData(['auth', 'user'], loginResponse);
 
-      return { token };
+      return loginResponse.data;
     },
-    onSuccess: ({ token }) => {
+    onSuccess: (data) => {
+      const token = data.access_token;
+      queryClient.setQueryData(['auth', 'user'], data);
       localStorage.setItem(tokenName, token);
       setAuth(token);
       router.push('/');

@@ -17,8 +17,8 @@ export function Header({ locale, onLocaleChange, sidebarHandler }: HeaderPropsTy
       <div className="hidden lg:block text-sm text-slate-500 ">
         Red Alert 2 · Tournaments planform
       </div>
-      <button>
-        <LuMenu className="lg:hidden text-slate-400 w-6 h-6" onClick={sidebarHandler} />
+      <button onClick={sidebarHandler} aria-label="Burger menu">
+        <LuMenu className="lg:hidden text-slate-400 w-6 h-6" />
       </button>
       <LanguageSelect defaultLocale={locale} onLocaleChange={onLocaleChange} />
     </header>

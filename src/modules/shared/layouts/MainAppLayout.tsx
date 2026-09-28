@@ -8,10 +8,11 @@ import { LocaleTypeEnum } from '@/i18n/types/LocaleTypeEnum';
 import { tokenName } from '@/modules/auth/consts';
 import { useAuthStore } from '@/modules/auth';
 import { authService } from '@/modules/auth/services/authService';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient, useQuery, skipToken } from '@tanstack/react-query';
 import { useErrorStore } from '../stores/ErrorStore';
 import type { ErrorResponseType } from '../global_types/ErrorResponseType';
 import { useState, useEffect } from 'react';
+import type { AuthResponseType } from '@/modules/auth/types/AuthTypes';
 
 const routesWithoutMainLayout = ['/login', '/registration', '/reset-password'];
 
@@ -31,14 +32,23 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
   // handle authorization
   const queryClient = useQueryClient();
 
+  const { data: user } = useQuery<AuthResponseType>({
+    queryKey: ['auth', 'user'],
+    queryFn: skipToken,
+  });
+
   const { mutate } = useMutation({
     mutationFn: async (token: string) => {
       const response = await authService.getUserDataByToken(token);
-      if (response) {
-        queryClient.setQueryData(['auth', 'user'], response.data);
-        setAuth(token);
-        return response;
-      }
+      setAuth(token);
+      return response;
+    },
+    onSuccess: (response) => {
+      const token = localStorage.getItem(tokenName);
+      queryClient.setQueryData(['auth', 'user'], {
+        access_token: token,
+        user: response.data,
+      });
     },
     onError: (error: ErrorResponseType) => {
       if (error.message !== 'Invalid or expired token') {
@@ -57,7 +67,7 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
 
   return showMainLayout ? (
     <div className="flex min-h-screen">
-      <SideBar isSidebarOpenedOnMobile={isSidebarOpenedOnMobile} />
+      <SideBar isSidebarOpenedOnMobile={isSidebarOpenedOnMobile} user={user?.user} />
       {isSidebarOpenedOnMobile && (
         <div
           onClick={() => setIsSidebarOpenedOnMobile(false)}

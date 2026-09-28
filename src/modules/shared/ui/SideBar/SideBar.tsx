@@ -8,12 +8,15 @@ import { useAuthStore } from '@/modules/auth';
 import { useRouter } from '@/i18n/navigation';
 import { tokenName } from '@/modules/auth/consts';
 import { useQueryClient } from '@tanstack/react-query';
+import { CiUser } from 'react-icons/ci';
+import type { UserType } from '@/modules/auth/types/AuthTypes';
 
 type SideBarPropsType = {
   isSidebarOpenedOnMobile: boolean;
+  user?: UserType;
 };
 
-export function SideBar({ isSidebarOpenedOnMobile }: SideBarPropsType) {
+export function SideBar({ isSidebarOpenedOnMobile, user }: SideBarPropsType) {
   const t = useTranslations('sideBar');
   const authTranslator = useTranslations('Auth');
   const removeAuth = useAuthStore((state) => state.removeAuth);
@@ -54,10 +57,13 @@ export function SideBar({ isSidebarOpenedOnMobile }: SideBarPropsType) {
       <div className="p-4 border-t border-[#1e2733]">
         <div className="flex items-center gap-3 px-2 mb-3">
           <div className="w-9 h-9 rounded-full bg-linear-to-br from-slate-600 to-slate-800 flex items-center justify-center text-sm font-bold">
-            W
+            {!user && <CiUser className="2-6 h-6" />}
+            {user?.name ? user.name[0].toUpperCase() : user?.email[0].toUpperCase()}
           </div>
           <div className="min-w-0">
-            <div className="text-sm font-medium truncate">Win4ester</div>
+            <div className="text-sm font-medium truncate">
+              {!user ? 'Unregistered' : user.name ? user.name : user.email}
+            </div>
             <div className="text-[10px] text-slate-500">Commander</div>
           </div>
         </div>
