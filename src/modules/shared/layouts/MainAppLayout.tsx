@@ -10,7 +10,7 @@ import {
   useAuthStore,
   type AuthResponseType,
   authQueryKeys,
-} from '@/modules/auth/';
+} from '@/modules/auth';
 import { authService } from '@/modules/auth/services/authService';
 import { useMutation, useQueryClient, useQuery, skipToken } from '@tanstack/react-query';
 import { useErrorStore } from '../stores/ErrorStore';

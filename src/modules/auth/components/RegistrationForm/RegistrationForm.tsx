@@ -69,7 +69,7 @@ export function RegistrationForm() {
     },
   });
 
-  const onSubmit = async (data: RegistrationType) => {
+  const onSubmit = (data: RegistrationType) => {
     const { email, password } = data;
     authMutation.mutate({ email, password });
   };

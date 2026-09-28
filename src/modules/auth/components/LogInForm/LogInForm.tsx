@@ -16,8 +16,7 @@ import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorRespo
 import { useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { useAuthStore } from '../../AuthStore';
-import { tokenName } from '../../consts';
-import { authQueryKeys } from '../../consts';
+import { tokenName, authQueryKeys } from '../../consts';
 
 export function LogInForm() {
   const LogInSchema = useLogInSchema();

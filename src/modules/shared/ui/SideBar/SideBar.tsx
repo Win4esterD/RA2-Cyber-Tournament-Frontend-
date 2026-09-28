@@ -21,6 +21,8 @@ export function SideBar({ isSidebarOpenedOnMobile, user }: SideBarPropsType) {
   const isAuth = useAuthStore((state) => state.isAuth);
   const { push } = useRouter();
   const queryClient = useQueryClient();
+  const displayName = user ? (user.name ?? user.email) : t('unregistered');
+  const initial = user ? displayName[0].toUpperCase() : null;
 
   const removeAuthHandler = () => {
     if (isAuth) {
@@ -55,13 +57,11 @@ export function SideBar({ isSidebarOpenedOnMobile, user }: SideBarPropsType) {
       <div className="p-4 border-t border-[#1e2733]">
         <div className="flex items-center gap-3 px-2 mb-3">
           <div className="w-9 h-9 rounded-full bg-linear-to-br from-slate-600 to-slate-800 flex items-center justify-center text-sm font-bold">
-            {!user && <CiUser className="2-6 h-6" />}
-            {user?.name ? user.name[0].toUpperCase() : user?.email[0].toUpperCase()}
+            {!user && <CiUser className="w-6 h-6" />}
+            {initial}
           </div>
           <div className="min-w-0">
-            <div className="text-sm font-medium truncate">
-              {!user ? 'Unregistered' : user.name ? user.name : user.email}
-            </div>
+            <div className="text-sm font-medium truncate">{displayName}</div>
             <div className="text-[10px] text-slate-500">Commander</div>
           </div>
         </div>
