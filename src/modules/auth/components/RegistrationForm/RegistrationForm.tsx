@@ -16,6 +16,7 @@ import { useTranslations } from 'next-intl';
 import { tokenName } from '../../consts';
 import { useAuthStore } from '../../AuthStore';
 import { useRouter } from '@/i18n/navigation';
+import { authQueryKeys } from '../../consts';
 
 export function RegistrationForm() {
   const registrationSchema = useRegistrationSchema();
@@ -47,7 +48,7 @@ export function RegistrationForm() {
     onSuccess({ data }) {
       const token = data.access_token;
       localStorage.setItem(tokenName, token);
-      queryClient.setQueryData(['auth', 'user'], data);
+      queryClient.setQueryData(authQueryKeys.user, data);
       setAuth(token);
       push('/');
     },

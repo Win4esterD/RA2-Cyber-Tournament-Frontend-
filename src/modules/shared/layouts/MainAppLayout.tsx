@@ -5,14 +5,17 @@ import type { ReactNode } from 'react';
 import { usePathname } from '@/i18n/navigation';
 import { useRouter, useParams } from 'next/navigation';
 import { LocaleTypeEnum } from '@/i18n/types/LocaleTypeEnum';
-import { tokenName } from '@/modules/auth/consts';
-import { useAuthStore } from '@/modules/auth';
+import {
+  tokenName,
+  useAuthStore,
+  type AuthResponseType,
+  authQueryKeys,
+} from '@/modules/auth/';
 import { authService } from '@/modules/auth/services/authService';
 import { useMutation, useQueryClient, useQuery, skipToken } from '@tanstack/react-query';
 import { useErrorStore } from '../stores/ErrorStore';
 import type { ErrorResponseType } from '../global_types/ErrorResponseType';
 import { useState, useEffect } from 'react';
-import type { AuthResponseType } from '@/modules/auth/types/AuthTypes';
 
 const routesWithoutMainLayout = ['/login', '/registration', '/reset-password'];
 
@@ -33,7 +36,7 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
   const queryClient = useQueryClient();
 
   const { data } = useQuery<AuthResponseType>({
-    queryKey: ['auth', 'user'],
+    queryKey: authQueryKeys.user,
     queryFn: skipToken,
   });
 
@@ -44,7 +47,7 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
       return { token, user: response.data };
     },
     onSuccess: ({ token, user }) => {
-      queryClient.setQueryData(['auth', 'user'], { access_token: token, user });
+      queryClient.setQueryData(authQueryKeys.user, { access_token: token, user });
     },
     onError: (error: ErrorResponseType) => {
       if (error.message !== 'Invalid or expired token') {

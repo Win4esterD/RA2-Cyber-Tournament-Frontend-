@@ -4,12 +4,10 @@ import Link from 'next/link';
 import { NavBar } from '../NavBar/NavBar';
 import { LuLogOut } from 'react-icons/lu';
 import { useTranslations } from 'next-intl';
-import { useAuthStore } from '@/modules/auth';
+import { useAuthStore, tokenName, type UserType } from '@/modules/auth';
 import { useRouter } from '@/i18n/navigation';
-import { tokenName } from '@/modules/auth/consts';
 import { useQueryClient } from '@tanstack/react-query';
 import { CiUser } from 'react-icons/ci';
-import type { UserType } from '@/modules/auth/types/AuthTypes';
 
 type SideBarPropsType = {
   isSidebarOpenedOnMobile: boolean;

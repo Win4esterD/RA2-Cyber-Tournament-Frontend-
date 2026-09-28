@@ -17,6 +17,7 @@ import { useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { useAuthStore } from '../../AuthStore';
 import { tokenName } from '../../consts';
+import { authQueryKeys } from '../../consts';
 
 export function LogInForm() {
   const LogInSchema = useLogInSchema();
@@ -47,7 +48,7 @@ export function LogInForm() {
     },
     onSuccess: (data) => {
       const token = data.access_token;
-      queryClient.setQueryData(['auth', 'user'], data);
+      queryClient.setQueryData(authQueryKeys.user, data);
       localStorage.setItem(tokenName, token);
       setAuth(token);
       router.push('/');
