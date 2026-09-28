@@ -1,9 +1,11 @@
 'use client';
 import { Input } from '@/modules/shared/ui/Input/Input';
-import { useResetPasswordSchema } from '../../schemas/ResetPasswordSchema';
+import {
+  useResetPasswordSchema,
+  type ResetPasswordType,
+} from '@/modules/auth/schemas/ResetPasswordSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import type { ResetPasswordType } from '../../schemas/ResetPasswordSchema';
 import { TfiEmail } from 'react-icons/tfi';
 import { LogInAndRegisterButton } from '@/modules/shared/ui/LogInAndRegisterButton/LogInAndRegisterButton';
 import { useTranslations } from 'next-intl';

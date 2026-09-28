@@ -8,15 +8,14 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRegistrationSchema } from '@/modules/auth/schemas/RegistrationSchema';
 import type { RegistrationType } from '@/modules/auth/schemas/RegistrationSchema';
-import { authService } from '../../services/authService';
+import { authService } from '@/modules/auth/services/authService';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorResponseType';
 import { useErrorStore } from '@/modules/shared/stores/ErrorStore';
 import { useTranslations } from 'next-intl';
-import { tokenName } from '../../consts';
-import { useAuthStore } from '../../AuthStore';
+import { tokenName, authQueryKeys } from '@/modules/auth/consts';
+import { useAuthStore } from '@/modules/auth/AuthStore';
 import { useRouter } from '@/i18n/navigation';
-import { authQueryKeys } from '../../consts';
 
 export function RegistrationForm() {
   const registrationSchema = useRegistrationSchema();
