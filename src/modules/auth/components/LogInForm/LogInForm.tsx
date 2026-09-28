@@ -10,13 +10,13 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import type { LogInType } from '@/modules/auth/schemas/LogInSchema';
 import Link from 'next/link';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { authService } from '../../services/authService';
+import { authService } from '@/modules/auth/services/authService';
 import { useErrorStore } from '@/modules/shared/stores/ErrorStore';
 import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorResponseType';
 import { useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
-import { useAuthStore } from '../../AuthStore';
-import { tokenName, authQueryKeys } from '../../consts';
+import { useAuthStore } from '@/modules/auth/AuthStore';
+import { tokenName, authQueryKeys } from '@/modules/auth';
 
 export function LogInForm() {
   const LogInSchema = useLogInSchema();

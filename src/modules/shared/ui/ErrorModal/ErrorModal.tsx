@@ -1,4 +1,4 @@
-import type { ErrorResponseType } from '../../global_types/ErrorResponseType';
+import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorResponseType';
 import { IoCloseSharp } from 'react-icons/io5';
 import { useTranslations } from 'next-intl';
 

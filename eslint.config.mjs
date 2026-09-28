@@ -27,6 +27,20 @@ const eslintConfig = defineConfig([
           disallowTypeAnnotations: true,
         },
       ],
+      // Ban parent-relative imports (../../x and deeper) — use the @/ alias instead,
+      // e.g. '@/modules/auth/consts'. Sibling './' and single-level '../' stay allowed.
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['../../*', '../../**'],
+              message:
+                'Parent-relative imports are banned — use the @/ alias (e.g. "@/modules/auth/consts").',
+            },
+          ],
+        },
+      ],
     },
   },
 ]);

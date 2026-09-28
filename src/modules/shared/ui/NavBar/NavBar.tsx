@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { LuHouse, LuTable2, LuUser, LuPlus } from 'react-icons/lu';
 import { useTranslations } from 'next-intl';
-import type { NavLinkType } from '../../global_types/NavLinkType';
+import type { NavLinkType } from '@/modules/shared/global_types/NavLinkType';
 import { usePathname } from '@/i18n/navigation';
 
 const notSelectedUtilityClassSet =
