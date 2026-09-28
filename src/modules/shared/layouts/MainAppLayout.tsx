@@ -32,7 +32,7 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
   // handle authorization
   const queryClient = useQueryClient();
 
-  const { data: user } = useQuery<AuthResponseType>({
+  const { data } = useQuery<AuthResponseType>({
     queryKey: ['auth', 'user'],
     queryFn: skipToken,
   });
@@ -67,7 +67,7 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
 
   return showMainLayout ? (
     <div className="flex min-h-screen">
-      <SideBar isSidebarOpenedOnMobile={isSidebarOpenedOnMobile} user={user?.user} />
+      <SideBar isSidebarOpenedOnMobile={isSidebarOpenedOnMobile} user={data?.user} />
       {isSidebarOpenedOnMobile && (
         <div
           onClick={() => setIsSidebarOpenedOnMobile(false)}
