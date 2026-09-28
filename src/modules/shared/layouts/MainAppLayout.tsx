@@ -16,6 +16,7 @@ import { useMutation, useQueryClient, useQuery, skipToken } from '@tanstack/reac
 import { useErrorStore } from '../stores/ErrorStore';
 import type { ErrorResponseType } from '../global_types/ErrorResponseType';
 import { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
 
 const routesWithoutMainLayout = ['/login', '/registration', '/reset-password'];
 
@@ -53,12 +54,12 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
       if (error.message !== 'Invalid or expired token') {
         setError(error);
       }
-      localStorage.removeItem(tokenName);
+      Cookies.remove(tokenName);
     },
   });
 
   useEffect(() => {
-    const token = localStorage.getItem(tokenName);
+    const token = Cookies.get(tokenName);
     if (token) {
       mutate(token);
     }

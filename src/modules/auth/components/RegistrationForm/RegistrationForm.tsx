@@ -16,6 +16,7 @@ import { useTranslations } from 'next-intl';
 import { tokenName, authQueryKeys } from '@/modules/auth/consts';
 import { useAuthStore } from '@/modules/auth/AuthStore';
 import { useRouter } from '@/i18n/navigation';
+import Cookies from 'js-cookie';
 
 export function RegistrationForm() {
   const registrationSchema = useRegistrationSchema();
@@ -46,7 +47,7 @@ export function RegistrationForm() {
     },
     onSuccess({ data }) {
       const token = data.access_token;
-      localStorage.setItem(tokenName, token);
+      Cookies.set(tokenName, token);
       queryClient.setQueryData(authQueryKeys.user, data);
       setAuth(token);
       push('/');

@@ -52,3 +52,20 @@ export const WithUserData = {
     },
   },
 };
+
+export const TooMuchData = {
+  args: {
+    user: {
+      name: 'Tooo loooong naaamee heree aaaaaaaaaaaaaaaaaaaaaaaaaaa',
+      id: 1,
+      email: 'comandante@mail.ru',
+    },
+  },
+};
+
+export const SideBarClosedOnMobile = {
+  args: {
+    ...WithUserData.args,
+    isSidebarOpenedOnMobile: true,
+  },
+};

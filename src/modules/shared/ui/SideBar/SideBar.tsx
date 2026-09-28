@@ -8,6 +8,7 @@ import { useAuthStore, tokenName, type UserType } from '@/modules/auth';
 import { useRouter } from '@/i18n/navigation';
 import { useQueryClient } from '@tanstack/react-query';
 import { CiUser } from 'react-icons/ci';
+import Cookies from 'js-cookie';
 
 type SideBarPropsType = {
   isSidebarOpenedOnMobile: boolean;
@@ -27,7 +28,7 @@ export function SideBar({ isSidebarOpenedOnMobile, user }: SideBarPropsType) {
   const removeAuthHandler = () => {
     if (isAuth) {
       removeAuth();
-      localStorage.removeItem(tokenName);
+      Cookies.remove(tokenName);
       queryClient.clear();
       push('/login');
       return;
