@@ -1,15 +1,24 @@
-import type { UserRoleTypeEnum } from '@/modules/shared/global_types/UserTypes';
+export enum UserRoleTypeEnum {
+  USER = 'USER',
+  ADMIN = 'ADMIN',
+  SUPER_ADMIN = 'SUPER_ADMIN',
+}
 
-export type UserCreatedResponseType = {
+export type UserType = {
+  id: number;
   email: string;
+  name: string | null;
   role: UserRoleTypeEnum;
+  createdAt: string;
 };
+
 
 export type RegistrationAndLogInParamsType = {
   email: string;
   password: string;
 };
 
-export type AccessTokenResponseType = {
+export type AuthResponseType = {
   access_token: string;
+  user: UserType;
 };

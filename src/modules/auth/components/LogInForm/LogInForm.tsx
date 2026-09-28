@@ -13,8 +13,10 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { authService } from '../../services/authService';
 import { useErrorStore } from '@/modules/shared/stores/ErrorStore';
 import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorResponseType';
-import { useRouter } from 'next/navigation';
+import { useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
+import { useAuthStore } from '../../AuthStore';
+import { tokenName, authQueryKeys } from '../../consts';
 
 export function LogInForm() {
   const LogInSchema = useLogInSchema();
@@ -26,8 +28,10 @@ export function LogInForm() {
     resolver: zodResolver(LogInSchema),
   });
 
+  const setAuth = useAuthStore((state) => state.setAuth);
+
   const t = useTranslations('Auth.login');
-  const errorDict = useTranslations('Auth.errors');
+  const errorDict = useTranslations('errors');
 
   const router = useRouter();
 
@@ -38,19 +42,14 @@ export function LogInForm() {
   const logInMutation = useMutation({
     mutationFn: async (credentials: LogInType) => {
       const loginResponse = await authService.logIn(credentials);
-      const token = loginResponse.data.access_token;
 
-      const validateResponse = await authService.validateToken(token);
-      if (!validateResponse.data.email) {
-        throw validateResponse;
-      }
-
-      queryClient.setQueryData(['auth', 'user'], validateResponse.data);
-
-      return { token };
+      return loginResponse.data;
     },
     onSuccess: (data) => {
-      localStorage.setItem('Ra2Arena:token', data.token);
+      const token = data.access_token;
+      queryClient.setQueryData(authQueryKeys.user, data);
+      localStorage.setItem(tokenName, token);
+      setAuth(token);
       router.push('/');
     },
     onError: (error: ErrorResponseType) => {

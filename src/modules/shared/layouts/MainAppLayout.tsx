@@ -5,6 +5,17 @@ import type { ReactNode } from 'react';
 import { usePathname } from '@/i18n/navigation';
 import { useRouter, useParams } from 'next/navigation';
 import { LocaleTypeEnum } from '@/i18n/types/LocaleTypeEnum';
+import {
+  tokenName,
+  useAuthStore,
+  type AuthResponseType,
+  authQueryKeys,
+} from '@/modules/auth';
+import { authService } from '@/modules/auth/services/authService';
+import { useMutation, useQueryClient, useQuery, skipToken } from '@tanstack/react-query';
+import { useErrorStore } from '../stores/ErrorStore';
+import type { ErrorResponseType } from '../global_types/ErrorResponseType';
+import { useState, useEffect } from 'react';
 
 const routesWithoutMainLayout = ['/login', '/registration', '/reset-password'];
 
@@ -17,14 +28,56 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
   const showMainLayout = !routesWithoutMainLayout.includes(pathname);
   const router = useRouter();
   const { locale } = useParams();
+  const setAuth = useAuthStore((state) => state.setAuth);
+  const setError = useErrorStore((state) => state.setError);
+  const [isSidebarOpenedOnMobile, setIsSidebarOpenedOnMobile] = useState(false);
+
+  // handle authorization
+  const queryClient = useQueryClient();
+
+  const { data } = useQuery<AuthResponseType>({
+    queryKey: authQueryKeys.user,
+    queryFn: skipToken,
+  });
+
+  const { mutate } = useMutation({
+    mutationFn: async (token: string) => {
+      const response = await authService.getUserDataByToken(token);
+      setAuth(token);
+      return { token, user: response.data };
+    },
+    onSuccess: ({ token, user }) => {
+      queryClient.setQueryData(authQueryKeys.user, { access_token: token, user });
+    },
+    onError: (error: ErrorResponseType) => {
+      if (error.message !== 'Invalid or expired token') {
+        setError(error);
+      }
+      localStorage.removeItem(tokenName);
+    },
+  });
+
+  useEffect(() => {
+    const token = localStorage.getItem(tokenName);
+    if (token) {
+      mutate(token);
+    }
+  }, [mutate]);
 
   return showMainLayout ? (
     <div className="flex min-h-screen">
-      <SideBar />
+      <SideBar isSidebarOpenedOnMobile={isSidebarOpenedOnMobile} user={data?.user} />
+      {isSidebarOpenedOnMobile && (
+        <div
+          onClick={() => setIsSidebarOpenedOnMobile(false)}
+          className="fixed inset-0 bg-black/60 z-30 lg:hidden"
+        ></div>
+      )}
       <div className="flex flex-1 flex-col">
         <Header
           locale={locale ? locale?.toString() : LocaleTypeEnum.EN}
           onLocaleChange={(locale) => router.push(`${locale}/${pathname}`)}
+          sidebarHandler={() => setIsSidebarOpenedOnMobile(!isSidebarOpenedOnMobile)}
         />
         <main className="flex-1">{children}</main>
       </div>

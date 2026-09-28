@@ -52,6 +52,7 @@
   },
   "sideBar": {
     "tournamentHub": "Tournament Hub",
-    "logOut": "Log Out"
+    "logOut": "Log Out",
+    "unregistered": "Unregistered"
   }
 }

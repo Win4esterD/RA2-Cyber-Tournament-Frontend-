@@ -52,6 +52,7 @@
   },
   "sideBar": {
     "tournamentHub": "Centro de torneos",
-    "logOut": "Cerrar sesión"
+    "logOut": "Cerrar sesión",
+    "unregistered": "Sin registrar"
   }
 }

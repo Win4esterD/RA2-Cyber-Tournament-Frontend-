@@ -17,6 +17,7 @@ export const Primary = {
   args: {
     onLocaleChange: (locale: Locale) => console.log(`Redirect to locale ${locale}`),
     locale: EN,
+    sidebarHandler: () => console.log('Burger menu clicked'),
   },
 } satisfies Story;
 
@@ -24,6 +25,7 @@ export const RussLangSelected = {
   args: {
     onLocaleChange: (locale: Locale) => console.log(`Redirect to locale ${locale}`),
     locale: RU,
+    sidebarHandler: () => console.log('Burger menu clicked'),
   },
 } satisfies Story;
 
@@ -31,5 +33,6 @@ export const SpanishLangSelected = {
   args: {
     onLocaleChange: (locale: Locale) => console.log(`Redirect to locale ${locale}`),
     locale: ES,
+    sidebarHandler: () => console.log('Burger menu clicked'),
   },
 } satisfies Story;

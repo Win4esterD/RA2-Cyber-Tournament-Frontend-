@@ -52,6 +52,7 @@
   },
   "sideBar": {
     "tournamentHub": "Турнирный хаб",
-    "logOut": "Выйти"
+    "logOut": "Выйти",
+    "unregistered": "Незарегистрирован"
   }
 }

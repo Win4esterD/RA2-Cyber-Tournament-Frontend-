@@ -13,6 +13,10 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorResponseType';
 import { useErrorStore } from '@/modules/shared/stores/ErrorStore';
 import { useTranslations } from 'next-intl';
+import { tokenName } from '../../consts';
+import { useAuthStore } from '../../AuthStore';
+import { useRouter } from '@/i18n/navigation';
+import { authQueryKeys } from '../../consts';
 
 export function RegistrationForm() {
   const registrationSchema = useRegistrationSchema();
@@ -25,39 +29,39 @@ export function RegistrationForm() {
     resolver: zodResolver(registrationSchema),
   });
 
+  const setAuth = useAuthStore((state) => state.setAuth);
+
   const t = useTranslations('Auth.register');
+  const errorDict = useTranslations('errors');
 
   const queryClient = useQueryClient();
 
   const setGlobalError = useErrorStore((state) => state.setError);
 
+  const { push } = useRouter();
+
   const authMutation = useMutation({
     mutationFn: async ({ email, password }: Omit<RegistrationType, 'repeatPassword'>) => {
       const registrationResponse = await authService.register({ email, password });
-      if (registrationResponse.status === 201) {
-        const loginResponse = await authService.logIn({ email, password });
-        return loginResponse.data;
-      } else {
-        throw registrationResponse;
-      }
+      return registrationResponse;
     },
-    onSuccess(data) {
-      const token = data?.access_token;
-      if (token) {
-        localStorage.setItem('Ra2Arena:token', token);
-        queryClient.setQueryData(['auth', 'token'], token);
-      }
+    onSuccess({ data }) {
+      const token = data.access_token;
+      localStorage.setItem(tokenName, token);
+      queryClient.setQueryData(authQueryKeys.user, data);
+      setAuth(token);
+      push('/');
     },
     onError(error: ErrorResponseType) {
       if (error.message === 'User exists') {
         setError('email', {
           type: 'server',
-          message: error.message,
+          message: errorDict('userExists'),
         });
       } else if (error.message === 'Password must be at least 8 characters long') {
         setError('password', {
           type: 'server',
-          message: error.message,
+          message: errorDict('passwordTooShort', { min: 8 }),
         });
       } else {
         setGlobalError(error);
@@ -65,7 +69,7 @@ export function RegistrationForm() {
     },
   });
 
-  const onSubmit = async (data: RegistrationType) => {
+  const onSubmit = (data: RegistrationType) => {
     const { email, password } = data;
     authMutation.mutate({ email, password });
   };
