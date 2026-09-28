@@ -41,14 +41,10 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
     mutationFn: async (token: string) => {
       const response = await authService.getUserDataByToken(token);
       setAuth(token);
-      return response;
+      return { token, user: response.data };
     },
-    onSuccess: (response) => {
-      const token = localStorage.getItem(tokenName);
-      queryClient.setQueryData(['auth', 'user'], {
-        access_token: token,
-        user: response.data,
-      });
+    onSuccess: ({ token, user }) => {
+      queryClient.setQueryData(['auth', 'user'], { access_token: token, user });
     },
     onError: (error: ErrorResponseType) => {
       if (error.message !== 'Invalid or expired token') {

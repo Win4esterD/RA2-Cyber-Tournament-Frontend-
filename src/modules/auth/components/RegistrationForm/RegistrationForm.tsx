@@ -47,7 +47,7 @@ export function RegistrationForm() {
     onSuccess({ data }) {
       const token = data.access_token;
       localStorage.setItem(tokenName, token);
-      queryClient.setQueryData(['auth', 'token'], data);
+      queryClient.setQueryData(['auth', 'user'], data);
       setAuth(token);
       push('/');
     },
