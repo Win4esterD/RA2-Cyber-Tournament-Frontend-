@@ -1,4 +1,4 @@
-export const tokenName = 'Ra2Arena:token';
+export const tokenName = 'Ra2Arena-token';
 
 // Key factory for React Query — single source of truth, no drift possible
 export const authQueryKeys = {
