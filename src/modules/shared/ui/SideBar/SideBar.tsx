@@ -9,7 +9,11 @@ import { useRouter } from '@/i18n/navigation';
 import { tokenName } from '@/modules/auth/consts';
 import { useQueryClient } from '@tanstack/react-query';
 
-export function SideBar() {
+type SideBarPropsType = {
+  isSidebarOpenedOnMobile: boolean;
+};
+
+export function SideBar({ isSidebarOpenedOnMobile }: SideBarPropsType) {
   const t = useTranslations('sideBar');
   const authTranslator = useTranslations('Auth');
   const removeAuth = useAuthStore((state) => state.removeAuth);
@@ -30,7 +34,9 @@ export function SideBar() {
   };
 
   return (
-    <aside className="fixed lg:static z-40 w-64 h-screen bg-[#0d1219] border-r border-[#1e2733] flex-col transition-transform duration-300 flex -translate-x-full lg:translate-x-0">
+    <aside
+      className={`fixed lg:static z-40 w-64 h-screen bg-[#0d1219] border-r border-[#1e2733] flex-col transition-transform duration-300 flex lg:translate-x-0 ${!isSidebarOpenedOnMobile ? '-translate-x-full' : 'translate-x-0'}`}
+    >
       <Link href="/">
         <div className="p-6 border-b border-[#1e2733] flex gap-2">
           <IconBadge

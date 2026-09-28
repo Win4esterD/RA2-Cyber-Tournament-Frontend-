@@ -15,17 +15,29 @@ const forPath = (pathname: string) => {
 };
 
 export const Primary = {
+  args: {
+    isSidebarOpenedOnMobile: false,
+  },
   ...forPath('/'),
 } satisfies Story;
 
 export const TournamentsTableSelected = {
+  args: {
+    isSidebarOpenedOnMobile: false,
+  },
   ...forPath('/tournaments-table'),
 } satisfies Story;
 
 export const ProfileSelected = {
+  args: {
+    isSidebarOpenedOnMobile: false,
+  },
   ...forPath('/profile'),
 } satisfies Story;
 
 export const CreateTournamentSelected = {
+  args: {
+    isSidebarOpenedOnMobile: false,
+  },
   ...forPath('/create-tournament'),
 } satisfies Story;

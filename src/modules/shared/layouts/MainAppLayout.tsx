@@ -11,7 +11,7 @@ import { authService } from '@/modules/auth/services/authService';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useErrorStore } from '../stores/ErrorStore';
 import type { ErrorResponseType } from '../global_types/ErrorResponseType';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const routesWithoutMainLayout = ['/login', '/registration', '/reset-password'];
 
@@ -26,6 +26,7 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
   const { locale } = useParams();
   const setAuth = useAuthStore((state) => state.setAuth);
   const setError = useErrorStore((state) => state.setError);
+  const [isSidebarOpenedOnMobile, setIsSidebarOpenedOnMobile] = useState(false);
 
   // handle authorization
   const queryClient = useQueryClient();
@@ -56,11 +57,18 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
 
   return showMainLayout ? (
     <div className="flex min-h-screen">
-      <SideBar />
+      <SideBar isSidebarOpenedOnMobile={isSidebarOpenedOnMobile} />
+      {isSidebarOpenedOnMobile && (
+        <div
+          onClick={() => setIsSidebarOpenedOnMobile(false)}
+          className="fixed inset-0 bg-black/60 z-30 lg:hidden"
+        ></div>
+      )}
       <div className="flex flex-1 flex-col">
         <Header
           locale={locale ? locale?.toString() : LocaleTypeEnum.EN}
           onLocaleChange={(locale) => router.push(`${locale}/${pathname}`)}
+          sidebarHandler={() => setIsSidebarOpenedOnMobile(!isSidebarOpenedOnMobile)}
         />
         <main className="flex-1">{children}</main>
       </div>
