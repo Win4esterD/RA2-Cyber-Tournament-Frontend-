@@ -5,7 +5,7 @@ import { authQueryKeys, tokenName } from '@/modules/auth/consts';
 import Cookies from 'js-cookie';
 import { authService } from '@/modules/auth/services/authService';
 
-export function useAuthQuery() {
+export function useAuthQuery(refetchOnMount?: 'always') {
   const query = useQuery<AuthResponseType | null, ErrorResponseType>({
     queryKey: authQueryKeys.user,
     queryFn: async (): Promise<AuthResponseType | null> => {
@@ -18,6 +18,7 @@ export function useAuthQuery() {
     },
     staleTime: Infinity,
     retry: false,
+    refetchOnMount: refetchOnMount,
   });
 
   return query;
