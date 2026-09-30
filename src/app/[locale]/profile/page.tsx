@@ -1,3 +1,5 @@
+import { ProfilePageLayout } from '@/modules/shared/layouts/ProfilePageLayout';
+
 export default function ProfilePage() {
-  return <div>Profile page</div>;
+  return <ProfilePageLayout />;
 }
