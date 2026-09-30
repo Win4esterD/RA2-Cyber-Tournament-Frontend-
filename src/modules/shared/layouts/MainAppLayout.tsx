@@ -5,16 +5,8 @@ import type { ReactNode } from 'react';
 import { usePathname } from '@/i18n/navigation';
 import { useRouter, useParams } from 'next/navigation';
 import { LocaleTypeEnum } from '@/i18n/types/LocaleTypeEnum';
-import {
-  tokenName,
-  useAuthStore,
-  type AuthResponseType,
-  authQueryKeys,
-} from '@/modules/auth';
-import { authService } from '@/modules/auth/services/authService';
-import { useMutation, useQueryClient, useQuery, skipToken } from '@tanstack/react-query';
+import { tokenName, useAuthStore, useAuthQuery } from '@/modules/auth';
 import { useErrorStore } from '../stores/ErrorStore';
-import type { ErrorResponseType } from '../global_types/ErrorResponseType';
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 
@@ -33,37 +25,18 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
   const setError = useErrorStore((state) => state.setError);
   const [isSidebarOpenedOnMobile, setIsSidebarOpenedOnMobile] = useState(false);
 
-  // handle authorization
-  const queryClient = useQueryClient();
-
-  const { data } = useQuery<AuthResponseType>({
-    queryKey: authQueryKeys.user,
-    queryFn: skipToken,
-  });
-
-  const { mutate } = useMutation({
-    mutationFn: async (token: string) => {
-      const response = await authService.getUserDataByToken(token);
-      setAuth(token);
-      return { token, user: response.data };
-    },
-    onSuccess: ({ token, user }) => {
-      queryClient.setQueryData(authQueryKeys.user, { access_token: token, user });
-    },
-    onError: (error: ErrorResponseType) => {
-      if (error.message !== 'Invalid or expired token') {
-        setError(error);
-      }
-      Cookies.remove(tokenName);
-    },
-  });
+  const { data, error } = useAuthQuery();
 
   useEffect(() => {
-    const token = Cookies.get(tokenName);
-    if (token) {
-      mutate(token);
+    if (!error) return;
+
+    if (data?.access_token) setAuth(data.access_token);
+
+    Cookies.remove(tokenName);
+    if (error.message !== 'Invalid or expired token') {
+      setError(error);
     }
-  }, [mutate]);
+  }, [error, setError, setAuth, data?.access_token]);
 
   return showMainLayout ? (
     <div className="flex min-h-screen">

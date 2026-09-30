@@ -4,3 +4,4 @@ export { ResetPasswordForm } from './components/ResetPasswordForm/ResetPasswordF
 export { useAuthStore } from './AuthStore';
 export { tokenName, authQueryKeys } from './consts';
 export type { UserType, AuthResponseType } from './types/AuthTypes';
+export { useAuthQuery } from './hooks/useAuthQuery';
