@@ -16,7 +16,7 @@ export function useAuthQuery() {
       const user = response.data;
       return { access_token: token, user };
     },
-    staleTime: 1000 * 60 * 5,
+    staleTime: Infinity,
     retry: false,
   });
 
