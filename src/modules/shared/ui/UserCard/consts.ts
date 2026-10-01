@@ -1,5 +1,3 @@
-import type { CardStyleTypeEnum } from '@/modules/auth';
-
 export const backgroundColors = {
   default: 'from-slate-700 to-slate-900',
   soviet: 'from-red-800 to-red-950',
@@ -7,7 +5,7 @@ export const backgroundColors = {
   yuri: 'from-purple-700 to-purple-950',
   golden: 'rom-yellow-600 to-yellow-900',
   dark: 'from-gray-800 to-black',
-};
+} as const;
 
 export const ringColors = {
   default: 'ring-slate-600',

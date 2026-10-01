@@ -53,7 +53,9 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
           onLocaleChange={(locale) => router.push(`${locale}/${pathname}`)}
           sidebarHandler={() => setIsSidebarOpenedOnMobile(!isSidebarOpenedOnMobile)}
         />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 overflow-y-auto">
+          <div className="p-6 lg:p-10 max-w-7xl mx-auto">{children}</div>
+        </main>
       </div>
     </div>
   ) : (
