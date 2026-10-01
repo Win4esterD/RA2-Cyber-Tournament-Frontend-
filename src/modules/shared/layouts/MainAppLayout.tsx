@@ -53,7 +53,7 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
       <div className="flex flex-1 flex-col">
         <Header
           locale={locale ? locale?.toString() : LocaleTypeEnum.EN}
-          onLocaleChange={(locale) => router.push(`${locale}/${pathname}`)}
+          onLocaleChange={(locale) => router.push(`/${locale}/${pathname}`)}
           sidebarHandler={() => setIsSidebarOpenedOnMobile(!isSidebarOpenedOnMobile)}
         />
         <main className="flex-1 overflow-y-auto">
