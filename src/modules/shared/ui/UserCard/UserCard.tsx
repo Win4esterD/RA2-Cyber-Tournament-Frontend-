@@ -1,14 +1,15 @@
 import { backgroundColors, ringColors } from '@/modules/shared/ui/UserCard/consts';
 import { LuCrown, LuTrophy } from 'react-icons/lu';
+import type { CardStyleTypeEnum } from '@/modules/auth';
 
 type UserCardPropsType = {
-  background: 'standard' | 'soviet' | 'allied' | 'yuri' | 'gold' | 'dark';
+  background: CardStyleTypeEnum;
 };
 
 export function UserCard({ background }: UserCardPropsType) {
   return (
     <div
-      className={`relative w-full max-w-sm rounded-2xl bg-linear-to-br ${backgroundColors[background]} p-1 shadow-2xl`}
+      className={`relative w-full max-w-sm rounded-2xl bg-linear-to-br ${backgroundColors[background as keyof typeof backgroundColors]} p-1 shadow-2xl`}
     >
       <div className="rounded-xl bg-black/30 backdrop-blur p-6">
         <div className="flex items-center justify-between mb-4">

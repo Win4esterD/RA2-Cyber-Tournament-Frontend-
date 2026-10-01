@@ -3,5 +3,6 @@ export { RegistrationForm } from './components/RegistrationForm/RegistrationForm
 export { ResetPasswordForm } from './components/ResetPasswordForm/ResetPasswordForm';
 export { useAuthStore } from './AuthStore';
 export { tokenName, authQueryKeys } from './consts';
-export type { UserType, AuthResponseType } from './types/AuthTypes';
+export type { UserType, AuthResponseType, UserRoleTypeEnum } from './types/AuthTypes';
+export { CardStyleTypeEnum } from './types/AuthTypes';
 export { useAuthQuery } from './hooks/useAuthQuery';
