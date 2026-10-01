@@ -28,15 +28,18 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
   const { data, error } = useAuthQuery();
 
   useEffect(() => {
-    if (!error) return;
+    if (data?.access_token) {
+      setAuth(data.access_token);
+      return;
+    }
 
-    if (data?.access_token) setAuth(data.access_token);
+    if (!error) return;
 
     Cookies.remove(tokenName);
     if (error.message !== 'Invalid or expired token') {
       setError(error);
     }
-  }, [error, setError, setAuth, data?.access_token]);
+  }, [error, setError, setAuth, data]);
 
   return showMainLayout ? (
     <div className="flex min-h-screen">
