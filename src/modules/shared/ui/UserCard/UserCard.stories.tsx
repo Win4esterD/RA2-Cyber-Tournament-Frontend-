@@ -12,52 +12,68 @@ type Story = StoryObj<typeof meta>;
 
 const { DEFAULT, SOVIET, ALLIED, YURI, GOLDEN, DARK } = CardStyleTypeEnum;
 
+const defaultProfileData = {
+  id: 1,
+  card_style: DEFAULT,
+  role: UserRoleTypeEnum.USER,
+  name: 'Pavel',
+  email: 'any_email@mail.ru',
+  createdAt: new Date(),
+  tournamentsWon: 5,
+  loses: 10,
+  gamesPlayed: 35,
+  wins: 25,
+  rank: RankTypeEnum.PRIVATE,
+  about_user: 'LEgendary champion',
+};
+
 export const Primary = {
   args: {
-    // background: DEFAULT,
-    profileData: {
-      id: 1,
-      card_style: DEFAULT,
-      role: UserRoleTypeEnum.USER,
-      name: null,
-      email: 'any_email@mail.ru',
-      createdAt: new Date(),
-      tournamentsWon: 0,
-      loses: 0,
-      gamesPlayed: 0,
-      wins: 0,
-      rank: RankTypeEnum.PRIVATE,
-      about_user: '',
-    },
+    profileData: defaultProfileData,
   },
 } satisfies Story;
 
 export const Soviet = {
   args: {
-    background: SOVIET,
+    profileData: {
+      ...defaultProfileData,
+      card_style: SOVIET,
+    },
   },
 };
 
 export const Allied = {
   args: {
-    background: ALLIED,
+    profileData: {
+      ...defaultProfileData,
+      card_style: ALLIED,
+    },
   },
 };
 
 export const Yuri = {
   args: {
-    background: YURI,
+    profileData: {
+      ...defaultProfileData,
+      card_style: YURI,
+    },
   },
 };
 
 export const Golden = {
   args: {
-    background: GOLDEN,
+    profileData: {
+      ...defaultProfileData,
+      card_style: GOLDEN,
+    },
   },
 };
 
 export const Dark = {
   args: {
-    background: DARK,
+    profileData: {
+      ...defaultProfileData,
+      card_style: DARK,
+    },
   },
 };
