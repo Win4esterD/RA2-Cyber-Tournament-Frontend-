@@ -54,5 +54,21 @@
     "tournamentHub": "Tournament Hub",
     "logOut": "Log Out",
     "unregistered": "Unregistered"
+  },
+  "profile": {
+    "noAuth": {
+      "title": "You are not authorised",
+      "description": "Log in to set up your commander card and view tournament history.",
+      "logIn": "Log in to your account"
+    },
+    "card": {
+      "wins": "Wins",
+      "loses": "Loses",
+      "winrate": "Winrate",
+      "tournaments": "Tournaments",
+      "played": "Played",
+      "unnamed": "Unnamed",
+      "general": "General"
+    }
   }
 }

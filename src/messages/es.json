@@ -54,5 +54,21 @@
     "tournamentHub": "Centro de torneos",
     "logOut": "Cerrar sesión",
     "unregistered": "Sin registrar"
+  },
+  "profile": {
+    "noAuth": {
+      "title": "No estás autorizado",
+      "description": "Inicia sesión para configurar tu ficha de comandante y ver el historial de torneos.",
+      "logIn": "Iniciar sesión"
+    },
+    "card": {
+      "wins": "Victorias",
+      "loses": "Derrotas",
+      "winrate": "Ratio de victorias",
+      "tournaments": "Torneos",
+      "played": "Jugados",
+      "unnamed": "Sin nombre",
+      "general": "General"
+    }
   }
 }

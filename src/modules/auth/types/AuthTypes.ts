@@ -18,12 +18,12 @@ export enum RankTypeEnum {
 }
 
 export enum CardStyleTypeEnum {
-  DEFAULT = 'default',
-  SOVIET = 'soviet',
-  ALLIED = 'allied',
-  YURI = 'yuri',
-  GOLDEN = 'golden',
-  DARK = 'dark',
+  DEFAULT = 'DEFAULT',
+  SOVIET = 'SOVIET',
+  ALLIED = 'ALLIED',
+  YURI = 'YURI',
+  GOLDEN = 'GOLDEN',
+  DARK = 'DARK',
 }
 
 export type UserType = {
@@ -49,5 +49,5 @@ export type RegistrationAndLogInParamsType = {
 
 export type AuthResponseType = {
   access_token: string;
-  user: UserType;
+  user: Omit<UserType, 'pasword'>;
 };
