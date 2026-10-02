@@ -30,7 +30,6 @@ export type UserType = {
   name: string | null;
   id: number;
   email: string;
-  password: string;
   role: UserRoleTypeEnum;
   createdAt: Date;
   wins: number;

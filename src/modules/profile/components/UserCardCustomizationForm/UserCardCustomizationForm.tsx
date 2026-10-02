@@ -4,6 +4,7 @@ import { LuMedal, LuSave } from 'react-icons/lu';
 import { backgroundColors } from '@/modules/profile/components/UserCard/consts';
 import { UserCardThemeChangeButton } from '@/modules/profile/components/UserCardThemeChangeButton/UserCardThemeChangeButton';
 import { CardStyleTypeEnum } from '@/modules/auth';
+import { useMutation } from '@tanstack/react-query';
 
 const { DEFAULT, SOVIET, ALLIED, YURI, GOLDEN, DARK } = CardStyleTypeEnum;
 
@@ -14,12 +15,21 @@ type UserCardCustomizationFormPropsType = {
 export function UserCardCustomizationForm({
   card_style,
 }: UserCardCustomizationFormPropsType) {
-  const { control } = useForm({
+  const { control, handleSubmit } = useForm({
     defaultValues: {
       name: '',
       theme: card_style,
     },
   });
+
+  const mutation = useMutation({
+    mutationFn: async () => {
+      
+    }
+  })
+
+  const onSubmit = async () => {};
+
   return (
     <div className="bg-[#0d1219] border border-[#1e2733] rounded-xl p-6">
       <h3 className="text-sm font-semibold mb-4 text-slate-200">Card customization</h3>
@@ -72,7 +82,10 @@ export function UserCardCustomizationForm({
           rows={3}
         ></textarea>
       </div>
-      <button className="w-full mt-5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white py-2.5 rounded-lg text-sm font-medium flex items-center justify-center gap-2 cursor-pointer">
+      <button
+        type="submit"
+        className="w-full mt-5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white py-2.5 rounded-lg text-sm font-medium flex items-center justify-center gap-2 cursor-pointer"
+      >
         <LuSave className="w-4 h-4" />
         Save
       </button>
