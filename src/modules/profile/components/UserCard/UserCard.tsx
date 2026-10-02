@@ -1,4 +1,7 @@
-import { backgroundColors, ringColors } from '@/modules/shared/ui/UserCard/consts';
+import {
+  backgroundColors,
+  ringColors,
+} from '@/modules/profile/components/UserCard/consts';
 import { LuCrown, LuTrophy } from 'react-icons/lu';
 import type { UserType } from '@/modules/auth';
 import { useTranslations } from 'next-intl';

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { UserCard } from '@/modules/shared/ui/UserCard/UserCard';
+import { UserCard } from '@/modules/profile/components/UserCard/UserCard';
 import { CardStyleTypeEnum, UserRoleTypeEnum, RankTypeEnum } from '@/modules/auth';
 
 const meta = {
