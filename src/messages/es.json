@@ -36,7 +36,13 @@
     "userNotFound": "No se encontró el usuario",
     "invalidPassword": "Contraseña inválida",
     "incorrectEmail": "Correo electrónico incorrecto",
-    "passwordsDontMatch": "Las contraseñas no coinciden"
+    "passwordsDontMatch": "Las contraseñas no coinciden",
+    "invalidCardStyle": "Estilo de tarjeta inválido",
+    "mustBeString": "Debe ser una cadena de texto",
+    "nameTooShort": "El nombre debe tener al menos {min} caracteres",
+    "nameTooLong": "El nombre debe tener como máximo {max} caracteres",
+    "aboutUserTooShort": "La descripción debe tener al menos {min} caracteres",
+    "aboutUserTooLong": "La descripción debe tener como máximo {max} caracteres"
   },
   "errorModal": {
     "errorOccured": "Ocurrió un error",
@@ -69,6 +75,13 @@
       "played": "Jugados",
       "unnamed": "Sin nombre",
       "general": "General"
+    },
+    "customization": {
+      "about": "Acerca de",
+      "cardTheme": "Tema de la tarjeta",
+      "save": "Guardar",
+      "nickname": "Apodo",
+      "aboutPlaceholder": "Cuéntanos sobre ti como comandante..."
     }
   }
 }

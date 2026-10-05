@@ -1,5 +1,5 @@
 import { Input } from '@/modules/shared/ui/Input/Input';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { LuMedal, LuSave } from 'react-icons/lu';
 import { backgroundColors } from '@/modules/profile/components/UserCard/consts';
 import { UserCardThemeChangeButton } from '@/modules/profile/components/UserCardThemeChangeButton/UserCardThemeChangeButton';
@@ -12,6 +12,10 @@ import { userService } from '@/modules/profile/services/userService';
 import { authQueryKeys } from '@/modules/auth';
 import { useErrorStore } from '@/modules/shared/stores/ErrorStore';
 import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorResponseType';
+import { useUpdateProfileSchema } from '@/modules/profile/schemas/UpdateProfileSchema';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslations } from 'next-intl';
+import type { AuthResponseType } from '@/modules/auth';
 
 const { DEFAULT, SOVIET, ALLIED, YURI, GOLDEN, DARK } = CardStyleTypeEnum;
 
@@ -28,14 +32,25 @@ export function UserCardCustomizationForm({
 }: UserCardCustomizationFormPropsType) {
   const queryClient = useQueryClient();
   const setGlobalError = useErrorStore((state) => state.setError);
+  const updateProfileSchema = useUpdateProfileSchema();
+  const t = useTranslations('profile.customization');
 
-  const { control, handleSubmit } = useForm<UpdateProfileDataType>({
+  const {
+    control,
+    handleSubmit,
+    setValue,
+    register,
+    formState: { errors },
+  } = useForm<UpdateProfileDataType>({
     defaultValues: {
       name,
       card_style,
       about_user,
     },
+    resolver: zodResolver(updateProfileSchema),
   });
+
+  const cardStyle = useWatch({ name: 'card_style', control });
 
   const mutation = useMutation({
     mutationFn: async (data: UpdateProfileDataType) => {
@@ -43,7 +58,9 @@ export function UserCardCustomizationForm({
       return response;
     },
     onSuccess: (response) => {
-      queryClient.setQueryData(authQueryKeys.user, response);
+      queryClient.setQueryData(authQueryKeys.user, (prev: AuthResponseType) =>
+        prev ? { ...prev, user: response.data } : prev,
+      );
     },
     onError: (err: ErrorResponseType) => {
       setGlobalError(err);
@@ -61,9 +78,10 @@ export function UserCardCustomizationForm({
     >
       <h3 className="text-sm font-semibold mb-4 text-slate-200">Card customization</h3>
       <Input
-        label="NICKNAME"
+        label={t('nickname')}
         controllerProps={{ name: 'name', control }}
         labelUtilityClasses="block text-xs uppercase tracking-wider text-slate-500 mb-2"
+        defaultValue={name}
       />
       <div className="mt-5">
         <label className="block text-xs uppercase tracking-wider text-slate-500 mb-2">
@@ -76,45 +94,66 @@ export function UserCardCustomizationForm({
       </div>
       <div className="mt-5">
         <label className="block text-xs uppercase tracking-wider text-slate-500 mb-2">
-          Card theme
+          {t('cardTheme')}
         </label>
       </div>
       <div className="grid grid-cols-3 gap-2">
         <UserCardThemeChangeButton
           title="Standard"
           gradientColor={backgroundColors[DEFAULT]}
+          isSelected={cardStyle === DEFAULT}
+          onClick={() => setValue('card_style', DEFAULT)}
         />
         <UserCardThemeChangeButton
           title="Soviet"
           gradientColor={backgroundColors[SOVIET]}
+          isSelected={cardStyle === SOVIET}
+          onClick={() => setValue('card_style', SOVIET)}
         />
         <UserCardThemeChangeButton
           title="Allied"
           gradientColor={backgroundColors[ALLIED]}
+          isSelected={cardStyle === ALLIED}
+          onClick={() => setValue('card_style', ALLIED)}
         />
-        <UserCardThemeChangeButton title="Yuri" gradientColor={backgroundColors[YURI]} />
+        <UserCardThemeChangeButton
+          title="Yuri"
+          gradientColor={backgroundColors[YURI]}
+          isSelected={cardStyle === YURI}
+          onClick={() => setValue('card_style', YURI)}
+        />
         <UserCardThemeChangeButton
           title="Golden"
           gradientColor={backgroundColors[GOLDEN]}
+          isSelected={cardStyle === GOLDEN}
+          onClick={() => setValue('card_style', GOLDEN)}
         />
-        <UserCardThemeChangeButton title="Dark" gradientColor={backgroundColors[DARK]} />
+        <UserCardThemeChangeButton
+          title="Dark"
+          gradientColor={backgroundColors[DARK]}
+          isSelected={cardStyle === DARK}
+          onClick={() => setValue('card_style', DARK)}
+        />
       </div>
       <div className="mt-5">
         <label className="block text-xs uppercase tracking-wider text-slate-500 mb-2">
-          About
+          {t('about')}
         </label>
         <textarea
           className="w-full bg-[#0a0e14] border border-[#1e2733] rounded-lg px-4 py-2.5 text-sm focus:border-red-600/50 outline-none resize-none"
-          placeholder="Tell us about yourself as a commander..."
+          placeholder={t('aboutPlaceholder')}
           rows={3}
+          defaultValue={about_user}
+          {...register('about_user')}
         ></textarea>
+        <p className="text-xs text-red-500">{errors.about_user?.message}</p>
       </div>
       <button
         type="submit"
         className="w-full mt-5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white py-2.5 rounded-lg text-sm font-medium flex items-center justify-center gap-2 cursor-pointer"
       >
         <LuSave className="w-4 h-4" />
-        Save
+        {t('save')}
       </button>
     </form>
   );

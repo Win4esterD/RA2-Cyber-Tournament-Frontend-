@@ -11,6 +11,7 @@ type InputPropsType<T extends FieldValues> = {
   type?: string;
   controllerProps: UseControllerProps<T>;
   labelUtilityClasses?: string;
+  defaultValue?: string;
 };
 
 export function Input<T extends FieldValues>({
@@ -22,6 +23,7 @@ export function Input<T extends FieldValues>({
   type,
   controllerProps,
   labelUtilityClasses,
+  defaultValue,
 }: InputPropsType<T>) {
   const { field, fieldState } = useController(controllerProps);
 
@@ -45,6 +47,7 @@ export function Input<T extends FieldValues>({
           value={value}
           type={type}
           id={field.name}
+          defaultValue={defaultValue}
         />
       </div>
       {fieldState.error && (

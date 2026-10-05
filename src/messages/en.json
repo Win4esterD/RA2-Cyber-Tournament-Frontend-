@@ -36,7 +36,13 @@
     "userNotFound": "The user wasn't found",
     "invalidPassword": "Invalid password",
     "incorrectEmail": "Incorrect email",
-    "passwordsDontMatch": "Passwords don't match"
+    "passwordsDontMatch": "Passwords don't match",
+    "invalidCardStyle": "Invalid card style",
+    "mustBeString": "Must be a string",
+    "nameTooShort": "Name must be at least {min} characters long",
+    "nameTooLong": "Name must be at most {max} characters long",
+    "aboutUserTooShort": "About must be at least {min} characters long",
+    "aboutUserTooLong": "About must be at most {max} characters long"
   },
   "errorModal": {
     "errorOccured": "Error occured",
@@ -69,6 +75,13 @@
       "played": "Played",
       "unnamed": "Unnamed",
       "general": "General"
+    },
+    "customization": {
+      "about": "About",
+      "cardTheme": "Card theme",
+      "save": "Save",
+      "nickname": "Nickname",
+      "aboutPlaceholder": "Tell us about yourself as a commander..."
     }
   }
 }

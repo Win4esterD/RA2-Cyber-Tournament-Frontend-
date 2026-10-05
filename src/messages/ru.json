@@ -36,7 +36,13 @@
     "userNotFound": "Пользователь не найден",
     "invalidPassword": "Неверный пароль",
     "incorrectEmail": "Неверный адрес электронной почты",
-    "passwordsDontMatch": "Пароли не совпадают"
+    "passwordsDontMatch": "Пароли не совпадают",
+    "invalidCardStyle": "Недопустимый стиль карты",
+    "mustBeString": "Значение должно быть строкой",
+    "nameTooShort": "Имя должно содержать не менее {min} символов",
+    "nameTooLong": "Имя должно содержать не более {max} символов",
+    "aboutUserTooShort": "Описание должно содержать не менее {min} символов",
+    "aboutUserTooLong": "Описание должно содержать не более {max} символов"
   },
   "errorModal": {
     "errorOccured": "Произошла ошибка",
@@ -69,6 +75,13 @@
       "played": "Сыграно",
       "unnamed": "Без имени",
       "general": "Генерал"
+    },
+    "customization": {
+      "about": "О себе",
+      "cardTheme": "Тема карты",
+      "save": "Сохранить",
+      "nickname": "Никнейм",
+      "aboutPlaceholder": "Расскажите о себе как о командире..."
     }
   }
 }

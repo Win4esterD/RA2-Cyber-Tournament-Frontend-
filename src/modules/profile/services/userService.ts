@@ -10,6 +10,6 @@ export const userService = {
 
   async updateProfileData(userData: UpdateProfileDataType) {
     const response = await apiClient.patch<UserType>('/users/me', userData);
-    return response.data;
+    return response;
   },
 };
