@@ -3,7 +3,7 @@ import type { AuthResponseType } from '@/modules/auth/types/AuthTypes';
 import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorResponseType';
 import { authQueryKeys, tokenName } from '@/modules/auth/consts';
 import Cookies from 'js-cookie';
-import { userService } from '@/modules/auth/services/userService';
+import { userService } from '@/modules/profile/services/userService';
 
 export function useAuthQuery(refetchOnMount?: 'always') {
   const query = useQuery<AuthResponseType | null, ErrorResponseType>({
@@ -12,7 +12,7 @@ export function useAuthQuery(refetchOnMount?: 'always') {
       const token = Cookies.get(tokenName);
       if (!token) return null;
 
-      const response = await userService.getUser();
+      const response = await userService.getProfileData();
       const user = response.data;
       return { access_token: token, user };
     },

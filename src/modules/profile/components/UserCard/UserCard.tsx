@@ -3,7 +3,7 @@ import {
   ringColors,
 } from '@/modules/profile/components/UserCard/consts';
 import { LuCrown, LuTrophy } from 'react-icons/lu';
-import type { UserType } from '@/modules/auth';
+import type { UserType } from '@/modules/profile/types/UserTypes';
 import { useTranslations } from 'next-intl';
 
 type UserCardPropsType = {
@@ -25,14 +25,14 @@ export function UserCard({ profileData }: UserCardPropsType) {
     }
 
     const sum = wins + loses;
-    return Math.round((loses / sum) * 100);
+    return Math.round((wins / sum) * 100);
   };
 
   return (
     <div
       className={`relative w-full max-w-sm rounded-2xl bg-linear-to-br ${backgroundColors[card_style]} p-1 shadow-2xl`}
     >
-      <div className="rounded-xl bg-black/30 backdrop-blur p-6">
+      <div className="rounded-xl bg-black/30 backdrop-blur p-6 h-full">
         <div className="flex items-center justify-between mb-4">
           <div className="text-[10px] uppercase tracking-[0.2em] text-gray-300 font-bold">
             Red Alert 2

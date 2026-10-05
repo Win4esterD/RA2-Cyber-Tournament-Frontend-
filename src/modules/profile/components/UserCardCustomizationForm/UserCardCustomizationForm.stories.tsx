@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { UserCardCustomizationForm } from '@/modules/profile/components/UserCardCustomizationForm/UserCardCustomizationForm';
-import { CardStyleTypeEnum } from '@/modules/auth';
+import { CardStyleTypeEnum } from '@/modules/profile';
 
 const { DEFAULT } = CardStyleTypeEnum;
 

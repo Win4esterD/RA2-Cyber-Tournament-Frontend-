@@ -3,35 +3,62 @@ import { useForm } from 'react-hook-form';
 import { LuMedal, LuSave } from 'react-icons/lu';
 import { backgroundColors } from '@/modules/profile/components/UserCard/consts';
 import { UserCardThemeChangeButton } from '@/modules/profile/components/UserCardThemeChangeButton/UserCardThemeChangeButton';
-import { CardStyleTypeEnum } from '@/modules/auth';
-import { useMutation } from '@tanstack/react-query';
+import {
+  CardStyleTypeEnum,
+  type UpdateProfileDataType,
+} from '@/modules/profile/types/UserTypes';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { userService } from '@/modules/profile/services/userService';
+import { authQueryKeys } from '@/modules/auth';
+import { useErrorStore } from '@/modules/shared/stores/ErrorStore';
+import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorResponseType';
 
 const { DEFAULT, SOVIET, ALLIED, YURI, GOLDEN, DARK } = CardStyleTypeEnum;
 
 type UserCardCustomizationFormPropsType = {
   card_style: CardStyleTypeEnum;
+  name: string;
+  about_user: string;
 };
 
 export function UserCardCustomizationForm({
   card_style,
+  name,
+  about_user,
 }: UserCardCustomizationFormPropsType) {
-  const { control, handleSubmit } = useForm({
+  const queryClient = useQueryClient();
+  const setGlobalError = useErrorStore((state) => state.setError);
+
+  const { control, handleSubmit } = useForm<UpdateProfileDataType>({
     defaultValues: {
-      name: '',
-      theme: card_style,
+      name,
+      card_style,
+      about_user,
     },
   });
 
   const mutation = useMutation({
-    mutationFn: async () => {
-      
-    }
-  })
+    mutationFn: async (data: UpdateProfileDataType) => {
+      const response = await userService.updateProfileData(data);
+      return response;
+    },
+    onSuccess: (response) => {
+      queryClient.setQueryData(authQueryKeys.user, response);
+    },
+    onError: (err: ErrorResponseType) => {
+      setGlobalError(err);
+    },
+  });
 
-  const onSubmit = async () => {};
+  const onSubmit = async (data: UpdateProfileDataType) => {
+    mutation.mutate(data);
+  };
 
   return (
-    <div className="bg-[#0d1219] border border-[#1e2733] rounded-xl p-6">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="bg-[#0d1219] border border-[#1e2733] rounded-xl p-6"
+    >
       <h3 className="text-sm font-semibold mb-4 text-slate-200">Card customization</h3>
       <Input
         label="NICKNAME"
@@ -89,6 +116,6 @@ export function UserCardCustomizationForm({
         <LuSave className="w-4 h-4" />
         Save
       </button>
-    </div>
+    </form>
   );
 }

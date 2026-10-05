@@ -1,4 +1,4 @@
-import { ProfilePageDataFetcher } from '@/modules/profile/components/ProfilePageDataFetcher/ProfilePageDataFetcher';
+import { ProfilePageDataFetcher } from '@/modules/profile/';
 
 export default function ProfilePage() {
   return <ProfilePageDataFetcher />;
