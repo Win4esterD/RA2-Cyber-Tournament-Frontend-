@@ -6,7 +6,6 @@ type RankIconPropsType = {
 };
 
 export function RankIcon({ rank }: RankIconPropsType) {
-  console.log(RANK_COLORS);
   const Icon = RANK_ICONS[rank];
   return <Icon className={RANK_COLORS[rank]} />;
 }
