@@ -67,8 +67,9 @@ export function UserCardCustomizationForm({
 
       const { name, about_user, card_style } = data;
       reset({ name, about_user, card_style });
-      toast('Profile has been changed', {
+      toast.success(t('profileUpdated'), {
         position: 'bottom-right',
+        autoClose: 2500,
       });
     },
     onError: (err: ErrorResponseType) => {

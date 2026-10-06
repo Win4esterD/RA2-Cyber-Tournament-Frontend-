@@ -81,7 +81,8 @@
       "cardTheme": "Card theme",
       "save": "Save",
       "nickname": "Nickname",
-      "aboutPlaceholder": "Tell us about yourself as a commander..."
+      "aboutPlaceholder": "Tell us about yourself as a commander...",
+      "profileUpdated": "Profile has been changed"
     }
   }
 }

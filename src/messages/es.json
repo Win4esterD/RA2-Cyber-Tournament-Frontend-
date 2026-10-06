@@ -81,7 +81,8 @@
       "cardTheme": "Tema de la tarjeta",
       "save": "Guardar",
       "nickname": "Apodo",
-      "aboutPlaceholder": "Cuéntanos sobre ti como comandante..."
+      "aboutPlaceholder": "Cuéntanos sobre ti como comandante...",
+      "profileUpdated": "El perfil ha sido actualizado"
     }
   }
 }
