@@ -1,6 +1,6 @@
 import { Input } from '@/modules/shared/ui/Input/Input';
 import { useForm, useWatch } from 'react-hook-form';
-import { LuMedal, LuSave } from 'react-icons/lu';
+import { LuSave } from 'react-icons/lu';
 import { backgroundColors } from '@/modules/profile/components/UserCard/consts';
 import { UserCardThemeChangeButton } from '@/modules/profile/components/UserCardThemeChangeButton/UserCardThemeChangeButton';
 import {
@@ -93,15 +93,6 @@ export function UserCardCustomizationForm({
         labelUtilityClasses="block text-xs uppercase tracking-wider text-slate-500 mb-2"
         defaultValue={name || ''}
       />
-      <div className="mt-5">
-        <label className="block text-xs uppercase tracking-wider text-slate-500 mb-2">
-          RANK
-        </label>
-        <span className="inline-flex items-center gap-2 bg-[#161d28] text-yellow-400 text-sm font-semibold px-4 py-2 rounded-full border border-[#1e2733]">
-          <LuMedal className="w-4 h-4" />
-          Commander
-        </span>
-      </div>
       <div className="mt-5">
         <label className="block text-xs uppercase tracking-wider text-slate-500 mb-2">
           {t('cardTheme')}

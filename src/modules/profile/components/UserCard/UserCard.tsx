@@ -2,7 +2,7 @@ import {
   backgroundColors,
   ringColors,
 } from '@/modules/profile/components/UserCard/consts';
-import { LuCrown, LuTrophy } from 'react-icons/lu';
+import { LuTrophy, LuCrown, LuMedal } from 'react-icons/lu';
 import type { UserType } from '@/modules/profile/types/UserTypes';
 import { useTranslations } from 'next-intl';
 
@@ -49,7 +49,10 @@ export function UserCard({ profileData }: UserCardPropsType) {
           </div>
           <div className="text-xl font-bold text-white">{name ? name : t('unnamed')}</div>
           <div className="text-xs uppercase tracking-widest text-gray-300 mt-1">
-            {rank}
+            <span className="mt-5 inline-flex items-center gap-2 bg-[#161d28] text-yellow-400 text-sm font-semibold px-4 py-2 rounded-full border border-[#1e2733]">
+              <LuMedal className="w-4 h-4" />
+              {rank}
+            </span>
           </div>
         </div>
         <div className="grid grid-cols-3 gap-2 mb-4 mt-6">

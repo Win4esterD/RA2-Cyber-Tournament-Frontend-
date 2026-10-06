@@ -24,5 +24,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary = {
   args: {
     card_style: DEFAULT,
+    about_user: "There is something inside you, it's hard to explain",
+    name: 'Kavinsky',
   },
 } satisfies Story;
