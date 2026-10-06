@@ -28,14 +28,14 @@ export const RANK_ICONS: Record<
 };
 
 export const RANK_COLORS: Record<RankTypeEnum, string> = {
-  [RankTypeEnum.PRIVATE]: 'text-rank-steel-dim',
-  [RankTypeEnum.CORPORAL]: 'text-rank-steel',
-  [RankTypeEnum.SERGEANT]: 'text-rank-steel-bright',
-  [RankTypeEnum.LIEUTENANT]: 'text-rank-bronze',
-  [RankTypeEnum.MAJOR]: 'text-rank-bronze-bright',
-  [RankTypeEnum.COLONEL]: 'text-rank-silver',
-  [RankTypeEnum.BRIGADIER_GEN]: 'text-rank-gold',
-  [RankTypeEnum.GENERAL]: 'text-rank-gold-bright',
-  [RankTypeEnum.FIVE_STAR_GEN]: 'text-rank-gold-radiant',
-  [RankTypeEnum.COMMANDER_IN_CHIEF]: 'text-rank-commander',
+  [RankTypeEnum.PRIVATE]: 'text-slate-400',
+  [RankTypeEnum.CORPORAL]: 'text-slate-300',
+  [RankTypeEnum.SERGEANT]: 'text-zinc-200',
+  [RankTypeEnum.LIEUTENANT]: 'text-amber-600',
+  [RankTypeEnum.MAJOR]: 'text-amber-500',
+  [RankTypeEnum.COLONEL]: 'text-cyan-400',
+  [RankTypeEnum.BRIGADIER_GEN]: 'text-orange-500',
+  [RankTypeEnum.GENERAL]: 'text-yellow-400',
+  [RankTypeEnum.FIVE_STAR_GEN]: 'text-purple-500',
+  [RankTypeEnum.COMMANDER_IN_CHIEF]: 'text-red-500',
 };

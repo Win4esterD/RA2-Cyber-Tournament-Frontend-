@@ -1,22 +1,6 @@
 @import 'tailwindcss';
 
-/* * {
-  margin: 0;
-  padding: 0;
-} */
-
 @theme {
   --color-white-text-primary: #f1f5f9;
   --breakpoint-xs: 30rem;
-
-  --color-rank-steel-dim: #7c8896;
-  --color-rank-steel: #99a4b2;
-  --color-rank-steel-bright: #c8d2de;
-  --color-rank-bronze: #c98f5e;
-  --color-rank-bronze-bright: #e0a765;
-  --color-rank-silver: #d7dee8;
-  --color-rank-gold: #d4a24a;
-  --color-rank-gold-bright: #f2c45c;
-  --color-rank-gold-radiant: #ffe9a8;
-  --color-rank-commander: #ff5d4a;
 }

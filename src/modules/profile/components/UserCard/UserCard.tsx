@@ -2,9 +2,11 @@ import {
   backgroundColors,
   ringColors,
 } from '@/modules/profile/components/UserCard/consts';
-import { LuTrophy, LuCrown, LuMedal } from 'react-icons/lu';
+import { LuTrophy, LuCrown } from 'react-icons/lu';
 import type { UserType } from '@/modules/profile/types/UserTypes';
 import { useTranslations } from 'next-intl';
+import { RankIcon } from '@/modules/shared/ui/RankIcon/RankIcon';
+import { RANK_COLORS } from '@/global variables/RanksAndRankColors';
 
 type UserCardPropsType = {
   profileData: Omit<UserType, 'password'>;
@@ -49,8 +51,10 @@ export function UserCard({ profileData }: UserCardPropsType) {
           </div>
           <div className="text-xl font-bold text-white">{name ? name : t('unnamed')}</div>
           <div className="text-xs uppercase tracking-widest text-gray-300 mt-1">
-            <span className="mt-5 inline-flex items-center gap-2 bg-[#161d28] text-yellow-400 text-sm font-semibold px-4 py-2 rounded-full border border-[#1e2733]">
-              <LuMedal className="w-4 h-4" />
+            <span
+              className={`mt-5 inline-flex items-center gap-2 bg-[#161d28] ${RANK_COLORS[rank]} text-sm font-semibold px-4 py-2 rounded-full border border-[#1e2733]`}
+            >
+              <RankIcon rank={rank} />
               {rank}
             </span>
           </div>
