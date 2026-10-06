@@ -42,7 +42,7 @@ export type UserType = {
 };
 
 export type UpdateProfileDataType = {
-  card_style?: CardStyleTypeEnum;
-  about_user?: string;
-  name?: string;
+  card_style: CardStyleTypeEnum;
+  about_user: string | null;
+  name: string | null;
 };

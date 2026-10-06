@@ -22,9 +22,9 @@ export function ProfilePageUI({ profileData }: ProfilePageUIPropsType) {
           <UserCard profileData={profileData} />
         </div>
         <UserCardCustomizationForm
-          about_user={about_user || ''}
+          about_user={about_user}
           card_style={card_style}
-          name={name || ''}
+          name={name}
         />
       </div>
     </div>

@@ -16,13 +16,14 @@ import { useUpdateProfileSchema } from '@/modules/profile/schemas/UpdateProfileS
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import type { AuthResponseType } from '@/modules/auth';
+import { toast } from 'react-toastify';
 
 const { DEFAULT, SOVIET, ALLIED, YURI, GOLDEN, DARK } = CardStyleTypeEnum;
 
 type UserCardCustomizationFormPropsType = {
   card_style: CardStyleTypeEnum;
-  name: string;
-  about_user: string;
+  name: string | null;
+  about_user: string | null;
 };
 
 export function UserCardCustomizationForm({
@@ -40,7 +41,8 @@ export function UserCardCustomizationForm({
     handleSubmit,
     setValue,
     register,
-    formState: { errors },
+    reset,
+    formState: { errors, isDirty },
   } = useForm<UpdateProfileDataType>({
     defaultValues: {
       name,
@@ -58,9 +60,16 @@ export function UserCardCustomizationForm({
       return response;
     },
     onSuccess: (response) => {
+      const { data } = response;
       queryClient.setQueryData(authQueryKeys.user, (prev: AuthResponseType) =>
-        prev ? { ...prev, user: response.data } : prev,
+        prev ? { ...prev, user: data } : prev,
       );
+
+      const { name, about_user, card_style } = data;
+      reset({ name, about_user, card_style });
+      toast('Profile has been changed', {
+        position: 'bottom-right',
+      });
     },
     onError: (err: ErrorResponseType) => {
       setGlobalError(err);
@@ -81,7 +90,7 @@ export function UserCardCustomizationForm({
         label={t('nickname')}
         controllerProps={{ name: 'name', control }}
         labelUtilityClasses="block text-xs uppercase tracking-wider text-slate-500 mb-2"
-        defaultValue={name}
+        defaultValue={name || ''}
       />
       <div className="mt-5">
         <label className="block text-xs uppercase tracking-wider text-slate-500 mb-2">
@@ -102,37 +111,49 @@ export function UserCardCustomizationForm({
           title="Standard"
           gradientColor={backgroundColors[DEFAULT]}
           isSelected={cardStyle === DEFAULT}
-          onClick={() => setValue('card_style', DEFAULT)}
+          onClick={() =>
+            setValue('card_style', DEFAULT, { shouldDirty: true, shouldTouch: true })
+          }
         />
         <UserCardThemeChangeButton
           title="Soviet"
           gradientColor={backgroundColors[SOVIET]}
           isSelected={cardStyle === SOVIET}
-          onClick={() => setValue('card_style', SOVIET)}
+          onClick={() =>
+            setValue('card_style', SOVIET, { shouldDirty: true, shouldTouch: true })
+          }
         />
         <UserCardThemeChangeButton
           title="Allied"
           gradientColor={backgroundColors[ALLIED]}
           isSelected={cardStyle === ALLIED}
-          onClick={() => setValue('card_style', ALLIED)}
+          onClick={() =>
+            setValue('card_style', ALLIED, { shouldDirty: true, shouldTouch: true })
+          }
         />
         <UserCardThemeChangeButton
           title="Yuri"
           gradientColor={backgroundColors[YURI]}
           isSelected={cardStyle === YURI}
-          onClick={() => setValue('card_style', YURI)}
+          onClick={() =>
+            setValue('card_style', YURI, { shouldDirty: true, shouldTouch: true })
+          }
         />
         <UserCardThemeChangeButton
           title="Golden"
           gradientColor={backgroundColors[GOLDEN]}
           isSelected={cardStyle === GOLDEN}
-          onClick={() => setValue('card_style', GOLDEN)}
+          onClick={() =>
+            setValue('card_style', GOLDEN, { shouldDirty: true, shouldTouch: true })
+          }
         />
         <UserCardThemeChangeButton
           title="Dark"
           gradientColor={backgroundColors[DARK]}
           isSelected={cardStyle === DARK}
-          onClick={() => setValue('card_style', DARK)}
+          onClick={() =>
+            setValue('card_style', DARK, { shouldDirty: true, shouldTouch: true })
+          }
         />
       </div>
       <div className="mt-5">
@@ -143,13 +164,14 @@ export function UserCardCustomizationForm({
           className="w-full bg-[#0a0e14] border border-[#1e2733] rounded-lg px-4 py-2.5 text-sm focus:border-red-600/50 outline-none resize-none"
           placeholder={t('aboutPlaceholder')}
           rows={3}
-          defaultValue={about_user}
+          defaultValue={about_user || ''}
           {...register('about_user')}
         ></textarea>
         <p className="text-xs text-red-500">{errors.about_user?.message}</p>
       </div>
       <button
         type="submit"
+        disabled={!isDirty}
         className="w-full mt-5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white py-2.5 rounded-lg text-sm font-medium flex items-center justify-center gap-2 cursor-pointer"
       >
         <LuSave className="w-4 h-4" />
