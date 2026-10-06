@@ -22,9 +22,9 @@ const {
   LIEUTENANT,
   MAJOR,
   COLONEL,
-  BRIGADIER_GEN,
+  BRIGADIER_GENERAL,
   GENERAL,
-  FIVE_STAR_GEN,
+  FIVE_STAR_GENERAL,
   COMMANDER_IN_CHIEF,
 } = RankTypeEnum;
 
@@ -152,7 +152,7 @@ export const RankBrigadierGen = {
   args: {
     profileData: {
       ...defaultProfileData,
-      rank: BRIGADIER_GEN,
+      rank: BRIGADIER_GENERAL,
     },
   },
 } satisfies Story;
@@ -170,7 +170,7 @@ export const RankFiveStarGen = {
   args: {
     profileData: {
       ...defaultProfileData,
-      rank: FIVE_STAR_GEN,
+      rank: FIVE_STAR_GENERAL,
     },
   },
 } satisfies Story;

@@ -5,16 +5,16 @@ export enum UserRoleTypeEnum {
 }
 
 export enum RankTypeEnum {
-  PRIVATE = 'Private',
-  CORPORAL = 'Corporal',
-  SERGEANT = 'Sergeant',
-  LIEUTENANT = 'Lieutenant',
-  MAJOR = 'Major',
-  COLONEL = 'Colonel',
-  BRIGADIER_GEN = 'Brigadier General',
-  GENERAL = 'General',
-  FIVE_STAR_GEN = 'Five_Star_General',
-  COMMANDER_IN_CHIEF = 'Commander_in_chief',
+  PRIVATE = 'PRIVATE',
+  CORPORAL = 'CORPORAL',
+  SERGEANT = 'SERGEANT',
+  LIEUTENANT = 'LIEUTENANT',
+  MAJOR = 'MAJOR',
+  COLONEL = 'COLONEL',
+  BRIGADIER_GENERAL = 'BRIGADIER_GENERAL',
+  GENERAL = 'GENERAL',
+  FIVE_STAR_GENERAL = 'FIVE_STAR_GENERAL',
+  COMMANDER_IN_CHIEF = 'COMMANDER_IN_CHIEF',
 }
 
 export enum CardStyleTypeEnum {
