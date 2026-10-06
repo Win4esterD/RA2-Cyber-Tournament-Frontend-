@@ -4,23 +4,24 @@ import { TfiEmail } from 'react-icons/tfi';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { FormProvider, useForm } from 'react-hook-form';
 
-
 const meta = {
   component: Input,
-  decorators: [(Story) => {
-  const methods = useForm({
-    defaultValues: {
-      email: '',
-      password: '',
-    },
-  });
+  decorators: [
+    (Story) => {
+      const methods = useForm({
+        defaultValues: {
+          email: '',
+          password: '',
+        },
+      });
 
-  return (
-    <FormProvider {...methods}>
-      <Story />
-    </FormProvider>
-  );
-}],
+      return (
+        <FormProvider {...methods}>
+          <Story />
+        </FormProvider>
+      );
+    },
+  ],
 } satisfies Meta<typeof Input>;
 
 export default meta;
