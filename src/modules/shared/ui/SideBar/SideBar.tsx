@@ -22,7 +22,8 @@ export function SideBar({ isSidebarOpenedOnMobile, user }: SideBarPropsType) {
   const isAuth = useAuthStore((state) => state.isAuth);
   const { push } = useRouter();
   const queryClient = useQueryClient();
-  const initial = user?.name ? user.name[0].toUpperCase() : '';
+  const displayName = user?.name ?? user?.email;
+  const initial = displayName?.[0]?.toUpperCase() || '';
 
   const removeAuthHandler = () => {
     if (isAuth) {

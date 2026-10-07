@@ -77,6 +77,7 @@
       "general": "General"
     },
     "customization": {
+      "title": "Card customization",
       "about": "About",
       "cardTheme": "Card theme",
       "save": "Save",
@@ -84,5 +85,17 @@
       "aboutPlaceholder": "Tell us about yourself as a commander...",
       "profileUpdated": "Profile has been changed"
     }
+  },
+  "ranks": {
+    "PRIVATE": "Private",
+    "CORPORAL": "Corporal",
+    "SERGEANT": "Sergeant",
+    "LIEUTENANT": "Lieutenant",
+    "MAJOR": "Major",
+    "COLONEL": "Colonel",
+    "BRIGADIER_GENERAL": "Brigadier General",
+    "GENERAL": "General",
+    "FIVE_STAR_GENERAL": "Five-Star General",
+    "COMMANDER_IN_CHIEF": "Commander-in-Chief"
   }
 }

@@ -77,6 +77,7 @@
       "general": "Генерал"
     },
     "customization": {
+      "title": "Настройка карты",
       "about": "О себе",
       "cardTheme": "Тема карты",
       "save": "Сохранить",
@@ -84,5 +85,17 @@
       "aboutPlaceholder": "Расскажите о себе как о командире...",
       "profileUpdated": "Профиль успешно обновлён"
     }
+  },
+  "ranks": {
+    "PRIVATE": "Рядовой",
+    "CORPORAL": "Ефрейтор",
+    "SERGEANT": "Сержант",
+    "LIEUTENANT": "Лейтенант",
+    "MAJOR": "Майор",
+    "COLONEL": "Полковник",
+    "BRIGADIER_GENERAL": "Бригадный генерал",
+    "GENERAL": "Генерал",
+    "FIVE_STAR_GENERAL": "Генерал пяти звёзд",
+    "COMMANDER_IN_CHIEF": "Верховный главнокомандующий"
   }
 }

@@ -9,13 +9,23 @@ import { RankIcon } from '@/modules/shared/ui/RankIcon/RankIcon';
 import { RANK_COLORS } from '@/global variables/RanksAndRankColors';
 
 type UserCardPropsType = {
-  profileData: Omit<UserType, 'password'>;
+  profileData: UserType;
 };
 
 export function UserCard({ profileData }: UserCardPropsType) {
   const t = useTranslations('profile.card');
-  const { card_style, gamesPlayed, wins, loses, name, tournamentsWon, about_user, rank } =
-    profileData;
+  const rankT = useTranslations('ranks');
+  const {
+    card_style,
+    gamesPlayed,
+    wins,
+    loses,
+    name,
+    tournamentsWon,
+    about_user,
+    rank,
+    id,
+  } = profileData;
 
   const calculateWinrate = (wins: number, loses: number): number => {
     if (wins === 0) {
@@ -29,7 +39,6 @@ export function UserCard({ profileData }: UserCardPropsType) {
     const sum = wins + loses;
     return Math.round((wins / sum) * 100);
   };
-  console.log(rank);
 
   return (
     <div
@@ -40,7 +49,9 @@ export function UserCard({ profileData }: UserCardPropsType) {
           <div className="text-[10px] uppercase tracking-[0.2em] text-gray-300 font-bold">
             Red Alert 2
           </div>
-          <div className="text-[10px] uppercase tracking-widest text-gray-300">ID #1</div>
+          <div className="text-[10px] uppercase tracking-widest text-gray-300">
+            ID #{id}
+          </div>
         </div>
         <div className="flex flex-col items-center text-center">
           <div
@@ -57,7 +68,7 @@ export function UserCard({ profileData }: UserCardPropsType) {
                 className={`mt-5 inline-flex items-center gap-2 bg-[#161d28] ${RANK_COLORS[rank]} text-sm font-semibold px-4 py-2 rounded-full border border-[#1e2733]`}
               >
                 <RankIcon rank={rank} />
-                {rank}
+                {rankT(rank)}
               </span>
             )}
           </div>

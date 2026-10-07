@@ -86,7 +86,7 @@ export function UserCardCustomizationForm({
       onSubmit={handleSubmit(onSubmit)}
       className="bg-[#0d1219] border border-[#1e2733] rounded-xl p-6"
     >
-      <h3 className="text-sm font-semibold mb-4 text-slate-200">Card customization</h3>
+      <h3 className="text-sm font-semibold mb-4 text-slate-200">{t('title')}</h3>
       <Input
         label={t('nickname')}
         controllerProps={{ name: 'name', control }}

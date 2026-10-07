@@ -16,7 +16,6 @@ export function useUpdateProfileSchema() {
 
     about_user: z
       .string({ message: t('mustBeString') })
-      .min(3, { message: t('aboutUserTooShort', { min: 3 }) })
       .max(100, { message: t('aboutUserTooLong', { max: 100 }) })
       .nullable(),
   });

@@ -2,13 +2,13 @@
 import { Header } from '@/modules/shared/ui/Header/Header';
 import { SideBar } from '@/modules/shared/ui/SideBar/SideBar';
 import type { ReactNode } from 'react';
-import { usePathname } from '@/i18n/navigation';
-import { useRouter, useParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { LocaleTypeEnum } from '@/i18n/types/LocaleTypeEnum';
 import { tokenName, useAuthStore, useAuthQuery } from '@/modules/auth';
 import { useErrorStore } from '../stores/ErrorStore';
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
+import { usePathname, useRouter } from '@/i18n/navigation';
 
 const routesWithoutMainLayout = ['/login', '/registration', '/reset-password'];
 
@@ -53,7 +53,7 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
       <div className="flex flex-1 flex-col">
         <Header
           locale={locale ? locale?.toString() : LocaleTypeEnum.EN}
-          onLocaleChange={(locale) => router.push(`/${locale}/${pathname}`)}
+          onLocaleChange={(newLocale) => router.push(pathname, { locale: newLocale })}
           sidebarHandler={() => setIsSidebarOpenedOnMobile(!isSidebarOpenedOnMobile)}
         />
         <main className="flex-1 overflow-y-auto">

@@ -77,6 +77,7 @@
       "general": "General"
     },
     "customization": {
+      "title": "Personalización de la tarjeta",
       "about": "Acerca de",
       "cardTheme": "Tema de la tarjeta",
       "save": "Guardar",
@@ -84,5 +85,17 @@
       "aboutPlaceholder": "Cuéntanos sobre ti como comandante...",
       "profileUpdated": "El perfil ha sido actualizado"
     }
+  },
+  "ranks": {
+    "PRIVATE": "Soldado",
+    "CORPORAL": "Cabo",
+    "SERGEANT": "Sargento",
+    "LIEUTENANT": "Teniente",
+    "MAJOR": "Mayor",
+    "COLONEL": "Coronel",
+    "BRIGADIER_GENERAL": "General de brigada",
+    "GENERAL": "General",
+    "FIVE_STAR_GENERAL": "General de cinco estrellas",
+    "COMMANDER_IN_CHIEF": "Comandante en jefe"
   }
 }

@@ -7,5 +7,5 @@ export type RegistrationAndLogInParamsType = {
 
 export type AuthResponseType = {
   access_token: string;
-  user: Omit<UserType, 'pasword'>;
+  user: UserType;
 };

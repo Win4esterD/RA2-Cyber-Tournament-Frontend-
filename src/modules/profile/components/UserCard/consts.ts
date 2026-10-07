@@ -3,7 +3,7 @@ export const backgroundColors = {
   SOVIET: 'from-red-800 to-red-950',
   ALLIED: 'from-blue-700 to-blue-950',
   YURI: 'from-purple-700 to-purple-950',
-  GOLDEN: 'rom-yellow-600 to-yellow-900',
+  GOLDEN: 'from-yellow-600 to-yellow-900',
   DARK: 'from-gray-800 to-black',
 } as const;
 
