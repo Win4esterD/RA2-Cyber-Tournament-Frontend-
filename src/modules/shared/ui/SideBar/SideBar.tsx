@@ -5,7 +5,7 @@ import { NavBar } from '../NavBar/NavBar';
 import { LuLogOut, LuLogIn } from 'react-icons/lu';
 import { useTranslations } from 'next-intl';
 import { useAuthStore, tokenName } from '@/modules/auth';
-import { UserType } from '@/modules/profile';
+import type { UserType } from '@/modules/profile/types/UserTypes';
 import { useRouter } from '@/i18n/navigation';
 import { useQueryClient } from '@tanstack/react-query';
 import Cookies from 'js-cookie';

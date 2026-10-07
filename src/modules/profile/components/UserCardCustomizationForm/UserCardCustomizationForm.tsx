@@ -163,7 +163,7 @@ export function UserCardCustomizationForm({
       </div>
       <button
         type="submit"
-        disabled={!isDirty}
+        disabled={!isDirty || mutation.isPending}
         className="w-full mt-5 bg-red-600 hover:bg-red-500 disabled:opacity-50 text-white py-2.5 rounded-lg text-sm font-medium flex items-center justify-center gap-2 cursor-pointer"
       >
         <LuSave className="w-4 h-4" />

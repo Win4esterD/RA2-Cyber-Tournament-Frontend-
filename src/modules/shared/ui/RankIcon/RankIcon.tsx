@@ -1,4 +1,4 @@
-import type { RankTypeEnum } from '@/modules/profile';
+import type { RankTypeEnum } from '@/modules/profile/types/UserTypes';
 import { RANK_ICONS, RANK_COLORS } from '@/global variables/RanksAndRankColors';
 
 type RankIconPropsType = {
