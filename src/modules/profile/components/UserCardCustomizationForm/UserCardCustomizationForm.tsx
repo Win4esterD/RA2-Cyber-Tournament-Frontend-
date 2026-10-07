@@ -17,6 +17,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import type { AuthResponseType } from '@/modules/auth';
 import { toast } from 'react-toastify';
+import type { UpdateProfileSchemaType } from '@/modules/profile/schemas/UpdateProfileSchema';
 
 const { DEFAULT, SOVIET, ALLIED, YURI, GOLDEN, DARK } = CardStyleTypeEnum;
 
@@ -43,7 +44,7 @@ export function UserCardCustomizationForm({
     register,
     reset,
     formState: { errors, isDirty },
-  } = useForm<UpdateProfileDataType>({
+  } = useForm<UpdateProfileSchemaType>({
     defaultValues: {
       name,
       card_style,
