@@ -62,6 +62,7 @@
     "unregistered": "Sin registrar"
   },
   "profile": {
+    "title": "Perfil",
     "noAuth": {
       "title": "No estás autorizado",
       "description": "Inicia sesión para configurar tu ficha de comandante y ver el historial de torneos.",

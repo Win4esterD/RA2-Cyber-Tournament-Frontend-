@@ -62,6 +62,7 @@
     "unregistered": "Unregistered"
   },
   "profile": {
+    "title": "Profile",
     "noAuth": {
       "title": "You are not authorised",
       "description": "Log in to set up your commander card and view tournament history.",
