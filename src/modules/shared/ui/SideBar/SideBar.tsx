@@ -2,12 +2,12 @@ import { IconBadge } from '../IconBadge/IconBadge';
 import { GoTrophy } from 'react-icons/go';
 import Link from 'next/link';
 import { NavBar } from '../NavBar/NavBar';
-import { LuLogOut } from 'react-icons/lu';
+import { LuLogOut, LuLogIn } from 'react-icons/lu';
 import { useTranslations } from 'next-intl';
-import { useAuthStore, tokenName, type UserType } from '@/modules/auth';
+import { useAuthStore, tokenName } from '@/modules/auth';
+import type { UserType } from '@/modules/profile/types/UserTypes';
 import { useRouter } from '@/i18n/navigation';
 import { useQueryClient } from '@tanstack/react-query';
-import { CiUser } from 'react-icons/ci';
 import Cookies from 'js-cookie';
 
 type SideBarPropsType = {
@@ -22,8 +22,8 @@ export function SideBar({ isSidebarOpenedOnMobile, user }: SideBarPropsType) {
   const isAuth = useAuthStore((state) => state.isAuth);
   const { push } = useRouter();
   const queryClient = useQueryClient();
-  const displayName = user ? (user.name ?? user.email) : t('unregistered');
-  const initial = user ? displayName[0].toUpperCase() : null;
+  const displayName = user?.name ?? user?.email;
+  const initial = displayName?.[0]?.toUpperCase() || '';
 
   const removeAuthHandler = () => {
     if (isAuth) {
@@ -56,23 +56,34 @@ export function SideBar({ isSidebarOpenedOnMobile, user }: SideBarPropsType) {
       </Link>
       <NavBar />
       <div className="p-4 border-t border-[#1e2733]">
-        <div className="flex items-center gap-3 px-2 mb-3">
-          <div className="w-9 h-9 rounded-full bg-linear-to-br from-slate-600 to-slate-800 flex items-center justify-center text-sm font-bold">
-            {!user && <CiUser className="w-6 h-6" />}
-            {initial}
+        {isAuth && (
+          <div className="flex items-center gap-3 px-2 mb-3">
+            <div className="w-9 h-9 rounded-full bg-linear-to-br from-slate-600 to-slate-800 flex items-center justify-center text-sm font-bold">
+              {initial}
+            </div>
+            <div className="min-w-0">
+              <div className="text-sm font-medium truncate">{user?.name}</div>
+              <div className="text-[10px] text-slate-500">Commander</div>
+            </div>
           </div>
-          <div className="min-w-0">
-            <div className="text-sm font-medium truncate">{displayName}</div>
-            <div className="text-[10px] text-slate-500">Commander</div>
-          </div>
-        </div>
-        <button
-          onClick={removeAuthHandler}
-          className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-slate-400 hover:bg-[#161d28] hover:text-red-400 transition-colors cursor-pointer"
-        >
-          <LuLogOut />
-          {isAuth ? t('logOut') : authTranslator('login.logIn')}
-        </button>
+        )}
+        {isAuth ? (
+          <button
+            onClick={removeAuthHandler}
+            className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-slate-400 hover:bg-[#161d28] hover:text-red-400 transition-colors cursor-pointer"
+          >
+            <LuLogOut />
+            {t('logOut')}
+          </button>
+        ) : (
+          <Link
+            href="/login"
+            className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm bg-red-600/15 text-red-400 hover:bg-red-600/25 transition-colors font-medium"
+          >
+            <LuLogIn />
+            {authTranslator('login.logIn')}
+          </Link>
+        )}
       </div>
     </aside>
   );

@@ -10,6 +10,8 @@ type InputPropsType<T extends FieldValues> = {
   required?: boolean;
   type?: string;
   controllerProps: UseControllerProps<T>;
+  labelUtilityClasses?: string;
+  defaultValue?: string;
 };
 
 export function Input<T extends FieldValues>({
@@ -20,13 +22,18 @@ export function Input<T extends FieldValues>({
   required,
   type,
   controllerProps,
+  labelUtilityClasses,
+  defaultValue,
 }: InputPropsType<T>) {
   const { field, fieldState } = useController(controllerProps);
 
   return (
     <div className="flex flex-col gap-2">
       {label && (
-        <label className="block text-sm font-medium text-slate-300" htmlFor={field.name}>
+        <label
+          className={labelUtilityClasses || 'block text-sm font-medium text-slate-300'}
+          htmlFor={field.name}
+        >
           {label}
         </label>
       )}
@@ -40,6 +47,7 @@ export function Input<T extends FieldValues>({
           value={value}
           type={type}
           id={field.name}
+          defaultValue={defaultValue}
         />
       </div>
       {fieldState.error && (

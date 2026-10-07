@@ -36,7 +36,13 @@
     "userNotFound": "The user wasn't found",
     "invalidPassword": "Invalid password",
     "incorrectEmail": "Incorrect email",
-    "passwordsDontMatch": "Passwords don't match"
+    "passwordsDontMatch": "Passwords don't match",
+    "invalidCardStyle": "Invalid card style",
+    "mustBeString": "Must be a string",
+    "nameTooShort": "Name must be at least {min} characters long",
+    "nameTooLong": "Name must be at most {max} characters long",
+    "aboutUserTooShort": "About must be at least {min} characters long",
+    "aboutUserTooLong": "About must be at most {max} characters long"
   },
   "errorModal": {
     "errorOccured": "Error occured",
@@ -54,5 +60,43 @@
     "tournamentHub": "Tournament Hub",
     "logOut": "Log Out",
     "unregistered": "Unregistered"
+  },
+  "profile": {
+    "title": "Profile",
+    "noAuth": {
+      "title": "You are not authorised",
+      "description": "Log in to set up your commander card and view tournament history.",
+      "logIn": "Log in to your account"
+    },
+    "card": {
+      "wins": "Wins",
+      "losses": "Losses",
+      "winrate": "Winrate",
+      "tournaments": "Tournaments",
+      "played": "Played",
+      "unnamed": "Unnamed",
+      "general": "General"
+    },
+    "customization": {
+      "title": "Card customization",
+      "about": "About",
+      "cardTheme": "Card theme",
+      "save": "Save",
+      "nickname": "Nickname",
+      "aboutPlaceholder": "Tell us about yourself as a commander...",
+      "profileUpdated": "Profile has been changed"
+    }
+  },
+  "ranks": {
+    "PRIVATE": "Private",
+    "CORPORAL": "Corporal",
+    "SERGEANT": "Sergeant",
+    "LIEUTENANT": "Lieutenant",
+    "MAJOR": "Major",
+    "COLONEL": "Colonel",
+    "BRIGADIER_GENERAL": "Brigadier General",
+    "GENERAL": "General",
+    "FIVE_STAR_GENERAL": "Five-Star General",
+    "COMMANDER_IN_CHIEF": "Commander-in-Chief"
   }
 }
