@@ -36,7 +36,7 @@ const defaultProfileData = {
   email: 'any_email@mail.ru',
   createdAt: new Date(),
   tournamentsWon: 5,
-  loses: 10,
+  losses: 10,
   gamesPlayed: 35,
   wins: 25,
   rank: PRIVATE,

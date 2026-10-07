@@ -70,7 +70,7 @@
     },
     "card": {
       "wins": "Wins",
-      "loses": "Loses",
+      "losses": "Losses",
       "winrate": "Winrate",
       "tournaments": "Tournaments",
       "played": "Played",

@@ -70,7 +70,7 @@
     },
     "card": {
       "wins": "Victorias",
-      "loses": "Derrotas",
+      "losses": "Derrotas",
       "winrate": "Ratio de victorias",
       "tournaments": "Torneos",
       "played": "Jugados",

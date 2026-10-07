@@ -33,7 +33,7 @@ export type UserType = {
   role: UserRoleTypeEnum;
   createdAt: Date;
   wins: number;
-  loses: number;
+  losses: number;
   gamesPlayed: number;
   tournamentsWon: number;
   rank: RankTypeEnum;

@@ -19,7 +19,7 @@ export function UserCard({ profileData }: UserCardPropsType) {
     card_style,
     gamesPlayed,
     wins,
-    loses,
+    losses,
     name,
     tournamentsWon,
     about_user,
@@ -27,16 +27,16 @@ export function UserCard({ profileData }: UserCardPropsType) {
     id,
   } = profileData;
 
-  const calculateWinrate = (wins: number, loses: number): number => {
+  const calculateWinrate = (wins: number, losses: number): number => {
     if (wins === 0) {
       return 0;
     }
 
-    if (loses === 0) {
+    if (losses === 0) {
       return 100;
     }
 
-    const sum = wins + loses;
+    const sum = wins + losses;
     return Math.round((wins / sum) * 100);
   };
 
@@ -79,12 +79,12 @@ export function UserCard({ profileData }: UserCardPropsType) {
             <div className="text-[10px] uppercase text-slate-400 mt-1">{t('wins')}</div>
           </div>
           <div className="bg-black/30 rounded-lg p-3 text-center">
-            <div className="text-2xl font-bold text-red-400">{loses}</div>
-            <div className="text-[10px] uppercase text-slate-400 mt-1">{t('loses')}</div>
+            <div className="text-2xl font-bold text-red-400">{losses}</div>
+            <div className="text-[10px] uppercase text-slate-400 mt-1">{t('losses')}</div>
           </div>
           <div className="bg-black/30 rounded-lg p-3 text-center">
             <div className="text-2xl font-bold text-yellow-400">
-              {calculateWinrate(wins, loses)}%
+              {calculateWinrate(wins, losses)}%
             </div>
             <div className="text-[10px] uppercase text-slate-400 mt-1">
               {t('winrate')}
