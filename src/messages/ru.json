@@ -36,7 +36,13 @@
     "userNotFound": "Пользователь не найден",
     "invalidPassword": "Неверный пароль",
     "incorrectEmail": "Неверный адрес электронной почты",
-    "passwordsDontMatch": "Пароли не совпадают"
+    "passwordsDontMatch": "Пароли не совпадают",
+    "invalidCardStyle": "Недопустимый стиль карты",
+    "mustBeString": "Значение должно быть строкой",
+    "nameTooShort": "Имя должно содержать не менее {min} символов",
+    "nameTooLong": "Имя должно содержать не более {max} символов",
+    "aboutUserTooShort": "Описание должно содержать не менее {min} символов",
+    "aboutUserTooLong": "Описание должно содержать не более {max} символов"
   },
   "errorModal": {
     "errorOccured": "Произошла ошибка",
@@ -54,5 +60,43 @@
     "tournamentHub": "Турнирный хаб",
     "logOut": "Выйти",
     "unregistered": "Незарегистрирован"
+  },
+  "profile": {
+    "title": "Профиль",
+    "noAuth": {
+      "title": "Вы не авторизованы",
+      "description": "Войдите, чтобы настраивать свою карточку командира и видеть историю турниров.",
+      "logIn": "Войти в аккаунт"
+    },
+    "card": {
+      "wins": "Победы",
+      "losses": "Поражения",
+      "winrate": "Винрейт",
+      "tournaments": "Турниры",
+      "played": "Сыграно",
+      "unnamed": "Без имени",
+      "general": "Генерал"
+    },
+    "customization": {
+      "title": "Настройка карты",
+      "about": "О себе",
+      "cardTheme": "Тема карты",
+      "save": "Сохранить",
+      "nickname": "Никнейм",
+      "aboutPlaceholder": "Расскажите о себе как о командире...",
+      "profileUpdated": "Профиль успешно обновлён"
+    }
+  },
+  "ranks": {
+    "PRIVATE": "Рядовой",
+    "CORPORAL": "Ефрейтор",
+    "SERGEANT": "Сержант",
+    "LIEUTENANT": "Лейтенант",
+    "MAJOR": "Майор",
+    "COLONEL": "Полковник",
+    "BRIGADIER_GENERAL": "Бригадный генерал",
+    "GENERAL": "Генерал",
+    "FIVE_STAR_GENERAL": "Генерал пяти звёзд",
+    "COMMANDER_IN_CHIEF": "Верховный главнокомандующий"
   }
 }

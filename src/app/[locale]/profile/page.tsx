@@ -1,3 +1,5 @@
+import { ProfilePageDataFetcher } from '@/modules/profile/';
+
 export default function ProfilePage() {
-  return <div>Profile page</div>;
+  return <ProfilePageDataFetcher />;
 }

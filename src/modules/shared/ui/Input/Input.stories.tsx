@@ -1,10 +1,27 @@
-import type { StoryObj, Meta } from '@storybook/nextjs-vite';
+import type { StoryObj, Meta, Decorator } from '@storybook/nextjs-vite';
 import { Input } from './Input';
 import { TfiEmail } from 'react-icons/tfi';
 import { RiLockPasswordLine } from 'react-icons/ri';
+import { FormProvider, useForm } from 'react-hook-form';
 
 const meta = {
   component: Input,
+  decorators: [
+    (Story) => {
+      const methods = useForm({
+        defaultValues: {
+          email: '',
+          password: '',
+        },
+      });
+
+      return (
+        <FormProvider {...methods}>
+          <Story />
+        </FormProvider>
+      );
+    },
+  ],
 } satisfies Meta<typeof Input>;
 
 export default meta;
@@ -16,7 +33,7 @@ export const Primary = {
     label: 'Primary',
     placeholder: 'myemail@yandex.ru',
     Icon: TfiEmail,
-    controllerProps: { name: '' },
+    controllerProps: { name: 'email' },
   },
 } satisfies Story;
 
@@ -26,7 +43,7 @@ export const WithValue = {
     placeholder: 'myemail@yandex.ru',
     Icon: TfiEmail,
     value: 'some-email@mail.ru',
-    controllerProps: { name: '' },
+    controllerProps: { name: 'email' },
   },
 } satisfies Story;
 
@@ -35,6 +52,6 @@ export const TypePassword = {
     label: 'Password type',
     type: 'password',
     Icon: RiLockPasswordLine,
-    controllerProps: { name: '' },
+    controllerProps: { name: 'password' },
   },
 } satisfies Story;

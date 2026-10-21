@@ -5,6 +5,7 @@ import { routing, type Locale } from '@/i18n/routing';
 import { TanStackProvider } from '@/providers/TansTackProvider';
 import { GlobalErrorHandler } from '@/modules/shared/layouts/GlobalErrorHandler';
 import { MainAppLayout } from '@/modules/shared/layouts/MainAppLayout';
+import { ToastContainer } from 'react-toastify';
 
 export default async function LocaleLayout({
   children,
@@ -27,7 +28,10 @@ export default async function LocaleLayout({
     <NextIntlClientProvider messages={messages}>
       <GlobalErrorHandler />
       <TanStackProvider>
-        <MainAppLayout>{children}</MainAppLayout>
+        <MainAppLayout>
+          <ToastContainer />
+          {children}
+        </MainAppLayout>
       </TanStackProvider>
     </NextIntlClientProvider>
   );
