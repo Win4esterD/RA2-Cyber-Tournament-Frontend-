@@ -1,8 +1,7 @@
-import { apiClient } from '@/global variables/apiClient';
+import { apiClient, BASE_URL } from '@/global variables/apiClient';
 import type { UserType } from '@/modules/profile/types/UserTypes';
 import type { UpdateProfileDataType } from '@/modules/profile/types/UserTypes';
 import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorResponseType';
-import { BASE_URL } from '@/global variables/apiClient';
 
 export const userService = {
   async getProfileData() {
@@ -16,27 +15,29 @@ export const userService = {
   },
 
   async getUserById(id: string): Promise<UserType | null> {
-      if (!BASE_URL) {
-        throw new Error('NEXT_PUBLIC_BASE_URL is not defined');
-      }
+    if (!BASE_URL) {
+      throw new Error('NEXT_PUBLIC_BASE_URL is not defined');
+    }
 
-      const response = await fetch(`${BASE_URL}/users/${id}`, {
-        cache: 'no-store',
-      });
+    const response = await fetch(`${BASE_URL}/users/${id}`, {
+      cache: 'no-store',
+    });
 
-      if (response.status === 404) {
-        return null;
-      }
+    if (response.status === 404) {
+      return null;
+    }
 
-      if (!response.ok) {
-        const error = (await response.json().catch(() => null)) as Partial<ErrorResponseType> | null;
-        throw new Error(
-          error?.message ?? `Failed to load user "${id}" (HTTP ${response.status})`
-        );
-      }
+    if (!response.ok) {
+      const error = (await response
+        .json()
+        .catch(() => null)) as Partial<ErrorResponseType> | null;
+      throw new Error(
+        error?.message ?? `Failed to load user "${id}" (HTTP ${response.status})`,
+      );
+    }
 
-      const user = await response.json();
+    const user = (await response.json()) as UserType;
 
-      return user;
-    },
+    return user;
+  },
 };

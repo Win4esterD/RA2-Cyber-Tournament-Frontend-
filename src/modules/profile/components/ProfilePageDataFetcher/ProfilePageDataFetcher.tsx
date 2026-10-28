@@ -7,7 +7,7 @@ export function ProfilePageDataFetcher() {
   const { data, isPending } = useAuthQuery('always');
   if (isPending) {
     return (
-      <div className='flex justify-center'>
+      <div className="flex justify-center">
         <LuLoaderCircle className="animate-spin h-8 w-8" />
       </div>
     );
