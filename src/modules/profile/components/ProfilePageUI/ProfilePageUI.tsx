@@ -1,3 +1,4 @@
+'use client';
 import type { UserType } from '@/modules/profile/types/UserTypes';
 import { NoAuthProfilePageView } from '@/modules/profile/components/NoAuthProfilePageView/NoAuthProfilePageView';
 import { UserCard } from '@/modules/profile/components/UserCard/UserCard';
@@ -6,9 +7,10 @@ import { useTranslations } from 'next-intl';
 
 type ProfilePageUIPropsType = {
   profileData?: UserType;
+  editable?: boolean;
 };
 
-export function ProfilePageUI({ profileData }: ProfilePageUIPropsType) {
+export function ProfilePageUI({ profileData, editable = true }: ProfilePageUIPropsType) {
   const t = useTranslations('profile');
 
   if (!profileData) {
@@ -24,11 +26,13 @@ export function ProfilePageUI({ profileData }: ProfilePageUIPropsType) {
         <div className="flex flex-col items-center">
           <UserCard profileData={profileData} />
         </div>
-        <UserCardCustomizationForm
-          about_user={about_user}
-          card_style={card_style}
-          name={name}
-        />
+        {editable && (
+          <UserCardCustomizationForm
+            about_user={about_user}
+            card_style={card_style}
+            name={name}
+          />
+        )}
       </div>
     </div>
   );
