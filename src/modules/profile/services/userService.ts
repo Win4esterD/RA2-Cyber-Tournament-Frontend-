@@ -19,7 +19,7 @@ export const userService = {
       throw new Error('NEXT_PUBLIC_BASE_URL is not defined');
     }
 
-    const response = await fetch(`${BASE_URL}/users/${id}`, {
+    const response = await fetch(`${BASE_URL}/users/${encodeURIComponent(id)}`, {
       cache: 'no-store',
     });
 
