@@ -44,6 +44,9 @@
     "aboutUserTooShort": "About must be at least {min} characters long",
     "aboutUserTooLong": "About must be at most {max} characters long"
   },
+  "common": {
+    "back": "Back"
+  },
   "errorModal": {
     "errorOccured": "Error occured",
     "message": "Message",
