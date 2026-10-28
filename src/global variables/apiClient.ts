@@ -3,7 +3,7 @@ import type { AxiosResponse, AxiosError } from 'axios';
 import Cookies from 'js-cookie';
 import { tokenName } from '@/modules/auth/consts';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const onSuccess = function (response: AxiosResponse) {
   return response;

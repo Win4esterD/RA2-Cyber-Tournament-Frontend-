@@ -11,9 +11,7 @@ export function useRegistrationSchema() {
         .toLowerCase()
         .pipe(z.string().email({ message: t('incorrectEmail') })),
 
-      password: z
-        .string()
-        .min(8, { message: t('passwordTooShort', { min: 8 }) }),
+      password: z.string().min(8, { message: t('passwordTooShort', { min: 8 }) }),
 
       repeatPassword: z.string(),
     })

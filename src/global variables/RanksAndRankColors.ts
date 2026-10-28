@@ -11,7 +11,10 @@ import {
 } from 'react-icons/lu';
 import { RankTypeEnum } from '@/modules/profile/types/UserTypes';
 
-export const RANK_ICONS: Record<RankTypeEnum, React.ComponentType<{ className?: string }>> = {
+export const RANK_ICONS: Record<
+  RankTypeEnum,
+  React.ComponentType<{ className?: string }>
+> = {
   [RankTypeEnum.PRIVATE]: LuChevronUp,
   [RankTypeEnum.CORPORAL]: LuMinimize2, // 2 stacked chevrons
   [RankTypeEnum.SERGEANT]: LuMaximize2, // 3 stacked chevrons

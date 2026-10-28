@@ -44,6 +44,9 @@
     "aboutUserTooShort": "La descripción debe tener al menos {min} caracteres",
     "aboutUserTooLong": "La descripción debe tener como máximo {max} caracteres"
   },
+  "common": {
+    "back": "Atrás"
+  },
   "errorModal": {
     "errorOccured": "Ocurrió un error",
     "message": "Mensaje",

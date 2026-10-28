@@ -44,6 +44,9 @@
     "aboutUserTooShort": "Описание должно содержать не менее {min} символов",
     "aboutUserTooLong": "Описание должно содержать не более {max} символов"
   },
+  "common": {
+    "back": "Назад"
+  },
   "errorModal": {
     "errorOccured": "Произошла ошибка",
     "message": "Сообщение",
