@@ -1,17 +1,17 @@
 'use client';
 import { Input } from '@/modules/shared/ui/Input/Input';
 import {
-  useResetPasswordSchema,
-  type ResetPasswordType,
-} from '@/modules/auth/schemas/ResetPasswordSchema';
+  useForgotPasswordSchema,
+  type ForgotPasswordType,
+} from '@/modules/auth/schemas/ForgotPasswordSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { TfiEmail } from 'react-icons/tfi';
 import { LogInAndRegisterButton } from '@/modules/shared/ui/LogInAndRegisterButton/LogInAndRegisterButton';
 import { useTranslations } from 'next-intl';
 
-export function ResetPasswordForm() {
-  const resetPasswordSchema = useResetPasswordSchema();
+export function ForgotPasswordForm() {
+  const resetPasswordSchema = useForgotPasswordSchema();
   const { control, handleSubmit } = useForm({
     defaultValues: {
       email: '',
@@ -19,7 +19,7 @@ export function ResetPasswordForm() {
     resolver: zodResolver(resetPasswordSchema),
   });
 
-  const onSubmit = (data: ResetPasswordType) => console.log(data);
+  const onSubmit = (data: ForgotPasswordType) => console.log(data);
 
   const t = useTranslations('Auth.resetPassword');
   return (

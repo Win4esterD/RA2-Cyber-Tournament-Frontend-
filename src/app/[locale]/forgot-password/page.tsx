@@ -1,4 +1,4 @@
-import { ResetPasswordForm } from '@/modules/auth';
+import { ForgotPasswordForm } from '@/modules/auth';
 import { IconBadge } from '@/modules/shared/ui/IconBadge/IconBadge';
 import { CiMail } from 'react-icons/ci';
 import { TfiCup } from 'react-icons/tfi';
@@ -20,7 +20,7 @@ export default function ResetPasswordPage() {
       </p>
       <p className="text-slate-500 text-sm mt-1.5">{t('subtitle')}</p>
       <div className="mt-8">
-        <ResetPasswordForm />
+        <ForgotPasswordForm />
       </div>
     </div>
   );

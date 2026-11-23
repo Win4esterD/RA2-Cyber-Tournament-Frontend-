@@ -22,4 +22,8 @@ export const authService = {
 
     return response;
   },
+
+  async forgotPassword(email: string) {
+    
+  }
 };

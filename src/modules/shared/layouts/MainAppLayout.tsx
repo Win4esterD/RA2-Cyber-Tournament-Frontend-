@@ -14,7 +14,7 @@ import { handleTokenOnPageLoad } from '@/modules/auth/utils/handleTokenOnPageLoa
 import { handleOAuthErrorFromURL } from '@/modules/auth/utils/handleOauthErrorFromURL';
 import { removeGoogleAuthTokenFromURLAdress } from '@/modules/auth/utils/removeGoogleAuthTokenFromURLAdress';
 
-const routesWithoutMainLayout = ['/login', '/registration', '/reset-password'];
+const routesWithoutMainLayout = ['/login', '/registration', '/forgot-password'];
 
 type MainAppLayoutPropsType = {
   children: ReactNode;

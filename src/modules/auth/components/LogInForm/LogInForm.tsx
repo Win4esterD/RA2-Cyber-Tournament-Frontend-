@@ -102,7 +102,7 @@ export function LogInForm() {
         {t('logIn')}
       </LogInAndRegisterButton>
       <Link
-        href="/reset-password"
+        href="/forgot-password"
         className="text-xs text-slate-500 hover:text-red-400 transition-colors hover:cursor-pointer inline-block mt-5"
       >
         {t('forgotPasswordLink')}
