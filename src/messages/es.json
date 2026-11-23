@@ -42,7 +42,9 @@
     "nameTooShort": "El nombre debe tener al menos {min} caracteres",
     "nameTooLong": "El nombre debe tener como máximo {max} caracteres",
     "aboutUserTooShort": "La descripción debe tener al menos {min} caracteres",
-    "aboutUserTooLong": "La descripción debe tener como máximo {max} caracteres"
+    "aboutUserTooLong": "La descripción debe tener como máximo {max} caracteres",
+    "googleAuthCancelled": "El inicio de sesión con Google fue cancelado",
+    "googleAuthFailed": "Error al iniciar sesión con Google: {error}"
   },
   "common": {
     "back": "Atrás"

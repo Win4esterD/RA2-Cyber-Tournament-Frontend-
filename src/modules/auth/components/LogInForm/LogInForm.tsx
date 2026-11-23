@@ -1,5 +1,4 @@
 'use client';
-import { FcGoogle } from 'react-icons/fc';
 import { TfiEmail } from 'react-icons/tfi';
 import { Input } from '@/modules/shared/ui/Input/Input';
 import { RiLockPasswordLine } from 'react-icons/ri';
@@ -18,6 +17,7 @@ import { useTranslations } from 'next-intl';
 import { useAuthStore } from '@/modules/auth/AuthStore';
 import { tokenName, authQueryKeys } from '@/modules/auth';
 import Cookies from 'js-cookie';
+import { GoogleAuthButton } from '@/modules/shared/ui/GoogleAuthButton/GoogleAuthButton';
 
 export function LogInForm() {
   const LogInSchema = useLogInSchema();
@@ -79,10 +79,7 @@ export function LogInForm() {
       onSubmit={handleSubmit(onSubmit)}
       className="w-md max-w-full bg-[#0d1219] rounded-2xl border border-[#1e2733] p-8 shadow-2xl max-xs:w-full"
     >
-      <button className="w-full flex items-center justify-center gap-2 bg-[#0a0e14] border border-[#1e2733] hover:border-slate-600 text-slate-200 px-4 py-3 rounded-lg text-sm font-medium transition-colors mb-6 cursor-pointer">
-        <FcGoogle />
-        <span className="text-white-text-primary">{t('googleButton')}</span>
-      </button>
+      <GoogleAuthButton />
       <div className="relative flex justify-center text-[10px] uppercase tracking-widest">
         <span className="bg-[#0d1219] px-3 text-slate-600">{t('or')}</span>
       </div>
