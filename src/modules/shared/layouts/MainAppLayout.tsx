@@ -9,6 +9,8 @@ import { useErrorStore } from '../stores/ErrorStore';
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { usePathname, useRouter } from '@/i18n/navigation';
+import { handleTokenOnPageLoad } from '@/modules/auth/utils/handleTokenOnPageLoad';
+import { removeGoogleAuthTokenFromURLAdress } from '@/modules/auth/utils/removeGoogleAuthTokenFromURLAdress';
 
 const routesWithoutMainLayout = ['/login', '/registration', '/reset-password'];
 
@@ -24,14 +26,16 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
   const setAuth = useAuthStore((state) => state.setAuth);
   const setError = useErrorStore((state) => state.setError);
   const [isSidebarOpenedOnMobile, setIsSidebarOpenedOnMobile] = useState(false);
-
-  const { data, error } = useAuthQuery();
+  const token = handleTokenOnPageLoad();
+  const { data, error } = useAuthQuery(token);
 
   useEffect(() => {
     if (data?.access_token) {
       setAuth(data.access_token);
       return;
     }
+
+    removeGoogleAuthTokenFromURLAdress();
 
     if (!error) return;
 
