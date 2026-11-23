@@ -18,6 +18,7 @@ import { useTranslations } from 'next-intl';
 import { useAuthStore } from '@/modules/auth/AuthStore';
 import { tokenName, authQueryKeys } from '@/modules/auth';
 import Cookies from 'js-cookie';
+import { BASE_URL } from '@/global variables/apiClient';
 
 export function LogInForm() {
   const LogInSchema = useLogInSchema();
@@ -74,6 +75,14 @@ export function LogInForm() {
     logInMutation.mutate(data);
   };
 
+  const authWithGoogle = () => {
+    if (!BASE_URL) {
+      setGlobalError({ message: 'BASE_URL is not available', statusCode: 400 });
+      return;
+    }
+    router.push(`${BASE_URL}/auth/google`);
+  };
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -82,6 +91,7 @@ export function LogInForm() {
       <button
         type="button"
         className="w-full flex items-center justify-center gap-2 bg-[#0a0e14] border border-[#1e2733] hover:border-slate-600 text-slate-200 px-4 py-3 rounded-lg text-sm font-medium transition-colors mb-6 cursor-pointer"
+        onClick={authWithGoogle}
       >
         <FcGoogle />
         <span className="text-white-text-primary">{t('googleButton')}</span>
