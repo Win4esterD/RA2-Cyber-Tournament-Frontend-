@@ -42,7 +42,9 @@
     "nameTooShort": "Имя должно содержать не менее {min} символов",
     "nameTooLong": "Имя должно содержать не более {max} символов",
     "aboutUserTooShort": "Описание должно содержать не менее {min} символов",
-    "aboutUserTooLong": "Описание должно содержать не более {max} символов"
+    "aboutUserTooLong": "Описание должно содержать не более {max} символов",
+    "googleAuthCancelled": "Вход через Google был отменен",
+    "googleAuthFailed": "Ошибка входа через Google: {error}"
   },
   "common": {
     "back": "Назад"

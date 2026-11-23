@@ -9,9 +9,10 @@ import { useErrorStore } from '../stores/ErrorStore';
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { usePathname, useRouter } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
 import { handleTokenOnPageLoad } from '@/modules/auth/utils/handleTokenOnPageLoad';
-import { removeGoogleAuthTokenFromURLAdress } from '@/modules/auth/utils/removeGoogleAuthTokenFromURLAdress';
 import { handleOAuthErrorFromURL } from '@/modules/auth/utils/handleOauthErrorFromURL';
+import { removeGoogleAuthTokenFromURLAdress } from '@/modules/auth/utils/removeGoogleAuthTokenFromURLAdress';
 
 const routesWithoutMainLayout = ['/login', '/registration', '/reset-password'];
 
@@ -26,6 +27,7 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
   const { locale } = useParams();
   const setAuth = useAuthStore((state) => state.setAuth);
   const setError = useErrorStore((state) => state.setError);
+  const errorDict = useTranslations('errors');
   const [isSidebarOpenedOnMobile, setIsSidebarOpenedOnMobile] = useState(false);
   handleTokenOnPageLoad();
   const { data, error } = useAuthQuery();
@@ -35,19 +37,18 @@ export function MainAppLayout({ children }: MainAppLayoutPropsType) {
     if (oauthError) {
       const userFriendlyMessage =
         oauthError === 'access_denied'
-          ? 'Google sign-in was cancelled.'
-          : `Google sign-in failed: ${oauthError}`;
+          ? errorDict('googleAuthCancelled')
+          : errorDict('googleAuthFailed', { error: oauthError });
 
       setError({
         message: userFriendlyMessage,
         statusCode: 400,
       });
     }
-  }, [setError]);
+  }, [setError, errorDict]);
 
   useEffect(() => {
     removeGoogleAuthTokenFromURLAdress();
-
     if (data?.access_token) {
       setAuth(data.access_token);
       return;

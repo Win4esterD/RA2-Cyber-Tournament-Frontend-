@@ -12,7 +12,8 @@ export function GoogleAuthButton() {
       setGlobalError({ message: 'BASE_URL is not available', statusCode: 400 });
       return;
     }
-    window.location.href = `${BASE_URL}/auth/google`;
+    // eslint-disable-next-line @next/next/no-location-assign-relative-destination
+    window.location.assign(`${BASE_URL}/auth/google`);
   };
 
   return (

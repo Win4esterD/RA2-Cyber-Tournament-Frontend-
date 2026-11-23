@@ -42,7 +42,9 @@
     "nameTooShort": "Name must be at least {min} characters long",
     "nameTooLong": "Name must be at most {max} characters long",
     "aboutUserTooShort": "About must be at least {min} characters long",
-    "aboutUserTooLong": "About must be at most {max} characters long"
+    "aboutUserTooLong": "About must be at most {max} characters long",
+    "googleAuthCancelled": "Google sign-in was cancelled",
+    "googleAuthFailed": "Google sign-in failed: {error}"
   },
   "common": {
     "back": "Back"
