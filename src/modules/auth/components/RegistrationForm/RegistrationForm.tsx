@@ -41,7 +41,7 @@ export function RegistrationForm() {
   const { push } = useRouter();
 
   const authMutation = useMutation({
-    mutationFn: async ({ email, password }: Omit<RegistrationType, 'repeatPassword'>) => {
+    async mutationFn({ email, password }: Omit<RegistrationType, 'repeatPassword'>) {
       const registrationResponse = await authService.register({ email, password });
       return registrationResponse;
     },
