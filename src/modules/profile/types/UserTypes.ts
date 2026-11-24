@@ -27,7 +27,7 @@ export enum CardStyleTypeEnum {
 }
 
 export type UserType = {
-  name: string | null;
+  name: string;
   id: number;
   email: string;
   role: UserRoleTypeEnum;

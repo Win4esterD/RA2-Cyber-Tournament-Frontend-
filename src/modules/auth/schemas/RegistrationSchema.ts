@@ -12,6 +12,7 @@ export function useRegistrationSchema() {
         .pipe(z.string().email({ message: t('incorrectEmail') })),
       name: z
         .string({ message: t('mustBeString') })
+        .trim()
         .min(3, { message: t('nameTooShort', { min: 3 }) })
         .max(20, { message: t('nameTooLong', { max: 20 }) }),
 

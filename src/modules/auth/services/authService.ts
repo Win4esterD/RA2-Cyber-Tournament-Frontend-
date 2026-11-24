@@ -1,12 +1,13 @@
 import { apiClient } from '@/global variables/apiClient';
 import type {
-  RegistrationAndLogInParamsType,
   AuthResponseType,
   ResetPasswordParamsType,
+  RegistrationParamsType,
+  LogInParamsType,
 } from '../types/AuthTypes';
 
 export const authService = {
-  async register({ email, password, name }: RegistrationAndLogInParamsType) {
+  async register({ email, password, name }: RegistrationParamsType) {
     const response = await apiClient.post<AuthResponseType>('/auth/signup', {
       email,
       name,
@@ -16,7 +17,7 @@ export const authService = {
     return response;
   },
 
-  async logIn({ email, password }: Omit<RegistrationAndLogInParamsType, 'name'>) {
+  async logIn({ email, password }: Omit<LogInParamsType, 'name'>) {
     const response = await apiClient.post<AuthResponseType>('/auth/login', {
       email,
       password,

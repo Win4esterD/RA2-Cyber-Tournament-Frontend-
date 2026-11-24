@@ -23,7 +23,7 @@ const { DEFAULT, SOVIET, ALLIED, YURI, GOLDEN, DARK } = CardStyleTypeEnum;
 
 type UserCardCustomizationFormPropsType = {
   card_style: CardStyleTypeEnum;
-  name: string | null;
+  name: string;
   about_user: string | null;
 };
 
