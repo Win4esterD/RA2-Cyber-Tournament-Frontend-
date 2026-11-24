@@ -41,7 +41,11 @@ export function ResetPasswordPageUI() {
 
   return (
     <div>
-      {isFetching && <Loader />}
+      {isFetching && (
+        <div className="flex justify-center">
+          <Loader className="w-8 h-8" />
+        </div>
+      )}
 
       {data?.is_valid && !isPasswordChanged && (
         <>
