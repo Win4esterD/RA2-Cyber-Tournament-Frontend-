@@ -16,11 +16,11 @@ import { TfiCup } from 'react-icons/tfi';
 
 export function ResetPasswordPageUI() {
   const [isPasswordChanged, setIsPasswordChanged] = useState(false);
-  const { data, isFetching, error } = useValidateResetPasswordTokenQuery();
   const params = useSearchParams();
   const token = params.get('token');
   const setError = useErrorStore((state) => state.setError);
   const t = useTranslations('Auth.resetPassword');
+  const { data, isFetching, error } = useValidateResetPasswordTokenQuery(token);
 
   const { mutate, isPending } = useMutation({
     async mutationFn(newPassword: string) {

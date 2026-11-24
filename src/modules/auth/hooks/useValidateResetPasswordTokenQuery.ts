@@ -1,12 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { authService } from '@/modules/auth/services/authService';
 import { authQueryKeys } from '@/modules/auth/consts';
-import { useSearchParams } from 'next/navigation';
 
-export function useValidateResetPasswordTokenQuery() {
-  const params = useSearchParams();
-  const token = params.get('token');
-
+export function useValidateResetPasswordTokenQuery(token: string | null) {
   const query = useQuery({
     queryKey: authQueryKeys.validateResetToken(token),
     queryFn: async () => {
