@@ -71,7 +71,7 @@ export function ForgotPasswordForm() {
           </div>
         )}
       </form>
-      <div className="flex justify-center mt-8 color-red5">
+      <div className="flex justify-center mt-8">
         <BackButton text="Back to login" link="/login" />
       </div>
     </div>
