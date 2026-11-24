@@ -19,6 +19,7 @@ export function ResetPasswordForm({ submitHandler }: ResetPasswordFormPropsType)
   const { control, handleSubmit } = useForm({
     defaultValues: {
       newPassword: '',
+      repeatPassword: '',
     },
     resolver: zodResolver(resetPasswordSchema),
   });
@@ -33,13 +34,22 @@ export function ResetPasswordForm({ submitHandler }: ResetPasswordFormPropsType)
         onSubmit={handleSubmit(onSubmit)}
         className="w-md max-w-full bg-[#0d1219] rounded-2xl border border-[#1e2733] p-8 shadow-2xl max-xs:w-full"
       >
-        <Input
-          controllerProps={{ name: 'newPassword', control }}
-          label={t('newPassword')}
-          placeholder="••••••••"
-          type="password"
-          Icon={RiLockPasswordLine}
-        />
+        <div className="flex flex-col gap-5">
+          <Input
+            controllerProps={{ name: 'newPassword', control }}
+            label={t('newPassword')}
+            placeholder="••••••••"
+            type="password"
+            Icon={RiLockPasswordLine}
+          />
+          <Input
+            controllerProps={{ name: 'repeatPassword', control }}
+            label={t('repeatPassword')}
+            placeholder="••••••••"
+            type="password"
+            Icon={RiLockPasswordLine}
+          />
+        </div>
         <LogInAndRegisterButton type="submit" className="mt-4">
           {t('changePassword')}
         </LogInAndRegisterButton>

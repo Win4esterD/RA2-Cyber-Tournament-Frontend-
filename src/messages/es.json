@@ -40,7 +40,8 @@
       "changePassword": "Cambiar contraseña",
       "linkInvalidOrExpired": "El enlace no es válido o ha caducado. Solicita el restablecimiento de contraseña de nuevo.",
       "passwordChangedSuccess": "La contraseña ha sido cambiada, por favor inicia sesión con tu nueva contraseña.",
-      "backToLogin": "Volver al inicio de sesión"
+      "backToLogin": "Volver al inicio de sesión",
+      "repeatPassword": "Repetir contraseña"
     }
   },
   "errors": {

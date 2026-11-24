@@ -40,7 +40,8 @@
       "changePassword": "Change Password",
       "linkInvalidOrExpired": "The link is invalid or expired. Request a password reset again.",
       "passwordChangedSuccess": "The password was changed, please log in with your new password.",
-      "backToLogin": "Back to login"
+      "backToLogin": "Back to login",
+      "repeatPassword": "Repeat password"
     }
   },
   "errors": {

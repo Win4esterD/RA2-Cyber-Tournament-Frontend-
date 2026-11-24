@@ -10,10 +10,13 @@ import { useErrorStore } from '@/modules/shared/stores/ErrorStore';
 import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { IconBadge } from '@/modules/shared/ui/IconBadge/IconBadge';
+import { RiLockPasswordLine } from 'react-icons/ri';
+import { TfiCup } from 'react-icons/tfi';
 
 export function ResetPasswordPageUI() {
   const [isPasswordChanged, setIsPasswordChanged] = useState(false);
-  const { data, isPending, error } = useValidateResetPasswordTokenQuery();
+  const { data, isFetching, error } = useValidateResetPasswordTokenQuery();
   const params = useSearchParams();
   const token = params.get('token');
   const setError = useErrorStore((state) => state.setError);
@@ -34,13 +37,31 @@ export function ResetPasswordPageUI() {
     },
   });
 
+  const isInvalidToken = !token || error || data?.is_valid === false;
+
   return (
     <div>
-      {isPending && <Loader />}
+      {isFetching && <Loader />}
+
       {data?.is_valid && !isPasswordChanged && (
-        <ResetPasswordForm submitHandler={mutate} />
+        <>
+          <div className="flex flex-col justify-center items-center mb-8">
+            <IconBadge Icon={<RiLockPasswordLine className="w-8 h-8" />} />
+            <div className="text-red-400 flex">
+              <TfiCup className="text-red-400 pr-1" />
+              <h1 className="text-[11px] uppercase tracking-[0.3em] text-red-400 font-bold">
+                RA2 Arena
+              </h1>
+            </div>
+            <p className="text-2xl font-bold tracking-tight mt-1.5 max-xs:text-lg">
+              {t('title')}
+            </p>
+            <p className="text-slate-500 text-sm mt-1.5">{t('subtitle')}</p>
+          </div>
+          <ResetPasswordForm submitHandler={mutate} />
+        </>
       )}
-      {error && (
+      {isInvalidToken && (
         <div>
           <div className="w-md max-w-full bg-[#0d1219] rounded-2xl border border-[#1e2733] p-8 shadow-2xl max-xs:w-full">
             <p>{t('linkInvalidOrExpired')}</p>
