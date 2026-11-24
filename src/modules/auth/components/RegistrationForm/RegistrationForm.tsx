@@ -17,7 +17,6 @@ import { useAuthStore } from '@/modules/auth/AuthStore';
 import { useRouter } from '@/i18n/navigation';
 import Cookies from 'js-cookie';
 import { GoogleAuthButton } from '@/modules/shared/ui/GoogleAuthButton/GoogleAuthButton';
-// import { SiNamemc } from 'react-icons/si';
 import { LuUser } from 'react-icons/lu';
 
 export function RegistrationForm() {

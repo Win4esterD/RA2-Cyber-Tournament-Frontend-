@@ -10,6 +10,7 @@ export function useUpdateProfileSchema() {
 
     name: z
       .string({ message: t('mustBeString') })
+      .trim()
       .min(3, { message: t('nameTooShort', { min: 3 }) })
       .max(32, { message: t('nameTooLong', { max: 32 }) }),
 

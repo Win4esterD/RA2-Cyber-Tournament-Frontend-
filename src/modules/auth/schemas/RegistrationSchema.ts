@@ -14,7 +14,7 @@ export function useRegistrationSchema() {
         .string({ message: t('mustBeString') })
         .trim()
         .min(3, { message: t('nameTooShort', { min: 3 }) })
-        .max(20, { message: t('nameTooLong', { max: 20 }) }),
+        .max(32, { message: t('nameTooLong', { max: 32 }) }),
 
       password: z.string().min(8, { message: t('passwordTooShort', { min: 8 }) }),
 

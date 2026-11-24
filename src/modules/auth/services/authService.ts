@@ -17,7 +17,7 @@ export const authService = {
     return response;
   },
 
-  async logIn({ email, password }: Omit<LogInParamsType, 'name'>) {
+  async logIn({ email, password }: LogInParamsType) {
     const response = await apiClient.post<AuthResponseType>('/auth/login', {
       email,
       password,
