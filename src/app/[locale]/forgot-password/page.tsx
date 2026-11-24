@@ -5,9 +5,9 @@ import { TfiCup } from 'react-icons/tfi';
 import { useTranslations } from 'next-intl';
 
 export default function ForgotPasswordPage() {
-  const t = useTranslations('Auth.resetPassword');
+  const t = useTranslations('Auth.forgotPassword');
   return (
-    <div className='className="w-screen h-screen flex justify-center items-center flex-col'>
+    <div className="w-screen h-screen flex justify-center items-center flex-col">
       <IconBadge Icon={<CiMail className="w-8 h-8" />} />
       <div className="text-red-400 flex">
         <TfiCup className="text-red-400 pr-1" />

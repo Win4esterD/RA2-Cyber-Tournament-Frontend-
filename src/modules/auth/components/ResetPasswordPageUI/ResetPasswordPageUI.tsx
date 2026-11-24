@@ -9,6 +9,7 @@ import { authService } from '@/modules/auth/services/authService';
 import { useErrorStore } from '@/modules/shared/stores/ErrorStore';
 import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 export function ResetPasswordTPageUI() {
   const [isPasswordChanged, setIsPasswordChanged] = useState(false);
@@ -16,6 +17,7 @@ export function ResetPasswordTPageUI() {
   const params = useSearchParams();
   const token = params.get('token');
   const setError = useErrorStore((state) => state.setError);
+  const t = useTranslations('Auth.resetPassword');
 
   const { mutate } = useMutation({
     async mutationFn(newPassword: string) {
@@ -41,20 +43,20 @@ export function ResetPasswordTPageUI() {
       {error && (
         <div>
           <div className="w-md max-w-full bg-[#0d1219] rounded-2xl border border-[#1e2733] p-8 shadow-2xl max-xs:w-full">
-            <p>The link is invalid or expired. Request a password reset again.</p>
+            <p>{t('linkInvalidOrExpired')}</p>
           </div>
           <div className="flex justify-center mt-10">
-            <BackButton text="Back to login" link="/login" />
+            <BackButton text={t('backToLogin')} link="/login" />
           </div>
         </div>
       )}
       {isPasswordChanged && (
         <div>
           <div className="w-md max-w-full bg-[#0d1219] rounded-2xl border border-[#1e2733] p-8 shadow-2xl max-xs:w-full">
-            <p>The password was changed, please, Log In with new password</p>
+            <p>{t('passwordChangedSuccess')}</p>
           </div>
           <div className="flex justify-center mt-10">
-            <BackButton text="Back to login" link="/login" />
+            <BackButton text={t('backToLogin')} link="/login" />
           </div>
         </div>
       )}

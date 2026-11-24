@@ -5,6 +5,8 @@ import { useResetPasswordSchema } from '@/modules/auth/schemas/ResetPasswordSche
 import { zodResolver } from '@hookform/resolvers/zod';
 import { LogInAndRegisterButton } from '@/modules/shared/ui/LogInAndRegisterButton/LogInAndRegisterButton';
 import type { ResetPasswordType } from '@/modules/auth/schemas/ResetPasswordSchema';
+import { useTranslations } from 'next-intl';
+import { RiLockPasswordLine } from 'react-icons/ri';
 
 type ResetPasswordFormPropsType = {
   submitHandler: (newPassword: string) => void;
@@ -12,6 +14,7 @@ type ResetPasswordFormPropsType = {
 
 export function ResetPasswordForm({ submitHandler }: ResetPasswordFormPropsType) {
   const resetPasswordSchema = useResetPasswordSchema();
+  const t = useTranslations('Auth.resetPassword');
 
   const { control, handleSubmit } = useForm({
     defaultValues: {
@@ -26,14 +29,19 @@ export function ResetPasswordForm({ submitHandler }: ResetPasswordFormPropsType)
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-md max-w-full bg-[#0d1219] rounded-2xl border border-[#1e2733] p-8 shadow-2xl max-xs:w-full"
+      >
         <Input
           controllerProps={{ name: 'newPassword', control }}
-          label="New password"
+          label={t('newPassword')}
+          placeholder="••••••••"
           type="password"
+          Icon={RiLockPasswordLine}
         />
         <LogInAndRegisterButton type="submit" className="mt-4">
-          Change Password
+          {t('changePassword')}
         </LogInAndRegisterButton>
       </form>
     </div>

@@ -23,11 +23,24 @@
       "hasAccount": "Already have an account?",
       "loginLink": "Log In"
     },
-    "resetPassword": {
+    "forgotPassword": {
       "title": "Reset password",
       "subtitle": "We will send you reset link",
       "email": "Email address",
-      "sendResetLink": "Send reset link"
+      "sendResetLink": "Send reset link",
+      "emailSentSuccess": "If an account with this email exists, you will receive a message with a password reset link.",
+      "backToLogin": "Back to login"
+    },
+    "resetPassword": {
+      "title": "Reset password",
+      "subtitle": "Enter your new password",
+      "email": "Email address",
+      "sendResetLink": "Send reset link",
+      "newPassword": "New password",
+      "changePassword": "Change Password",
+      "linkInvalidOrExpired": "The link is invalid or expired. Request a password reset again.",
+      "passwordChangedSuccess": "The password was changed, please log in with your new password.",
+      "backToLogin": "Back to login"
     }
   },
   "errors": {
@@ -47,7 +60,8 @@
     "googleAuthFailed": "Google sign-in failed: {error}"
   },
   "common": {
-    "back": "Back"
+    "back": "Back",
+    "backToLogin": "Back to login"
   },
   "errorModal": {
     "errorOccured": "Error occured",

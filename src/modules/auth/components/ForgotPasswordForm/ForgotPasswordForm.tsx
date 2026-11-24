@@ -45,7 +45,7 @@ export function ForgotPasswordForm() {
     forgotPasswordMutation.mutate(data.email);
   };
 
-  const t = useTranslations('Auth.resetPassword');
+  const t = useTranslations('Auth.forgotPassword');
   return (
     <div>
       <form
@@ -58,7 +58,7 @@ export function ForgotPasswordForm() {
               controllerProps={{ name: 'email', control }}
               label={t('email')}
               Icon={TfiEmail}
-              placeholder="you.example.com"
+              placeholder="commander@ra2.arena"
             />
             <LogInAndRegisterButton type="submit" className="mt-4">
               {t('sendResetLink')}
@@ -66,13 +66,12 @@ export function ForgotPasswordForm() {
           </>
         ) : (
           <div className="p-3 rounded-lg bg-green-600/10 border border-green-600/30 text-green-400 text-sm text-center">
-            If an account with this email exists, you will receive a message with a
-            password reset link.
+            {t('emailSentSuccess')}
           </div>
         )}
       </form>
       <div className="flex justify-center mt-8">
-        <BackButton text="Back to login" link="/login" />
+        <BackButton text={t('backToLogin')} link="/login" />
       </div>
     </div>
   );

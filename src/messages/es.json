@@ -23,11 +23,24 @@
       "hasAccount": "¿Ya tienes una cuenta?",
       "loginLink": "Iniciar sesión"
     },
-    "resetPassword": {
+    "forgotPassword": {
       "title": "Restablecer contraseña",
       "subtitle": "Te enviaremos un enlace de restablecimiento",
       "email": "Dirección de correo electrónico",
-      "sendResetLink": "Enviar enlace de restablecimiento"
+      "sendResetLink": "Enviar enlace de restablecimiento",
+      "emailSentSuccess": "Si existe una cuenta con este correo electrónico, recibirás un mensaje con un enlace para restablecer tu contraseña.",
+      "backToLogin": "Volver al inicio de sesión"
+    },
+    "resetPassword": {
+      "title": "Restablecer contraseña",
+      "subtitle": "Introduce tu nueva contraseña",
+      "email": "Dirección de correo electrónico",
+      "sendResetLink": "Enviar enlace de restablecimiento",
+      "newPassword": "Nueva contraseña",
+      "changePassword": "Cambiar contraseña",
+      "linkInvalidOrExpired": "El enlace no es válido o ha caducado. Solicita el restablecimiento de contraseña de nuevo.",
+      "passwordChangedSuccess": "La contraseña ha sido cambiada, por favor inicia sesión con tu nueva contraseña.",
+      "backToLogin": "Volver al inicio de sesión"
     }
   },
   "errors": {
@@ -47,7 +60,8 @@
     "googleAuthFailed": "Error al iniciar sesión con Google: {error}"
   },
   "common": {
-    "back": "Atrás"
+    "back": "Atrás",
+    "backToLogin": "Volver al inicio de sesión"
   },
   "errorModal": {
     "errorOccured": "Ocurrió un error",
