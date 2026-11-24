@@ -11,7 +11,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 
-export function ResetPasswordTPageUI() {
+export function ResetPasswordPageUI() {
   const [isPasswordChanged, setIsPasswordChanged] = useState(false);
   const { data, isPending, error } = useValidateResetPasswordTokenQuery();
   const params = useSearchParams();
