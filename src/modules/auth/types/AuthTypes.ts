@@ -2,6 +2,7 @@ import type { UserType } from '@/modules/profile/types/UserTypes';
 
 export type RegistrationAndLogInParamsType = {
   email: string;
+  name: string;
   password: string;
 };
 

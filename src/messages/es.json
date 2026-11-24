@@ -21,7 +21,9 @@
       "repeatPassword": "Repetir contraseña",
       "register": "Registrarse",
       "hasAccount": "¿Ya tienes una cuenta?",
-      "loginLink": "Iniciar sesión"
+      "loginLink": "Iniciar sesión",
+      "nickname": "Apodo",
+      "yourNickName": "Tu apodo"
     },
     "forgotPassword": {
       "title": "Restablecer contraseña",

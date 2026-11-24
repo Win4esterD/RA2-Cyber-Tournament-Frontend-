@@ -6,16 +6,17 @@ import type {
 } from '../types/AuthTypes';
 
 export const authService = {
-  async register({ email, password }: RegistrationAndLogInParamsType) {
+  async register({ email, password, name }: RegistrationAndLogInParamsType) {
     const response = await apiClient.post<AuthResponseType>('/auth/signup', {
       email,
+      name,
       password,
     });
 
     return response;
   },
 
-  async logIn({ email, password }: RegistrationAndLogInParamsType) {
+  async logIn({ email, password }: Omit<RegistrationAndLogInParamsType, 'name'>) {
     const response = await apiClient.post<AuthResponseType>('/auth/login', {
       email,
       password,
