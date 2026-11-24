@@ -10,6 +10,11 @@ export function useRegistrationSchema() {
         .trim()
         .toLowerCase()
         .pipe(z.string().email({ message: t('incorrectEmail') })),
+      name: z
+        .string({ message: t('mustBeString') })
+        .trim()
+        .min(3, { message: t('nameTooShort', { min: 3 }) })
+        .max(32, { message: t('nameTooLong', { max: 32 }) }),
 
       password: z.string().min(8, { message: t('passwordTooShort', { min: 8 }) }),
 

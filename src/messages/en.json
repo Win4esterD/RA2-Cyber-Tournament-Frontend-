@@ -21,7 +21,9 @@
       "repeatPassword": "Repeat password",
       "register": "Register",
       "hasAccount": "Already have an account?",
-      "loginLink": "Log In"
+      "loginLink": "Log In",
+      "nickname": "Nickname",
+      "yourNickName": "Your nickname"
     },
     "forgotPassword": {
       "title": "Reset password",

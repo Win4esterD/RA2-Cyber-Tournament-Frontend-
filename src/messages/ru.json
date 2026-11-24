@@ -21,7 +21,9 @@
       "repeatPassword": "Повторите пароль",
       "register": "Зарегистрироваться",
       "hasAccount": "Уже есть аккаунт?",
-      "loginLink": "Войти"
+      "loginLink": "Войти",
+      "nickname": "Никнейм",
+      "yourNickName": "Ваш никнейм"
     },
     "forgotPassword": {
       "title": "Сбросить пароль",

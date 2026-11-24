@@ -17,12 +17,14 @@ import { useAuthStore } from '@/modules/auth/AuthStore';
 import { useRouter } from '@/i18n/navigation';
 import Cookies from 'js-cookie';
 import { GoogleAuthButton } from '@/modules/shared/ui/GoogleAuthButton/GoogleAuthButton';
+import { LuUser } from 'react-icons/lu';
 
 export function RegistrationForm() {
   const registrationSchema = useRegistrationSchema();
   const { control, handleSubmit, setError } = useForm({
     defaultValues: {
       email: '',
+      name: '',
       password: '',
       repeatPassword: '',
     },
@@ -41,8 +43,12 @@ export function RegistrationForm() {
   const { push } = useRouter();
 
   const { mutate, isPending } = useMutation({
-    async mutationFn({ email, password }: Omit<RegistrationType, 'repeatPassword'>) {
-      const registrationResponse = await authService.register({ email, password });
+    async mutationFn({
+      email,
+      password,
+      name,
+    }: Omit<RegistrationType, 'repeatPassword'>) {
+      const registrationResponse = await authService.register({ email, password, name });
       return registrationResponse;
     },
     onSuccess({ data }) {
@@ -70,8 +76,8 @@ export function RegistrationForm() {
   });
 
   const onSubmit = (data: RegistrationType) => {
-    const { email, password } = data;
-    mutate({ email, password });
+    const { email, password, name } = data;
+    mutate({ email, name, password });
   };
 
   return (
@@ -89,6 +95,12 @@ export function RegistrationForm() {
           placeholder="commander@ra2.arena"
           Icon={TfiEmail}
           controllerProps={{ name: 'email', control }}
+        />
+        <Input
+          label={t('nickname')}
+          placeholder={t('yourNickName')}
+          Icon={LuUser}
+          controllerProps={{ name: 'name', control }}
         />
         <Input
           label={t('password')}
