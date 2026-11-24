@@ -28,7 +28,7 @@ export const authService = {
     const response = await apiClient.post<{ message: string }>('/auth/forgot-password', {
       email,
     });
-    return response;
+    return response.data;
   },
 
   async validateResetPasswordToken(token: string) {
