@@ -10,9 +10,13 @@ import { RiLockPasswordLine } from 'react-icons/ri';
 
 type ResetPasswordFormPropsType = {
   submitHandler: (newPassword: string) => void;
+  isPending: boolean;
 };
 
-export function ResetPasswordForm({ submitHandler }: ResetPasswordFormPropsType) {
+export function ResetPasswordForm({
+  submitHandler,
+  isPending,
+}: ResetPasswordFormPropsType) {
   const resetPasswordSchema = useResetPasswordSchema();
   const t = useTranslations('Auth.resetPassword');
 
@@ -50,7 +54,7 @@ export function ResetPasswordForm({ submitHandler }: ResetPasswordFormPropsType)
             Icon={RiLockPasswordLine}
           />
         </div>
-        <LogInAndRegisterButton type="submit" className="mt-4">
+        <LogInAndRegisterButton type="submit" className="mt-4" disabled={isPending}>
           {t('changePassword')}
         </LogInAndRegisterButton>
       </form>

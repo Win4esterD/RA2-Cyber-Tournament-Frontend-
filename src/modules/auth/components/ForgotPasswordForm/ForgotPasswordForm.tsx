@@ -20,7 +20,7 @@ export function ForgotPasswordForm() {
   const setError = useErrorStore((state) => state.setError);
   const [isEmailSent, setIsEmailSent] = useState(false);
 
-  const forgotPasswordMutation = useMutation({
+  const { mutate, isPending } = useMutation({
     async mutationFn(email: string) {
       const response = await authService.forgotPassword(email);
       return response;
@@ -42,7 +42,7 @@ export function ForgotPasswordForm() {
   });
 
   const onSubmit = (data: ForgotPasswordType) => {
-    forgotPasswordMutation.mutate(data.email);
+    mutate(data.email);
   };
 
   const t = useTranslations('Auth.forgotPassword');
@@ -60,7 +60,7 @@ export function ForgotPasswordForm() {
               Icon={TfiEmail}
               placeholder="commander@ra2.arena"
             />
-            <LogInAndRegisterButton type="submit" className="mt-4">
+            <LogInAndRegisterButton type="submit" className="mt-4" disabled={isPending}>
               {t('sendResetLink')}
             </LogInAndRegisterButton>
           </>

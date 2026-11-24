@@ -22,7 +22,7 @@ export function ResetPasswordPageUI() {
   const setError = useErrorStore((state) => state.setError);
   const t = useTranslations('Auth.resetPassword');
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     async mutationFn(newPassword: string) {
       if (token) {
         const response = await authService.resetPassword({ token, newPassword });
@@ -58,7 +58,7 @@ export function ResetPasswordPageUI() {
             </p>
             <p className="text-slate-500 text-sm mt-1.5">{t('subtitle')}</p>
           </div>
-          <ResetPasswordForm submitHandler={mutate} />
+          <ResetPasswordForm submitHandler={mutate} isPending={isPending} />
         </>
       )}
       {isInvalidToken && (
