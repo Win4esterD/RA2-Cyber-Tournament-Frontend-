@@ -9,3 +9,8 @@ export type AuthResponseType = {
   access_token: string;
   user: UserType;
 };
+
+export type ResetPasswordParamsType = {
+  token: string;
+  newPassword: string;
+};

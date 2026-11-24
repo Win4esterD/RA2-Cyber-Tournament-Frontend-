@@ -40,8 +40,8 @@ export function RegistrationForm() {
 
   const { push } = useRouter();
 
-  const authMutation = useMutation({
-    mutationFn: async ({ email, password }: Omit<RegistrationType, 'repeatPassword'>) => {
+  const { mutate, isPending } = useMutation({
+    async mutationFn({ email, password }: Omit<RegistrationType, 'repeatPassword'>) {
       const registrationResponse = await authService.register({ email, password });
       return registrationResponse;
     },
@@ -71,7 +71,7 @@ export function RegistrationForm() {
 
   const onSubmit = (data: RegistrationType) => {
     const { email, password } = data;
-    authMutation.mutate({ email, password });
+    mutate({ email, password });
   };
 
   return (
@@ -105,7 +105,7 @@ export function RegistrationForm() {
           controllerProps={{ name: 'repeatPassword', control }}
         />
       </div>
-      <LogInAndRegisterButton className="mt-5" type="submit">
+      <LogInAndRegisterButton className="mt-5" type="submit" disabled={isPending}>
         {t('register')}
       </LogInAndRegisterButton>
     </form>

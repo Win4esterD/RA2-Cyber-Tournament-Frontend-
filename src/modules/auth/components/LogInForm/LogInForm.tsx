@@ -40,7 +40,7 @@ export function LogInForm() {
 
   const queryClient = useQueryClient();
 
-  const logInMutation = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: async (credentials: LogInType) => {
       const loginResponse = await authService.logIn(credentials);
 
@@ -71,7 +71,7 @@ export function LogInForm() {
   });
 
   const onSubmit = (data: LogInType) => {
-    logInMutation.mutate(data);
+    mutate(data);
   };
 
   return (
@@ -98,11 +98,11 @@ export function LogInForm() {
           controllerProps={{ name: 'password', control }}
         />
       </div>
-      <LogInAndRegisterButton className="mt-5" type="submit">
+      <LogInAndRegisterButton className="mt-5" type="submit" disabled={isPending}>
         {t('logIn')}
       </LogInAndRegisterButton>
       <Link
-        href="/reset-password"
+        href="/forgot-password"
         className="text-xs text-slate-500 hover:text-red-400 transition-colors hover:cursor-pointer inline-block mt-5"
       >
         {t('forgotPasswordLink')}

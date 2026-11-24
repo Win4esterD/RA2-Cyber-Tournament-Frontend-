@@ -1,8 +1,8 @@
 import type { StoryObj, Meta } from '@storybook/nextjs-vite';
-import { ResetPasswordForm } from './ResetPasswordForm';
+import { ForgotPasswordForm } from './ForgotPasswordForm';
 
 const meta = {
-  component: ResetPasswordForm,
+  component: ForgotPasswordForm,
   decorators: [
     (Story) => {
       return (
@@ -12,7 +12,7 @@ const meta = {
       );
     },
   ],
-} satisfies Meta<typeof ResetPasswordForm>;
+} satisfies Meta<typeof ForgotPasswordForm>;
 
 export default meta;
 
