@@ -56,6 +56,7 @@ export function RegistrationForm() {
       Cookies.set(tokenName, token, {
         sameSite: 'lax',
         expires: tokenStoragePeriod,
+        secure: process.env.NODE_ENV === 'production',
       });
       queryClient.setQueryData(authQueryKeys.user, data);
       setAuth(token);

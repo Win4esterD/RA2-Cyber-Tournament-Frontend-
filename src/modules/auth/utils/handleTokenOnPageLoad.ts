@@ -15,6 +15,7 @@ export function handleTokenOnPageLoad() {
     Cookies.set(tokenName, authToken, {
       sameSite: 'lax',
       expires: tokenStoragePeriod,
+      secure: process.env.NODE_ENV === 'production',
     });
   }
 

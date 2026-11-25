@@ -53,6 +53,7 @@ export function LogInForm() {
       Cookies.set(tokenName, token, {
         sameSite: 'lax',
         expires: tokenStoragePeriod,
+        secure: process.env.NODE_ENV === 'production',
       });
       setAuth(token);
       router.push('/');
