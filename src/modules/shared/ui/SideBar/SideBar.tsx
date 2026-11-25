@@ -63,7 +63,7 @@ export function SideBar({ isSidebarOpenedOnMobile, user }: SideBarPropsType) {
             </div>
             <div className="min-w-0">
               <div className="text-sm font-medium truncate">{user?.name}</div>
-              <div className="text-[10px] text-slate-500">Commander</div>
+              <div className="text-[10px] text-slate-500">{user?.rank}</div>
             </div>
           </div>
         )}
