@@ -12,7 +12,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorResponseType';
 import { useErrorStore } from '@/modules/shared/stores/ErrorStore';
 import { useTranslations } from 'next-intl';
-import { tokenName, authQueryKeys } from '@/modules/auth/consts';
+import { tokenName, authQueryKeys, tokenStoragePeriod } from '@/modules/auth/consts';
 import { useAuthStore } from '@/modules/auth/AuthStore';
 import { useRouter } from '@/i18n/navigation';
 import Cookies from 'js-cookie';
@@ -53,7 +53,11 @@ export function RegistrationForm() {
     },
     onSuccess({ data }) {
       const token = data.access_token;
-      Cookies.set(tokenName, token);
+      Cookies.set(tokenName, token, {
+        sameSite: 'lax',
+        expires: tokenStoragePeriod,
+        secure: process.env.NODE_ENV === 'production',
+      });
       queryClient.setQueryData(authQueryKeys.user, data);
       setAuth(token);
       push('/');

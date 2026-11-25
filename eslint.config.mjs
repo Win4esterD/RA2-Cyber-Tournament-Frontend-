@@ -1,4 +1,3 @@
-// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
 import storybook from 'eslint-plugin-storybook';
 
 import { defineConfig, globalIgnores } from 'eslint/config';
@@ -8,17 +7,29 @@ import nextTs from 'eslint-config-next/typescript';
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  // Override default ignores of eslint-config-next.
-  globalIgnores([
-    // Default ignores of eslint-config-next:
-    '.next/**',
-    'out/**',
-    'build/**',
-    'next-env.d.ts',
-  ]),
+
+  globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
+
   ...storybook.configs['flat/recommended'],
+
   {
     rules: {
+      // Unused variables and imports
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          vars: 'all',
+          args: 'all',
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrors: 'all',
+          caughtErrorsIgnorePattern: '^_',
+          ignoreRestSiblings: true,
+        },
+      ],
+
+      // Type imports
       '@typescript-eslint/consistent-type-imports': [
         'error',
         {
@@ -27,8 +38,8 @@ const eslintConfig = defineConfig([
           disallowTypeAnnotations: true,
         },
       ],
-      // Ban parent-relative imports (../../x and deeper) — use the @/ alias instead,
-      // e.g. '@/modules/auth/consts'. Sibling './' and single-level '../' stay allowed.
+
+      // Ban parent-relative imports (../../x and deeper)
       'no-restricted-imports': [
         'error',
         {

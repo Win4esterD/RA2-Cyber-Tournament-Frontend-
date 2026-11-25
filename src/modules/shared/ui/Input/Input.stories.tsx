@@ -1,4 +1,4 @@
-import type { StoryObj, Meta, Decorator } from '@storybook/nextjs-vite';
+import type { StoryObj, Meta } from '@storybook/nextjs-vite';
 import { Input } from './Input';
 import { TfiEmail } from 'react-icons/tfi';
 import { RiLockPasswordLine } from 'react-icons/ri';
