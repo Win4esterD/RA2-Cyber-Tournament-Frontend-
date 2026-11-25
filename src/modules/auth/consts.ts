@@ -1,4 +1,5 @@
 export const tokenName = 'Ra2Arena-token';
+export const tokenStoragePeriod = 30; //DAYS
 
 // Key factory for React Query — single source of truth, no drift possible
 export const authQueryKeys = {

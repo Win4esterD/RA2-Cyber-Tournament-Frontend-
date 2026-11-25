@@ -18,6 +18,7 @@ import { useAuthStore } from '@/modules/auth/AuthStore';
 import { tokenName, authQueryKeys } from '@/modules/auth';
 import Cookies from 'js-cookie';
 import { GoogleAuthButton } from '@/modules/shared/ui/GoogleAuthButton/GoogleAuthButton';
+import { tokenStoragePeriod } from '@/modules/auth/consts';
 
 export function LogInForm() {
   const LogInSchema = useLogInSchema();
@@ -49,7 +50,10 @@ export function LogInForm() {
     onSuccess: (data) => {
       const token = data.access_token;
       queryClient.setQueryData(authQueryKeys.user, data);
-      Cookies.set(tokenName, token);
+      Cookies.set(tokenName, token, {
+        sameSite: 'lax',
+        expires: tokenStoragePeriod,
+      });
       setAuth(token);
       router.push('/');
     },

@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 import { parseGoogleToken } from '@/modules/auth/utils/parseGoogleToken';
-import { tokenName } from '@/modules/auth/consts';
+import { tokenName, tokenStoragePeriod } from '@/modules/auth/consts';
 
 export function handleTokenOnPageLoad() {
   if (typeof window === 'undefined') return null;
@@ -12,7 +12,10 @@ export function handleTokenOnPageLoad() {
   if (!authToken) return null;
 
   if (googleToken) {
-    Cookies.set(tokenName, authToken);
+    Cookies.set(tokenName, authToken, {
+      sameSite: 'lax',
+      expires: tokenStoragePeriod,
+    });
   }
 
   return authToken;
