@@ -53,7 +53,6 @@ export function CreateTournamentForm({ submitHandler }: CreateTournamentFormProp
           placeholder="Tournament rules, maps, match format...s"
           controllerProps={{ name: 'rules', control }}
           rows={6}
-          required
         />
         <div>
           <label className="block text-sm font-medium mb-2">Brackets format</label>

@@ -22,9 +22,7 @@ export function useCreateTournamentSchema() {
     rules: z
       .string({ message: t('mustBeString') })
       .trim()
-      .min(10, { message: t('tournamentRulesTooShort', { min: 10 }) })
-      .max(5000, { message: t('tournamentRulesTooLong', { max: 5000 }) })
-      .optional(),
+      .max(5000, { message: t('tournamentRulesTooLong', { max: 5000 }) }),
 
     bracketsFormat: z.enum(BracketTypeEnum, {
       message: t('invalidBracketsFormat'),
