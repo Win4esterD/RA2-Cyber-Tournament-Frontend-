@@ -13,7 +13,6 @@ export function useCreateTournamentSchema() {
       .trim()
       .min(3, { message: t('tournamentTitleTooShort', { min: 3 }) })
       .max(120, { message: t('tournamentTitleTooLong', { max: 120 }) }),
-
     description: z
       .string({ message: t('mustBeString') })
       .trim()

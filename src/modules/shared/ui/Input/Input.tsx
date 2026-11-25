@@ -35,6 +35,7 @@ export function Input<T extends FieldValues>({
           htmlFor={field.name}
         >
           {label}
+          {required && <span className="text-red-500">{` *`}</span>}
         </label>
       )}
       <div className="relative">
@@ -43,7 +44,6 @@ export function Input<T extends FieldValues>({
           {...field}
           placeholder={placeholder}
           className="w-full bg-[#0a0e14] border border-[#1e2733] rounded-lg pl-10 pr-4 py-3 text-sm text-slate-100 placeholder-slate-600 focus:border-red-600/50 focus:outline-none transition-colors"
-          required={required}
           value={value}
           type={type}
           id={field.name}
