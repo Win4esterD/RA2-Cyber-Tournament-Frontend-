@@ -24,7 +24,8 @@ export function useCreateTournamentSchema() {
       .string({ message: t('mustBeString') })
       .trim()
       .min(10, { message: t('tournamentRulesTooShort', { min: 10 }) })
-      .max(5000, { message: t('tournamentRulesTooLong', { max: 5000 }) }),
+      .max(5000, { message: t('tournamentRulesTooLong', { max: 5000 }) })
+      .optional(),
 
     bracketsFormat: z.enum(BracketTypeEnum, {
       message: t('invalidBracketsFormat'),
@@ -46,8 +47,11 @@ export function useCreateTournamentSchema() {
       .trim()
       .refine((val) => val === '' || z.httpUrl().safeParse(val).success, {
         message: t('invalidStreamUrl'),
-      }),
+      })
+      .optional(),
   });
 }
 
-export type CreateTournamentSchemaType = z.infer<ReturnType<typeof useCreateTournamentSchema>>;
+export type CreateTournamentSchemaType = z.infer<
+  ReturnType<typeof useCreateTournamentSchema>
+>;
