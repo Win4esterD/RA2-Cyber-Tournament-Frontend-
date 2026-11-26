@@ -13,9 +13,13 @@ const { SINGLE_ELIMINATION, DOUBLE_ELIMINATION } = BracketTypeEnum;
 
 type CreateTournamentFormProps = {
   submitHandler: (data: CreateTournamentSchemaType) => void;
+  isPending: boolean;
 };
 
-export function CreateTournamentForm({ submitHandler }: CreateTournamentFormProps) {
+export function CreateTournamentForm({
+  submitHandler,
+  isPending,
+}: CreateTournamentFormProps) {
   const t = useTranslations('tournaments.createForm');
   const tournamentSchema = useCreateTournamentSchema();
 
@@ -79,7 +83,7 @@ export function CreateTournamentForm({ submitHandler }: CreateTournamentFormProp
           type="url"
           placeholder="https://twitch.tv/..."
         />
-        <MainSubmitButton>
+        <MainSubmitButton disabled={isPending}>
           <LuTrophy
             strokeWidth={2}
             className="w-4 h-4"

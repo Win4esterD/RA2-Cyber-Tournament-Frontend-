@@ -45,7 +45,7 @@ export function useCreateTournamentSchema() {
       .refine((val) => val === '' || z.httpUrl().safeParse(val).success, {
         message: t('invalidStreamUrl'),
       })
-      .optional(),
+      .nullable(),
   });
 }
 

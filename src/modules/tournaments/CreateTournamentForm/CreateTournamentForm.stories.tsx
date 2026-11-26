@@ -21,5 +21,6 @@ type Story = StoryObj<typeof meta>;
 export const Primary = {
   args: {
     submitHandler: (data) => console.log(data),
+    isPending: false,
   },
 } satisfies Story;

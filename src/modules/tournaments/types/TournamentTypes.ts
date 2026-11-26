@@ -15,7 +15,7 @@ export type CreateTournamentType = {
   description: string;
   startDate: Date;
   bracketsFormat: BracketTypeEnum;
-  streamUrl?: string;
+  streamUrl: string | null;
 };
 
 export type TournamentType = {
