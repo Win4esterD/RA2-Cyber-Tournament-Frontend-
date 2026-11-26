@@ -43,7 +43,7 @@ export function Input<T extends FieldValues>({
         <input
           {...field}
           placeholder={placeholder}
-          className="w-full bg-[#0a0e14] border border-[#1e2733] rounded-lg pl-10 pr-4 py-3 text-sm text-slate-100 placeholder-slate-600 focus:border-red-600/50 focus:outline-none transition-colors"
+          className={`w-full bg-[#0a0e14] border border-[#1e2733] rounded-lg ${Icon ? 'pl-10' : 'pl-4'} pr-4 py-3 text-sm text-slate-100 placeholder-slate-600 focus:border-red-600/50 focus:outline-none transition-colors`}
           value={value}
           type={type}
           id={field.name}

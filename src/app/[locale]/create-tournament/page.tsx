@@ -1,3 +1,9 @@
+import { CreateTournamentPageUI } from '@/modules/tournaments/CreateTournamentPageUI/CreateTournamentPageUI';
+
 export default function CreateTournamentPage() {
-  return <div>Create tournament page</div>;
+  return (
+    <div>
+      <CreateTournamentPageUI />
+    </div>
+  );
 }
