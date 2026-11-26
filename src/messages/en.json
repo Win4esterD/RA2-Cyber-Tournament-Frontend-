@@ -131,5 +131,20 @@
     "GENERAL": "General",
     "FIVE_STAR_GENERAL": "Five-Star General",
     "COMMANDER_IN_CHIEF": "Commander-in-Chief"
+  },
+  "tournaments": {
+    "createForm": {
+      "titleLabel": "Tournament name",
+      "titlePlaceholder": "Red Alert 2 tournament",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "Tournament description",
+      "rulesLabel": "Rules",
+      "rulesPlaceholder": "Tournament rules, maps, match format...",
+      "bracketsFormatLabel": "Brackets format",
+      "startDateLabel": "Start date",
+      "startDatePlaceholder": "Start date",
+      "streamUrlLabel": "Stream URL",
+      "submit": "Create Tournament"
+    }
   }
 }

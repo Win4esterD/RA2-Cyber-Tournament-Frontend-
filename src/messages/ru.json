@@ -131,5 +131,20 @@
     "GENERAL": "Генерал",
     "FIVE_STAR_GENERAL": "Генерал пяти звёзд",
     "COMMANDER_IN_CHIEF": "Верховный главнокомандующий"
+  },
+  "tournaments": {
+    "createForm": {
+      "titleLabel": "Название турнира",
+      "titlePlaceholder": "Турнир по Red Alert 2",
+      "descriptionLabel": "Описание",
+      "descriptionPlaceholder": "Описание турнира",
+      "rulesLabel": "Правила",
+      "rulesPlaceholder": "Правила турнира, карты, формат матчей...",
+      "bracketsFormatLabel": "Формат сетки",
+      "startDateLabel": "Дата начала",
+      "startDatePlaceholder": "Дата начала",
+      "streamUrlLabel": "Ссылка на трансляцию",
+      "submit": "Создать турнир"
+    }
   }
 }
