@@ -1,6 +1,6 @@
 'use client';
 import { Input } from '@/modules/shared/ui/Input/Input';
-import { LogInAndRegisterButton } from '@/modules/shared/ui/LogInAndRegisterButton/LogInAndRegisterButton';
+import { MainSubmitButton } from '@/modules/shared/ui/MainSubmitButton/MainSubmitButton';
 import { TfiEmail } from 'react-icons/tfi';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { useForm } from 'react-hook-form';
@@ -121,9 +121,9 @@ export function RegistrationForm() {
           controllerProps={{ name: 'repeatPassword', control }}
         />
       </div>
-      <LogInAndRegisterButton className="mt-5" type="submit" disabled={isPending}>
+      <MainSubmitButton className="mt-5" type="submit" disabled={isPending}>
         {t('register')}
-      </LogInAndRegisterButton>
+      </MainSubmitButton>
     </form>
   );
 }

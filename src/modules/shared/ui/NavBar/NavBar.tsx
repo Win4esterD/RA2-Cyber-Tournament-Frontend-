@@ -3,6 +3,7 @@ import { LuHouse, LuTable2, LuUser, LuPlus } from 'react-icons/lu';
 import { useTranslations } from 'next-intl';
 import type { NavLinkType } from '@/modules/shared/global_types/NavLinkType';
 import { usePathname } from '@/i18n/navigation';
+import { useAuthStore } from '@/modules/auth';
 
 const notSelectedUtilityClassSet =
   'flex items-center gap-3 px-4 py-3 rounded-lg text-sm transition-all text-slate-400 hover:bg-[#161d28] hover:text-slate-200';
@@ -13,6 +14,7 @@ const selectesUtilityClassSet =
 export function NavBar() {
   const pathname = usePathname();
   const t = useTranslations('navBar');
+  const isAuth = useAuthStore((state) => state.isAuth);
 
   const handleSetUtilityClassSet = (link: NavLinkType) => {
     return pathname === link ? selectesUtilityClassSet : notSelectedUtilityClassSet;
@@ -35,13 +37,15 @@ export function NavBar() {
         <LuUser className="w-4 h-4" />
         {t('profile')}
       </Link>
-      <Link
-        href="create-tournament"
-        className={handleSetUtilityClassSet('/create-tournament')}
-      >
-        <LuPlus className="w-4 h-4" />
-        {t('createTournament')}
-      </Link>
+      {isAuth && (
+        <Link
+          href="create-tournament"
+          className={handleSetUtilityClassSet('/create-tournament')}
+        >
+          <LuPlus className="w-4 h-4" />
+          {t('createTournament')}
+        </Link>
+      )}
     </nav>
   );
 }

@@ -4,9 +4,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { useCreateTournamentSchema } from '@/modules/tournaments/schemas/useCreateTournamentSchema';
 import { BracketTypeEnum } from '@/modules/tournaments/types/TournamentTypes';
-import { LogInAndRegisterButton } from '@/modules/shared/ui/LogInAndRegisterButton/LogInAndRegisterButton';
+import { MainSubmitButton } from '@/modules/shared/ui/MainSubmitButton/MainSubmitButton';
 import type { CreateTournamentSchemaType } from '@/modules/tournaments/schemas/useCreateTournamentSchema';
 import { TextArea } from '@/modules/shared/ui/TextArea/TextArea';
+import { LuTrophy } from 'react-icons/lu';
 
 const { SINGLE_ELIMINATION, DOUBLE_ELIMINATION } = BracketTypeEnum;
 
@@ -78,7 +79,15 @@ export function CreateTournamentForm({ submitHandler }: CreateTournamentFormProp
           type="url"
           placeholder="https://twitch.tv/..."
         />
-        <LogInAndRegisterButton>{t('submit')}</LogInAndRegisterButton>
+        <MainSubmitButton>
+          <LuTrophy
+            strokeWidth={2}
+            className="w-4 h-4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          {t('submit')}
+        </MainSubmitButton>
       </form>
     </div>
   );

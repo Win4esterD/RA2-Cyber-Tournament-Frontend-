@@ -2,7 +2,7 @@
 import { TfiEmail } from 'react-icons/tfi';
 import { Input } from '@/modules/shared/ui/Input/Input';
 import { RiLockPasswordLine } from 'react-icons/ri';
-import { LogInAndRegisterButton } from '@/modules/shared/ui/LogInAndRegisterButton/LogInAndRegisterButton';
+import { MainSubmitButton } from '@/modules/shared/ui/MainSubmitButton/MainSubmitButton';
 import { useLogInSchema } from '@/modules/auth/schemas/LogInSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -103,9 +103,9 @@ export function LogInForm() {
           controllerProps={{ name: 'password', control }}
         />
       </div>
-      <LogInAndRegisterButton className="mt-5" type="submit" disabled={isPending}>
+      <MainSubmitButton className="mt-5" type="submit" disabled={isPending}>
         {t('logIn')}
-      </LogInAndRegisterButton>
+      </MainSubmitButton>
       <Link
         href="/forgot-password"
         className="text-xs text-slate-500 hover:text-red-400 transition-colors hover:cursor-pointer inline-block mt-5"
