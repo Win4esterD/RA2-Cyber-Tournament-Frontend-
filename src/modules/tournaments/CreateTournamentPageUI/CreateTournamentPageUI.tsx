@@ -6,17 +6,25 @@ import { LuTrophy } from 'react-icons/lu';
 import { useMutation } from '@tanstack/react-query';
 import type { CreateTournamentSchemaType } from '@/modules/tournaments/schemas/useCreateTournamentSchema';
 import { tournamentService } from '@/modules/tournaments/services/tournamentsService';
+import type { ErrorResponseType } from '@/modules/shared/global_types/ErrorResponseType';
+import { useErrorStore } from '@/modules/shared/stores/ErrorStore';
 
 export function CreateTournamentPageUI() {
+  const setError = useErrorStore((state) => state.setError);
   const { mutate, isPending } = useMutation({
     mutationFn: async (data: CreateTournamentSchemaType) => {
       const serverData = { ...data, startDate: new Date(data.startDate) };
       const response = await tournamentService.createTournament(serverData);
       return response;
     },
-    onError() {},
-    onSuccess() {},
+    onError(error: ErrorResponseType) {
+      setError(error);
+    },
+    onSuccess() {
+      // TODO ADD redirection to the page of created tournament
+    },
   });
+
   return (
     <div className="p-6 lg:p-10 max-w-2xl mx-auto">
       <BackButton text="Back" />
