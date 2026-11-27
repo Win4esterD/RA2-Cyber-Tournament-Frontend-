@@ -19,6 +19,7 @@ export function CreateTournamentPageUI() {
       const serverData = {
         ...data,
         startDate: new Date(data.startDate),
+        streamUrl: data.streamUrl !== '' ? data.streamUrl : null,
       };
       const response = await tournamentService.createTournament(serverData);
       return response;
