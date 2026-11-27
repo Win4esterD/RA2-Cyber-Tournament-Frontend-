@@ -1,7 +1,10 @@
 import { TournamentPageUI } from '@/modules/tournaments/TournamentPageUI/TournamentPageUI';
 import type { LocaleTypeEnum } from '@/i18n/types/LocaleTypeEnum';
 import { tournamentService } from '@/modules/tournaments/services/tournamentsService';
-import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
+import { HydrationBoundary, dehydrate } from '@tanstack/react-query';
+import { getQueryClient } from '@/lib/getQueryClient';
+
+export const revalidate = 3600;
 
 type TournamentPageProps = {
   params: Promise<{
@@ -14,10 +17,10 @@ export default async function TournamentPage({ params }: TournamentPageProps) {
   const { tournamentId } = await params;
   const tournamentIdNumber = parseInt(tournamentId);
 
-  const queryClient = new QueryClient();
+  const queryClient = getQueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: [tournamentId],
+    queryKey: ['tournament', tournamentIdNumber],
     queryFn: () => tournamentService.getTournament(tournamentIdNumber),
   });
 

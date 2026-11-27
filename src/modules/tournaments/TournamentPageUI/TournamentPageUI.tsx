@@ -14,8 +14,7 @@ export function TournamentPageUI({ tournamentId }: TournamentPageUIPropsType) {
   const { data: tournament, error } = useQuery<TournamentType, ErrorResponseType>({
     queryKey: ['tournament', tournamentId],
     queryFn: () => tournamentService.getTournament(tournamentId),
-    staleTime: 60,
-    refetchOnMount: 'always',
+    staleTime: 60 * 1000,
   });
 
   if (error) {
