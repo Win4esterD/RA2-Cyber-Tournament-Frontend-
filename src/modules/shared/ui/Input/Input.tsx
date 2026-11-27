@@ -6,24 +6,20 @@ type InputPropsType<T extends FieldValues> = {
   Icon?: IconType;
   label?: string;
   placeholder?: string;
-  value?: string;
   required?: boolean;
   type?: string;
   controllerProps: UseControllerProps<T>;
   labelUtilityClasses?: string;
-  defaultValue?: string;
 };
 
 export function Input<T extends FieldValues>({
   Icon,
   label,
   placeholder,
-  value,
   required,
   type,
   controllerProps,
   labelUtilityClasses,
-  defaultValue,
 }: InputPropsType<T>) {
   const { field, fieldState } = useController(controllerProps);
 
@@ -35,6 +31,7 @@ export function Input<T extends FieldValues>({
           htmlFor={field.name}
         >
           {label}
+          {required && <span className="text-red-500">{` *`}</span>}
         </label>
       )}
       <div className="relative">
@@ -42,12 +39,9 @@ export function Input<T extends FieldValues>({
         <input
           {...field}
           placeholder={placeholder}
-          className="w-full bg-[#0a0e14] border border-[#1e2733] rounded-lg pl-10 pr-4 py-3 text-sm text-slate-100 placeholder-slate-600 focus:border-red-600/50 focus:outline-none transition-colors"
-          required={required}
-          value={value}
+          className={`w-full bg-[#0a0e14] border border-[#1e2733] rounded-lg ${Icon ? 'pl-10' : 'pl-4'} pr-4 py-3 text-sm text-slate-100 placeholder-slate-600 focus:border-red-600/50 focus:outline-none transition-colors`}
           type={type}
           id={field.name}
-          defaultValue={defaultValue}
         />
       </div>
       {fieldState.error && (

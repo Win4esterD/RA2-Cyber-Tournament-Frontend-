@@ -3,7 +3,7 @@ import { Input } from '@/modules/shared/ui/Input/Input';
 import { useForm } from 'react-hook-form';
 import { useResetPasswordSchema } from '@/modules/auth/schemas/ResetPasswordSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { LogInAndRegisterButton } from '@/modules/shared/ui/LogInAndRegisterButton/LogInAndRegisterButton';
+import { MainSubmitButton } from '@/modules/shared/ui/MainSubmitButton/MainSubmitButton';
 import type { ResetPasswordType } from '@/modules/auth/schemas/ResetPasswordSchema';
 import { useTranslations } from 'next-intl';
 import { RiLockPasswordLine } from 'react-icons/ri';
@@ -54,9 +54,9 @@ export function ResetPasswordForm({
             Icon={RiLockPasswordLine}
           />
         </div>
-        <LogInAndRegisterButton type="submit" className="mt-4" disabled={isPending}>
+        <MainSubmitButton type="submit" className="mt-4" disabled={isPending}>
           {t('changePassword')}
-        </LogInAndRegisterButton>
+        </MainSubmitButton>
       </form>
     </div>
   );

@@ -9,6 +9,7 @@ import type { UserType } from '@/modules/profile/types/UserTypes';
 import { useRouter } from '@/i18n/navigation';
 import { useQueryClient } from '@tanstack/react-query';
 import Cookies from 'js-cookie';
+import { RankTypeEnum } from '@/modules/profile/types/UserTypes';
 
 type SideBarPropsType = {
   isSidebarOpenedOnMobile: boolean;
@@ -17,6 +18,7 @@ type SideBarPropsType = {
 
 export function SideBar({ isSidebarOpenedOnMobile, user }: SideBarPropsType) {
   const t = useTranslations('sideBar');
+  const ranksTranslation = useTranslations('ranks');
   const authTranslator = useTranslations('Auth');
   const removeAuth = useAuthStore((state) => state.removeAuth);
   const isAuth = useAuthStore((state) => state.isAuth);
@@ -63,7 +65,9 @@ export function SideBar({ isSidebarOpenedOnMobile, user }: SideBarPropsType) {
             </div>
             <div className="min-w-0">
               <div className="text-sm font-medium truncate">{user?.name}</div>
-              <div className="text-[10px] text-slate-500">Commander</div>
+              <div className="text-[10px] text-slate-500">
+                {ranksTranslation(user?.rank || RankTypeEnum.PRIVATE)}
+              </div>
             </div>
           </div>
         )}

@@ -60,7 +60,18 @@
     "aboutUserTooShort": "Описание должно содержать не менее {min} символов",
     "aboutUserTooLong": "Описание должно содержать не более {max} символов",
     "googleAuthCancelled": "Вход через Google был отменен",
-    "googleAuthFailed": "Ошибка входа через Google: {error}"
+    "googleAuthFailed": "Ошибка входа через Google: {error}",
+    "tournamentTitleTooShort": "Название турнира должно содержать не менее {min} символов",
+    "tournamentTitleTooLong": "Название турнира должно содержать не более {max} символов",
+    "tournamentDescriptionTooShort": "Описание турнира должно содержать не менее {min} символов",
+    "tournamentDescriptionTooLong": "Описание турнира должно содержать не более {max} символов",
+    "tournamentRulesTooShort": "Правила турнира должны содержать не менее {min} символов",
+    "tournamentRulesTooLong": "Правила турнира должны содержать не более {max} символов",
+    "invalidBracketsFormat": "Выберите корректный формат сетки",
+    "startDateRequired": "Укажите дату начала",
+    "invalidStartDate": "Некорректная дата начала",
+    "startDateInPast": "Дата начала должна быть в будущем",
+    "invalidStreamUrl": "Введите корректную ссылку на трансляцию (например, https://...)"
   },
   "common": {
     "back": "Назад",
@@ -120,5 +131,24 @@
     "GENERAL": "Генерал",
     "FIVE_STAR_GENERAL": "Генерал пяти звёзд",
     "COMMANDER_IN_CHIEF": "Верховный главнокомандующий"
+  },
+  "tournaments": {
+    "createPage": {
+      "title": "Новый турнир",
+      "subtitle": "Настройте параметры турнира"
+    },
+    "createForm": {
+      "titleLabel": "Название турнира",
+      "titlePlaceholder": "Турнир по Red Alert 2",
+      "descriptionLabel": "Описание",
+      "descriptionPlaceholder": "Описание турнира",
+      "rulesLabel": "Правила",
+      "rulesPlaceholder": "Правила турнира, карты, формат матчей...",
+      "bracketsFormatLabel": "Формат сетки",
+      "startDateLabel": "Дата начала",
+      "startDatePlaceholder": "Дата начала",
+      "streamUrlLabel": "Ссылка на трансляцию",
+      "submit": "Создать турнир"
+    }
   }
 }

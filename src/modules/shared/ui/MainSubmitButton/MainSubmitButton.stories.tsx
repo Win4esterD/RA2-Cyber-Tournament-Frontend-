@@ -1,9 +1,9 @@
 import type { StoryObj, Meta } from '@storybook/nextjs-vite';
-import { LogInAndRegisterButton } from './LogInAndRegisterButton';
+import { MainSubmitButton } from './MainSubmitButton';
 
 const meta = {
-  component: LogInAndRegisterButton,
-} satisfies Meta<typeof LogInAndRegisterButton>;
+  component: MainSubmitButton,
+} satisfies Meta<typeof MainSubmitButton>;
 
 export default meta;
 

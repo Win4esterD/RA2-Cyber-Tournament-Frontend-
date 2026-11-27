@@ -60,7 +60,18 @@
     "aboutUserTooShort": "About must be at least {min} characters long",
     "aboutUserTooLong": "About must be at most {max} characters long",
     "googleAuthCancelled": "Google sign-in was cancelled",
-    "googleAuthFailed": "Google sign-in failed: {error}"
+    "googleAuthFailed": "Google sign-in failed: {error}",
+    "tournamentTitleTooShort": "Tournament title must be at least {min} characters long",
+    "tournamentTitleTooLong": "Tournament title must be at most {max} characters long",
+    "tournamentDescriptionTooShort": "Tournament description must be at least {min} characters long",
+    "tournamentDescriptionTooLong": "Tournament description must be at most {max} characters long",
+    "tournamentRulesTooShort": "Tournament rules must be at least {min} characters long",
+    "tournamentRulesTooLong": "Tournament rules must be at most {max} characters long",
+    "invalidBracketsFormat": "Select a valid brackets format",
+    "startDateRequired": "Start date is required",
+    "invalidStartDate": "Invalid start date",
+    "startDateInPast": "Start date must be in the future",
+    "invalidStreamUrl": "Enter a valid stream URL (e.g., https://...)"
   },
   "common": {
     "back": "Back",
@@ -120,5 +131,24 @@
     "GENERAL": "General",
     "FIVE_STAR_GENERAL": "Five-Star General",
     "COMMANDER_IN_CHIEF": "Commander-in-Chief"
+  },
+  "tournaments": {
+    "createPage": {
+      "title": "New Tournament",
+      "subtitle": "Configure the tournament settings"
+    },
+    "createForm": {
+      "titleLabel": "Tournament name",
+      "titlePlaceholder": "Red Alert 2 tournament",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "Tournament description",
+      "rulesLabel": "Rules",
+      "rulesPlaceholder": "Tournament rules, maps, match format...",
+      "bracketsFormatLabel": "Brackets format",
+      "startDateLabel": "Start date",
+      "startDatePlaceholder": "Start date",
+      "streamUrlLabel": "Stream URL",
+      "submit": "Create Tournament"
+    }
   }
 }

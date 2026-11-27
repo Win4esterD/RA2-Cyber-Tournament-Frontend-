@@ -1,7 +1,7 @@
 import type { StoryObj, Meta } from '@storybook/nextjs-vite';
 import { ErrorModal } from './ErrorModal';
 import { useState } from 'react';
-import { LogInAndRegisterButton } from '../LogInAndRegisterButton/LogInAndRegisterButton';
+import { MainSubmitButton } from '../MainSubmitButton/MainSubmitButton';
 
 const meta = {
   component: ErrorModal,
@@ -50,9 +50,7 @@ export const WithCloseHandler = {
     return (
       <div>
         {!isOpen && (
-          <LogInAndRegisterButton onClick={() => setIsOpen(true)}>
-            Open window
-          </LogInAndRegisterButton>
+          <MainSubmitButton onClick={() => setIsOpen(true)}>Open window</MainSubmitButton>
         )}
         {isOpen && <ErrorModal {...args} closeHandler={() => setIsOpen(false)} />}
       </div>

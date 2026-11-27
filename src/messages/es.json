@@ -60,7 +60,18 @@
     "aboutUserTooShort": "La descripción debe tener al menos {min} caracteres",
     "aboutUserTooLong": "La descripción debe tener como máximo {max} caracteres",
     "googleAuthCancelled": "El inicio de sesión con Google fue cancelado",
-    "googleAuthFailed": "Error al iniciar sesión con Google: {error}"
+    "googleAuthFailed": "Error al iniciar sesión con Google: {error}",
+    "tournamentTitleTooShort": "El título del torneo debe tener al menos {min} caracteres",
+    "tournamentTitleTooLong": "El título del torneo debe tener como máximo {max} caracteres",
+    "tournamentDescriptionTooShort": "La descripción del torneo debe tener al menos {min} caracteres",
+    "tournamentDescriptionTooLong": "La descripción del torneo debe tener como máximo {max} caracteres",
+    "tournamentRulesTooShort": "Las reglas del torneo deben tener al menos {min} caracteres",
+    "tournamentRulesTooLong": "Las reglas del torneo deben tener como máximo {max} caracteres",
+    "invalidBracketsFormat": "Selecciona un formato de cuadro válido",
+    "startDateRequired": "La fecha de inicio es obligatoria",
+    "invalidStartDate": "Fecha de inicio inválida",
+    "startDateInPast": "La fecha de inicio debe estar en el futuro",
+    "invalidStreamUrl": "Introduce una URL de transmisión válida (por ejemplo, https://...)"
   },
   "common": {
     "back": "Atrás",
@@ -120,5 +131,24 @@
     "GENERAL": "General",
     "FIVE_STAR_GENERAL": "General de cinco estrellas",
     "COMMANDER_IN_CHIEF": "Comandante en jefe"
+  },
+  "tournaments": {
+    "createPage": {
+      "title": "Nuevo torneo",
+      "subtitle": "Configura los ajustes del torneo"
+    },
+    "createForm": {
+      "titleLabel": "Nombre del torneo",
+      "titlePlaceholder": "Torneo de Red Alert 2",
+      "descriptionLabel": "Descripción",
+      "descriptionPlaceholder": "Descripción del torneo",
+      "rulesLabel": "Reglas",
+      "rulesPlaceholder": "Reglas del torneo, mapas, formato de partidas...",
+      "bracketsFormatLabel": "Formato del cuadro",
+      "startDateLabel": "Fecha de inicio",
+      "startDatePlaceholder": "Fecha de inicio",
+      "streamUrlLabel": "URL de transmisión",
+      "submit": "Crear torneo"
+    }
   }
 }

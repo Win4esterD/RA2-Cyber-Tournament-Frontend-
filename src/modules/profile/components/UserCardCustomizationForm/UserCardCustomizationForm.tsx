@@ -92,7 +92,6 @@ export function UserCardCustomizationForm({
         label={t('nickname')}
         controllerProps={{ name: 'name', control }}
         labelUtilityClasses="block text-xs uppercase tracking-wider text-slate-500 mb-2"
-        defaultValue={name || ''}
       />
       <div className="mt-5">
         <label className="block text-xs uppercase tracking-wider text-slate-500 mb-2">

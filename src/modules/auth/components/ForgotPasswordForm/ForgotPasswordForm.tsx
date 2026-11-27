@@ -7,7 +7,7 @@ import {
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { TfiEmail } from 'react-icons/tfi';
-import { LogInAndRegisterButton } from '@/modules/shared/ui/LogInAndRegisterButton/LogInAndRegisterButton';
+import { MainSubmitButton } from '@/modules/shared/ui/MainSubmitButton/MainSubmitButton';
 import { useTranslations } from 'next-intl';
 import { useMutation } from '@tanstack/react-query';
 import { authService } from '@/modules/auth/services/authService';
@@ -60,9 +60,9 @@ export function ForgotPasswordForm() {
               Icon={TfiEmail}
               placeholder="commander@ra2.arena"
             />
-            <LogInAndRegisterButton type="submit" className="mt-4" disabled={isPending}>
+            <MainSubmitButton type="submit" className="mt-4" disabled={isPending}>
               {t('sendResetLink')}
-            </LogInAndRegisterButton>
+            </MainSubmitButton>
           </>
         ) : (
           <div className="p-3 rounded-lg bg-green-600/10 border border-green-600/30 text-green-400 text-sm text-center">
