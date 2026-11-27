@@ -5,7 +5,6 @@ type TextAreaPropsType<T extends FieldValues> = {
   label?: string;
   placeholder?: string;
   text?: string;
-  defaultValue?: string;
   controllerProps: UseControllerProps<T>;
   rows?: number;
   required?: boolean;
@@ -15,7 +14,6 @@ export function TextArea<T extends FieldValues>({
   label,
   placeholder,
   text,
-  defaultValue,
   controllerProps,
   rows = 2,
   required = false,
@@ -32,7 +30,6 @@ export function TextArea<T extends FieldValues>({
         rows={rows}
         placeholder={placeholder}
         className="bg-[#0a0e14] border border-[#1e2733] rounded-lg px-4 py-2.5 text-sm focus:border-red-600/50 outline-none w-full"
-        defaultValue={defaultValue}
         id={field.name}
       >
         {text}

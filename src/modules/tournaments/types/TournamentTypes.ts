@@ -10,12 +10,13 @@ export enum TournamentStatusTypeEnum {
   CANCELLED = 'CANCELLED',
 }
 
-export type CreateTournamentType = {
+export type CreateTournamentParamsType = {
   title: string;
   description: string;
   startDate: Date;
   bracketsFormat: BracketTypeEnum;
   streamUrl: string | null;
+  rules: string | null;
 };
 
 export type TournamentType = {

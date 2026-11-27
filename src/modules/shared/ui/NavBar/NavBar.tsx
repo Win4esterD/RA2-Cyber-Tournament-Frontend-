@@ -39,7 +39,7 @@ export function NavBar() {
       </Link>
       {isAuth && (
         <Link
-          href="create-tournament"
+          href="/create-tournament"
           className={handleSetUtilityClassSet('/create-tournament')}
         >
           <LuPlus className="w-4 h-4" />

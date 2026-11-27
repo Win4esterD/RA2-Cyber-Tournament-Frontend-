@@ -23,7 +23,7 @@ export function CreateTournamentForm({
   const t = useTranslations('tournaments.createForm');
   const tournamentSchema = useCreateTournamentSchema();
 
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit, register } = useForm({
     defaultValues: {
       title: '',
       description: '',
@@ -65,7 +65,10 @@ export function CreateTournamentForm({
           <label className="block text-sm font-medium mb-2">
             {t('bracketsFormatLabel')}
           </label>
-          <select className="bg-[#0a0e14] border border-[#1e2733] rounded-lg px-4 py-2.5 text-sm focus:border-red-600/50 outline-none w-full">
+          <select
+            {...register('bracketsFormat')}
+            className="bg-[#0a0e14] border border-[#1e2733] rounded-lg px-4 py-2.5 text-sm focus:border-red-600/50 outline-none w-full"
+          >
             <option value={SINGLE_ELIMINATION}>Single Elimination</option>
             <option value={DOUBLE_ELIMINATION}>Double Elimination</option>
           </select>

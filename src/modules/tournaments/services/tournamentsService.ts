@@ -1,11 +1,11 @@
 import { apiClient } from '@/global variables/apiClient';
 import type {
-  CreateTournamentType,
+  CreateTournamentParamsType,
   TournamentType,
 } from '@/modules/tournaments/types/TournamentTypes';
 
 export const tournamentService = {
-  async createTournament(tournamentData: CreateTournamentType) {
+  async createTournament(tournamentData: CreateTournamentParamsType) {
     const response = await apiClient.post<TournamentType>(
       '/tournaments/create',
       tournamentData,
