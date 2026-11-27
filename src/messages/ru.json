@@ -133,6 +133,10 @@
     "COMMANDER_IN_CHIEF": "Верховный главнокомандующий"
   },
   "tournaments": {
+    "createPage": {
+      "title": "Новый турнир",
+      "subtitle": "Настройте параметры турнира"
+    },
     "createForm": {
       "titleLabel": "Название турнира",
       "titlePlaceholder": "Турнир по Red Alert 2",

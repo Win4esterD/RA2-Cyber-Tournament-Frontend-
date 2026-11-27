@@ -23,7 +23,12 @@ export function CreateTournamentForm({
   const t = useTranslations('tournaments.createForm');
   const tournamentSchema = useCreateTournamentSchema();
 
-  const { control, handleSubmit, register } = useForm({
+  const {
+    control,
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       title: '',
       description: '',
@@ -72,6 +77,11 @@ export function CreateTournamentForm({
             <option value={SINGLE_ELIMINATION}>Single Elimination</option>
             <option value={DOUBLE_ELIMINATION}>Double Elimination</option>
           </select>
+          {errors?.bracketsFormat && (
+            <span className="text-xs text-red-500">
+              {errors?.bracketsFormat?.message}
+            </span>
+          )}
         </div>
         <Input
           label={t('startDateLabel')}

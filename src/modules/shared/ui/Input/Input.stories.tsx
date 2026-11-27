@@ -42,7 +42,6 @@ export const WithValue = {
     label: 'With value',
     placeholder: 'myemail@yandex.ru',
     Icon: TfiEmail,
-    value: 'some-email@mail.ru',
     controllerProps: { name: 'email' },
   },
 } satisfies Story;

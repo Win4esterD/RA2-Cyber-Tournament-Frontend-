@@ -133,6 +133,10 @@
     "COMMANDER_IN_CHIEF": "Commander-in-Chief"
   },
   "tournaments": {
+    "createPage": {
+      "title": "New Tournament",
+      "subtitle": "Configure the tournament settings"
+    },
     "createForm": {
       "titleLabel": "Tournament name",
       "titlePlaceholder": "Red Alert 2 tournament",
